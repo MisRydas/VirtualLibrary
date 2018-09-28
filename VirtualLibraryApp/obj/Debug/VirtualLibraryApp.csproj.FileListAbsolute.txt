@@ -9,3 +9,14 @@ C:\Users\Tadas\Desktop\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csproj.Gene
 C:\Users\Tadas\Desktop\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csproj.CoreCompileInputs.cache
 C:\Users\Tadas\Desktop\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.exe
 C:\Users\Tadas\Desktop\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.pdb
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\bin\Debug\VirtualLibraryApp.exe.config
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\bin\Debug\VirtualLibraryApp.exe
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\bin\Debug\VirtualLibraryApp.pdb
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csprojAssemblyReference.cache
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.Login.resources
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.Main.resources
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.Properties.Resources.resources
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csproj.GenerateResource.cache
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csproj.CoreCompileInputs.cache
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.exe
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.pdb

@@ -57,5 +57,15 @@ namespace VirtualLibraryApp
 				MessageBox.Show("Incorrect Username or Password. Please, try again.");
 			}
 		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

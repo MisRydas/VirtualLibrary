@@ -21,5 +21,10 @@ namespace VirtualLibraryApp
 		{
 
 		}
+
+		private void CameraScanButton_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
