@@ -47,7 +47,7 @@
 			this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.label1.Location = new System.Drawing.Point(64, 30);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(286, 54);
+			this.label1.Size = new System.Drawing.Size(276, 53);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Virtual Library";
 			this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -141,7 +141,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(850, 500);
+			this.ClientSize = new System.Drawing.Size(852, 503);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.UsernameTextBox);
@@ -150,8 +150,9 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "Login";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login";
 			this.Load += new System.EventHandler(this.Login_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
