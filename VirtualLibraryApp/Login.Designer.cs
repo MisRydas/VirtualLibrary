@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +48,7 @@
 			this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.label1.Location = new System.Drawing.Point(49, 33);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(330, 51);
+			this.label1.Size = new System.Drawing.Size(325, 50);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Virtual Library";
 			this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -126,13 +127,12 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-			this.pictureBox1.BackgroundImage = global::VirtualLibraryApp.Properties.Resources.kisspng_digital_library_flat_design_medical_library_5addfbd03b8638_6510559915244973602438;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.pictureBox1.Location = new System.Drawing.Point(12, 132);
+			this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pictureBox1.Location = new System.Drawing.Point(23, 126);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(389, 350);
-			this.pictureBox1.TabIndex = 7;
+			this.pictureBox1.Size = new System.Drawing.Size(389, 347);
+			this.pictureBox1.TabIndex = 9;
 			this.pictureBox1.TabStop = false;
 			// 
 			// Login
@@ -142,8 +142,8 @@
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(852, 503);
-			this.Controls.Add(this.label4);
 			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.label4);
 			this.Controls.Add(this.UsernameTextBox);
 			this.Controls.Add(this.SignInButton);
 			this.Controls.Add(this.PasswordTextBox);
@@ -169,7 +169,7 @@
 		private System.Windows.Forms.TextBox PasswordTextBox;
 		private System.Windows.Forms.Button SignInButton;
 		private System.Windows.Forms.TextBox UsernameTextBox;
-		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }
