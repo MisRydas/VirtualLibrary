@@ -16,7 +16,7 @@ Virtual Library App is a program which finds searchable book by ISBN code and di
   - Make mobile app
   - Get pictures directly from camera(Change load pictures with button)
 
-### Tech
+# Tech
 
 Virtual Library uses open source projects to work properly:
 
