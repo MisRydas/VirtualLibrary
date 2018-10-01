@@ -41,11 +41,13 @@ namespace VirtualLibraryApp
 														UsernameTextBox.Text + "' AND password = '" + 
 														PasswordTextBox.Text + "'", sqlConnect);
 
-			//Sukuriame nauja duomenu lentele ir ja uzpildome skaiciu 1(jei vartotojas ivede teisingus duomenis) arba 0(jei duomenys neteisingi).
+			//Sukuriame nauja duomenu lentele ir ja uzpildome skaiciu 1(jei vartotojas ivede teisingus duomenis) 
+			//arba 0(jei duomenys neteisingi).
 			DataTable data = new DataTable();
 			sqlData.Fill(data);
 
-			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju lentele kad duomenys blogi.
+			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
+			//lentele, kad duomenys blogi.
 			if (data.Rows[0][0].ToString() == "1")
 			{
 				this.Hide();

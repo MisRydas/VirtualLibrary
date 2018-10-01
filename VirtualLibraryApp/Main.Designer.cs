@@ -33,18 +33,22 @@
 			// 
 			// CameraScanButton
 			// 
-			this.CameraScanButton.Location = new System.Drawing.Point(269, 177);
+			this.CameraScanButton.BackColor = System.Drawing.Color.Gold;
+			this.CameraScanButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.CameraScanButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.CameraScanButton.Location = new System.Drawing.Point(307, 197);
 			this.CameraScanButton.Name = "CameraScanButton";
 			this.CameraScanButton.Size = new System.Drawing.Size(214, 90);
 			this.CameraScanButton.TabIndex = 0;
-			this.CameraScanButton.Text = "Scan Book";
-			this.CameraScanButton.UseVisualStyleBackColor = true;
+			this.CameraScanButton.Text = "Scan ISBN";
+			this.CameraScanButton.UseVisualStyleBackColor = false;
 			this.CameraScanButton.Click += new System.EventHandler(this.CameraScanButton_Click);
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
 			this.Controls.Add(this.CameraScanButton);
 			this.Name = "Main";

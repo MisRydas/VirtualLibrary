@@ -34,8 +34,8 @@
 			this.PasswordTextBox = new System.Windows.Forms.TextBox();
 			this.UsernameTextBox = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.SignInButton = new System.Windows.Forms.Button();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -43,11 +43,11 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Calibri", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label1.Location = new System.Drawing.Point(64, 30);
+			this.label1.Location = new System.Drawing.Point(49, 33);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(276, 53);
+			this.label1.Size = new System.Drawing.Size(330, 51);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Virtual Library";
 			this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -56,11 +56,11 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.ForeColor = System.Drawing.Color.White;
-			this.label2.Location = new System.Drawing.Point(451, 202);
+			this.label2.Location = new System.Drawing.Point(435, 202);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(95, 24);
+			this.label2.Size = new System.Drawing.Size(111, 23);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Username";
 			// 
@@ -68,11 +68,11 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label3.Location = new System.Drawing.Point(455, 256);
+			this.label3.Location = new System.Drawing.Point(439, 256);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(91, 24);
+			this.label3.Size = new System.Drawing.Size(107, 23);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Password";
 			// 
@@ -101,14 +101,28 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label4.Location = new System.Drawing.Point(80, 84);
+			this.label4.Location = new System.Drawing.Point(69, 84);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(251, 24);
+			this.label4.Size = new System.Drawing.Size(290, 23);
 			this.label4.TabIndex = 8;
 			this.label4.Text = "Find Your New Favorite Book";
 			this.label4.Click += new System.EventHandler(this.label4_Click);
+			// 
+			// SignInButton
+			// 
+			this.SignInButton.BackColor = System.Drawing.Color.Gold;
+			this.SignInButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.SignInButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SignInButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.SignInButton.Location = new System.Drawing.Point(455, 309);
+			this.SignInButton.Name = "SignInButton";
+			this.SignInButton.Size = new System.Drawing.Size(328, 52);
+			this.SignInButton.TabIndex = 5;
+			this.SignInButton.Text = "Sign In";
+			this.SignInButton.UseVisualStyleBackColor = false;
+			this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click_1);
 			// 
 			// pictureBox1
 			// 
@@ -120,20 +134,6 @@
 			this.pictureBox1.Size = new System.Drawing.Size(389, 350);
 			this.pictureBox1.TabIndex = 7;
 			this.pictureBox1.TabStop = false;
-			// 
-			// SignInButton
-			// 
-			this.SignInButton.BackColor = System.Drawing.Color.Gold;
-			this.SignInButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.SignInButton.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SignInButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.SignInButton.Location = new System.Drawing.Point(455, 309);
-			this.SignInButton.Name = "SignInButton";
-			this.SignInButton.Size = new System.Drawing.Size(328, 52);
-			this.SignInButton.TabIndex = 5;
-			this.SignInButton.Text = "Sign In";
-			this.SignInButton.UseVisualStyleBackColor = false;
-			this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click_1);
 			// 
 			// Login
 			// 

@@ -20,3 +20,6 @@ C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibrary
 C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csproj.CoreCompileInputs.cache
 C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.exe
 C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.pdb
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.Camera.resources
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\obj\Debug\VirtualLibraryApp.csproj.CopyComplete
+C:\Users\Tadas\Desktop\VirtualLibrary\VirtualLibraryApp\bin\Debug\MessagingToolkit.Barcode.dll
