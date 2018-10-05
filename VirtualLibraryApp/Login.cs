@@ -34,10 +34,10 @@ namespace VirtualLibraryApp
 			//kur yra visi vartotoju vardai ir slaptazodziai.
 			SqlConnection sqlConnect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" +
 														System.IO.Directory.GetParent(@"../ ").FullName + 
-														@"\Data\userdata.mdf;Integrated Security=True;Connect Timeout=30");
+														@"\Data\UserDB.mdf;Integrated Security=True;Connect Timeout=30");
 
 			//Tikriname ar ivesti duomenis atitinka su sql duomenu bazeje esanciais vartotojo duomenimis.
-			SqlDataAdapter sqlData = new SqlDataAdapter("SELECT COUNT(*) FROM login WHERE username = '" + 
+			SqlDataAdapter sqlData = new SqlDataAdapter("SELECT COUNT(*) FROM UserTable WHERE username = '" + 
 														UsernameTextBox.Text + "' AND password = '" + 
 														PasswordTextBox.Text + "'", sqlConnect);
 
@@ -69,5 +69,12 @@ namespace VirtualLibraryApp
 		{
 
 		}
-	}
+
+        private void newAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+        }
+    }
 }
