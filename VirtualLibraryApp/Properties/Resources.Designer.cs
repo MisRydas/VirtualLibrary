@@ -59,5 +59,16 @@ namespace VirtualLibraryApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_digital_library_flat_design_medical_library_5addfbd03b8638_6510559915244973602438 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-digital-library-flat-design-medical-library-5addfbd03b8638.65105599152449" +
+                        "73602438", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

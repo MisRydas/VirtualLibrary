@@ -58,5 +58,12 @@ namespace VirtualLibraryApp
 		{
 
 		}
-	}
+
+        private void newAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+        }
+    }
 }
