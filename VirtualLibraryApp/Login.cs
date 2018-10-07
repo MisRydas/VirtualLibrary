@@ -29,29 +29,18 @@ namespace VirtualLibraryApp
 
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
-			//sql serverio radimas. "System.IO.Directory.GetParent(@"../ ").FullName" randa projecto adresa kompiuteryje 
-			//pvz.: "C:\Users\Tadas\Desktop\VirtualLibraryApp\bin" ir tada projekte randa duomenu faila, 
-			//kur yra visi vartotoju vardai ir slaptazodziai.
-			SqlConnection sqlConnect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" +
-														System.IO.Directory.GetParent(@"../ ").FullName + 
-														@"\Data\userdata.mdf;Integrated Security=True;Connect Timeout=30");
 
-			//Tikriname ar ivesti duomenis atitinka su sql duomenu bazeje esanciais vartotojo duomenimis.
-			SqlDataAdapter sqlData = new SqlDataAdapter("SELECT COUNT(*) FROM login WHERE username = '" + 
-														UsernameTextBox.Text + "' AND password = '" + 
-														PasswordTextBox.Text + "'", sqlConnect);
-
-			//Sukuriame nauja duomenu lentele ir ja uzpildome skaiciu 1(jei vartotojas ivede teisingus duomenis) 
-			//arba 0(jei duomenys neteisingi).
-			DataTable data = new DataTable();
-			sqlData.Fill(data);
+            //Tikriname ar ivesti duomenis atitinka su sql duomenu bazeje esanciais vartotojo duomenimis.
+            DataTable data = SQLConnection.SelectQuery("SELECT * FROM Users WHERE username = '" +
+                                                        UsernameTextBox.Text + "' AND password = '" +
+                                                        PasswordTextBox.Text + "';");
 
 			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
 			//lentele, kad duomenys blogi.
-			if (data.Rows[0][0].ToString() == "1")
+			if (data.Rows.Count > 0)
 			{
 				this.Hide();
-				Main mainMenu = new Main();
+                Main mainMenu = new Main(SQLConnection.GetUserById((int)data.Rows[0]["Id"]));
 				mainMenu.Show();
 			}
 			else
@@ -69,5 +58,12 @@ namespace VirtualLibraryApp
 		{
 
 		}
-	}
+
+        private void newAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+        }
+    }
 }
