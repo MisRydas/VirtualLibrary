@@ -16,7 +16,7 @@ namespace VirtualLibraryApp
         //stringas parodo kurioje direktorijoje yra DB
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" +
                                   System.IO.Directory.GetParent(@"../ ").FullName +
-                                  @"\Data\userdata.mdf;Integrated Security=True;Connect Timeout=30";
+                                  @"\Data\UserDB.mdf;Integrated Security=True;Connect Timeout=30";
         public RegistrationWindow()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace VirtualLibraryApp
                 using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                 {
                     sqlConnection.Open();
-                    SqlCommand sqlCommand = new SqlCommand("UserAdd", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand("NewUser", sqlConnection);
                     // Turetu naudoti prie Stored Procedures esanti "UserAdd" bet meta errora kad Stored Procedure Not Found nors ji yra prie Stored Procedures
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
