@@ -8,10 +8,13 @@ namespace VirtualLibraryApp
 {
     class User
     {
-        int Id { get; set; }
-        String UserName { get; set; }
-        String FirstName { get; set; }
-        String LastName { get; set; }
+        public int Id { get; set; }
+        public String UserName { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public User()
+        {
+        }
         public User(string username)
         {
             UserName = username;

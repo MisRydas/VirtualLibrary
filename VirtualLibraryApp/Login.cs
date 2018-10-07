@@ -31,13 +31,13 @@ namespace VirtualLibraryApp
 		{
 
             //Tikriname ar ivesti duomenis atitinka su sql duomenu bazeje esanciais vartotojo duomenimis.
-            DataTable data = SQLConnection.SelectQuery("SELECT COUNT(*) FROM Users WHERE username = '" +
+            DataTable data = SQLConnection.SelectQuery("SELECT * FROM Users WHERE username = '" +
                                                         UsernameTextBox.Text + "' AND password = '" +
                                                         PasswordTextBox.Text + "';");
 
 			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
 			//lentele, kad duomenys blogi.
-			if (data.Rows[0][0].ToString() == "1")
+			if (data.Rows.Count > 0)
 			{
 				this.Hide();
 				Main mainMenu = new Main();

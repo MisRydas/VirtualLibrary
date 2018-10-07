@@ -44,27 +44,16 @@ namespace VirtualLibraryApp
             return dTable;
         }
 
-        /*public static User GetUserById(int id)
+        public static User GetUserById(int id)
         {
             User user = new User();
             string query = String.Format("SELECT * FROM Users WHERE Id = {0};", id);
             DataTable dt = SelectQuery(query);
-            user.id = (int)dt.Rows[0]["Id"];
-            user.name = (string)dt.Rows[0]["Name"];
-            user.email = (string)dt.Rows[0]["Email"];
+            user.Id = (int)dt.Rows[0]["Id"];
+            user.UserName = (string)dt.Rows[0]["UserName"];
+            if(dt.Rows[0]["FirstName"] != DBNull.Value) user.FirstName = (string)dt.Rows[0]["FirstName"];
+            if (dt.Rows[0]["LastName"] != DBNull.Value) user.LastName = (string)dt.Rows[0]["LastName"];
             return user;
         }
-
-        public static List<User> GetAllUsers()
-        {
-            List<User> users = new List<User>();
-            string query = "SELECT * FROM Users WHERE IsActive = 1";
-            DataTable dt = SelectQuery(query);
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                users.Add(new User((int)dt.Rows[i]["Id"], (string)dt.Rows[i]["Name"], (string)dt.Rows[i]["Email"]));
-            }
-            return users;
-        }*/
     }
 }
