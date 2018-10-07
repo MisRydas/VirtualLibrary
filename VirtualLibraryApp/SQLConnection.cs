@@ -51,9 +51,15 @@ namespace VirtualLibraryApp
             DataTable dt = SelectQuery(query);
             user.Id = (int)dt.Rows[0]["Id"];
             user.UserName = (string)dt.Rows[0]["UserName"];
-            if(dt.Rows[0]["FirstName"] != DBNull.Value) user.FirstName = (string)dt.Rows[0]["FirstName"];
+            if (dt.Rows[0]["FirstName"] != DBNull.Value) user.FirstName = (string)dt.Rows[0]["FirstName"];
             if (dt.Rows[0]["LastName"] != DBNull.Value) user.LastName = (string)dt.Rows[0]["LastName"];
             return user;
+        }
+
+        public static void AddNewUser(String UserName, String Password, String FirstName, String LastName)
+        {
+            string query = String.Format("Insert into Users (UserName, Password, FirstName, LastName) VALUES ('{0}', '{1}', '{2}', '{3}');;", UserName, Password, FirstName, LastName);
+            Query(query);
         }
     }
 }
