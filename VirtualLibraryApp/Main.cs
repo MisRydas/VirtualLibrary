@@ -5,8 +5,10 @@ namespace VirtualLibraryApp
 {
 	public partial class Main : Form
 	{
-		public Main()
+        User User { get; set; }
+		public Main(User User)
 		{
+            this.User = User;
 			InitializeComponent();
 		}
 
@@ -20,7 +22,7 @@ namespace VirtualLibraryApp
 			//Paspaudus skenuoti, bus atidarytas naujas langas, kuriame bus galima pasirinkti barcode
 			//(Vėliau bus pakeista į kameros skenavima).
 			this.Hide();
-			Camera cameraMenu = new Camera();
+			Camera cameraMenu = new Camera(User);
 			cameraMenu.Show();
 		}
 	}

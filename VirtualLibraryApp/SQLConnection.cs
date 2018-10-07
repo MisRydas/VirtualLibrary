@@ -61,5 +61,11 @@ namespace VirtualLibraryApp
             string query = String.Format("Insert into Users (UserName, Password, FirstName, LastName) VALUES ('{0}', '{1}', '{2}', '{3}');;", UserName, Password, FirstName, LastName);
             Query(query);
         }
+
+        public static void AddISBNToHistory(int UserId, String ISBN)
+        {
+            string query = String.Format("Insert into ISBNSearches (UserId, ISBN) VALUES ('{0}', '{1}');;", UserId, ISBN);
+            Query(query);
+        }
     }
 }

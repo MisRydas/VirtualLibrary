@@ -40,7 +40,7 @@ namespace VirtualLibraryApp
 			if (data.Rows.Count > 0)
 			{
 				this.Hide();
-				Main mainMenu = new Main();
+                Main mainMenu = new Main(SQLConnection.GetUserById((int)data.Rows[0]["Id"]));
 				mainMenu.Show();
 			}
 			else
