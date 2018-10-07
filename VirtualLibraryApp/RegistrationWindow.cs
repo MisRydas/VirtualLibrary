@@ -12,10 +12,6 @@ namespace VirtualLibraryApp
 {
     public partial class RegistrationWindow : Form
     {
-        //stringas parodo kurioje direktorijoje yra DB
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" +
-                                  System.IO.Directory.GetParent(@"../ ").FullName +
-                                  @"\Data\UserDB.mdf;Integrated Security=True;Connect Timeout=30";
         public RegistrationWindow()
         {
             InitializeComponent();
