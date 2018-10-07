@@ -6,6 +6,7 @@ Virtual Library App is a program which finds searchable book by ISBN code and di
   - Added login screen
   - Added barcode scanner
   - Added website where shows book information by isbn code(Just for example. Later will be changed)
+  - Partly added scanned book history
  
 # TODO LIST
   - Add search book operation
@@ -21,6 +22,7 @@ Virtual Library App is a program which finds searchable book by ISBN code and di
 Virtual Library uses open source projects to work properly:
 
 * [MessagingToolkit Library](http://blog.basseltech.com/barcode-generator-scanner-in-c-sharp/) - Barcode scanner and converting to ISBN code
+* MySQL.Data - Library for connecting to My Sql database
 
 
 **-VU MIF-**
