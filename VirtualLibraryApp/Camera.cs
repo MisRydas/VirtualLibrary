@@ -19,7 +19,7 @@ namespace VirtualLibraryApp
 		{
 			//Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
 			OpenFileDialog OD = new OpenFileDialog();
-			OD.InitialDirectory = System.IO.Directory.GetParent(@"../ ").FullName + @"\Barcode Images";
+            OD.InitialDirectory = System.IO.Directory.GetParent(@"../../../ ").FullName + @"\Barcode Images";
 			if (OD.ShowDialog() == DialogResult.OK)
 				BarcodeImageBox.Load(OD.FileName);
 			//Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
