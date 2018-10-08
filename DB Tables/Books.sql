@@ -5,7 +5,7 @@ CREATE TABLE `Books` (
    `BookName` varchar(100) NOT NULL,
    `Author` varchar(100) NOT NULL, 
    `Publisher` varchar(100) NULL,   
-   `Published` datetime NOT NULL,
+   `Published` int(11) NOT NULL,
    `ListPrice` double NULL,
    `CoverLink` varchar(100) NULL,   
    PRIMARY KEY (`Id`),
