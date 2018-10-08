@@ -12,9 +12,15 @@ namespace VirtualLibraryApp
 {
 	public partial class Book : Form
 	{
-		public Book()
+		public Book(string isbn)
 		{
 			InitializeComponent();
+
+			if (isbn.Length == 13)
+			{
+				DataTable data = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN13 = '" + isbn + "';");
+				MessageBox.Show(data.Rows[0][0].ToString());
+			}
 		}
 	}
 }

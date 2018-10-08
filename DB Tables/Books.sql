@@ -7,7 +7,7 @@ CREATE TABLE `Books` (
    `Publisher` varchar(100) NULL,   
    `Published` int(11) NOT NULL,
    `ListPrice` double NULL,
-   `CoverLink` varchar(100) NULL,   
+   `CoverLink` varchar(1000) NULL,   
    PRIMARY KEY (`Id`),
    UNIQUE KEY `BOOKS-ISBN` (`ISBN13`)
 );

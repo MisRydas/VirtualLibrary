@@ -26,8 +26,13 @@ namespace VirtualLibraryApp
 			BarcodeDecoder Scanner = new BarcodeDecoder();
 			Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
 			//Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
-			System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
-            SQLConnection.AddISBNToHistory(User.Id, result.Text);
+		//	System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
+
+			this.Hide();
+			Book bookMenu = new Book(result.Text);
+			bookMenu.Show();
+
+			SQLConnection.AddISBNToHistory(User.Id, result.Text);
 		}
 	}
 }
