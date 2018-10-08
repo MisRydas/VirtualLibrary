@@ -12,15 +12,21 @@ namespace VirtualLibraryApp
 {
 	public partial class Book : Form
 	{
-		public Book(string isbn)
+
+
+		public Book(DataTable bookdata)
 		{
 			InitializeComponent();
 
-			if (isbn.Length == 13)
-			{
-				DataTable data = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN13 = '" + isbn + "';");
-				MessageBox.Show(data.Rows[0][0].ToString());
-			}
+			//Informacija apie knyga
+			BookName.Text = bookdata.Rows[0]["BookName"].ToString();
+			ISBN13.Text = bookdata.Rows[0]["ISBN13"].ToString();
+			ISBN10.Text = bookdata.Rows[0]["ISBN10"].ToString();
+			Author.Text = bookdata.Rows[0]["Author"].ToString();
+			Publisher.Text = bookdata.Rows[0]["Publisher"].ToString();
+			Published.Text = bookdata.Rows[0]["Published"].ToString();
+			ListPrice.Text = bookdata.Rows[0]["ListPrice"].ToString();
+			BookCoverBox.Load(bookdata.Rows[0]["CoverLink"].ToString());
 		}
 	}
 }
