@@ -53,7 +53,6 @@
             this.label1.Size = new System.Drawing.Size(582, 90);
             this.label1.TabIndex = 4;
             this.label1.Text = "Virtual Library";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -116,7 +115,6 @@
             this.label4.Size = new System.Drawing.Size(527, 42);
             this.label4.TabIndex = 5;
             this.label4.Text = "Find Your New Favorite Book";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // SignInButton
             // 
@@ -165,7 +163,7 @@
             this.newAccount.TabIndex = 3;
             this.newAccount.TabStop = true;
             this.newAccount.Text = "Create new Account";
-            this.newAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newAccount_LinkClicked);
+            this.newAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NewAccount_LinkClicked);
             // 
             // Login
             // 
