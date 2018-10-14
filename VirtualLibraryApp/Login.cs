@@ -31,10 +31,13 @@ namespace VirtualLibraryApp
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
 
+			//Gaunam informacija apie naudotojus is sql serverio
 			DataTable userData = SQLConnection.SelectQuery("SELECT * FROM Users");
 
+			//Tikriname ar yra toks vartotojas duomenu bazeje
 			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == UsernameTextBox.Text && user.Field<string>("password") == PasswordTextBox.Text select user;
 
+			//Gauname informacija apie vartotoja, jei toks buvo rastas
 			DataView result = userLogin.AsDataView();
 
 			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
