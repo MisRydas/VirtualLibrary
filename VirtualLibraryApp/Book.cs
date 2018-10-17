@@ -14,19 +14,19 @@ namespace VirtualLibraryApp
 	{
 
 
-		public Book(DataTable bookdata)
+		public Book(DataView bookdata)
 		{
 			InitializeComponent();
 
 			//Informacija apie knyga
-			BookName.Text = bookdata.Rows[0]["BookName"].ToString();
-			ISBN13.Text = bookdata.Rows[0]["ISBN13"].ToString();
-			ISBN10.Text = bookdata.Rows[0]["ISBN10"].ToString();
-			Author.Text = bookdata.Rows[0]["Author"].ToString();
-			Publisher.Text = bookdata.Rows[0]["Publisher"].ToString();
-			Published.Text = bookdata.Rows[0]["Published"].ToString();
-			ListPrice.Text = bookdata.Rows[0]["ListPrice"].ToString();
-			BookCoverBox.Load(bookdata.Rows[0]["CoverLink"].ToString());
+			BookName.Text = bookdata[0]["BookName"].ToString();
+			ISBN13.Text = bookdata[0]["ISBN13"].ToString();
+			ISBN10.Text = bookdata[0]["ISBN10"].ToString();
+			Author.Text = bookdata[0]["Author"].ToString();
+			Publisher.Text = bookdata[0]["Publisher"].ToString();
+			Published.Text = bookdata[0]["Published"].ToString();
+			ListPrice.Text = bookdata[0]["ListPrice"].ToString();
+			BookCoverBox.Load(bookdata[0]["CoverLink"].ToString());
 		}
 	}
 }

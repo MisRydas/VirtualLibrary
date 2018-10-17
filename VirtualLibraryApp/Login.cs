@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -30,36 +31,30 @@ namespace VirtualLibraryApp
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
 
-            //Tikriname ar ivesti duomenis atitinka su sql duomenu bazeje esanciais vartotojo duomenimis.
-            DataTable data = SQLConnection.SelectQuery("SELECT * FROM Users WHERE username = '" +
-                                                        UsernameTextBox.Text + "' AND password = '" +
-                                                        PasswordTextBox.Text + "';");
+			//Gaunam informacija apie naudotojus is sql serverio
+			DataTable userData = SQLConnection.SelectQuery("SELECT * FROM Users");
+
+			//Tikriname ar yra toks vartotojas duomenu bazeje
+			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == UsernameTextBox.Text && user.Field<string>("password") == PasswordTextBox.Text select user;
+
+			//Gauname informacija apie vartotoja, jei toks buvo rastas
+			DataView result = userLogin.AsDataView();
 
 			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
 			//lentele, kad duomenys blogi.
-			if (data.Rows.Count > 0)
-			{
-				this.Hide();
-                Main mainMenu = new Main(SQLConnection.GetUserById((int)data.Rows[0]["Id"]));
-				mainMenu.Show();
-			}
-			else
-			{
-				MessageBox.Show("Incorrect Username or Password. Please, try again.");
-			}
+						if (result.Count == 1)
+						{
+							this.Hide();
+							Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
+							mainMenu.Show();
+						}
+						else
+						{
+							MessageBox.Show("Incorrect Username or Password. Please, try again.");
+						}
 		}
 
-		private void label1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label4_Click(object sender, EventArgs e)
-		{
-
-		}
-
-        private void newAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             RegistrationWindow registrationWindow = new RegistrationWindow();

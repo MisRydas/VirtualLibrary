@@ -9,7 +9,6 @@ namespace VirtualLibraryApp
 {
 	public partial class Camera : Form
 	{
-		DataTable bookdata;
         public User User { get; set; }
 		public Camera(User User)
 		{
@@ -50,14 +49,20 @@ namespace VirtualLibraryApp
 		private void CheckISBN(string isbn, int isbnLength)
 		{
 			//ieskom knygos su isbn
-			bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
+			//	bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
+
+			DataTable bookData = SQLConnection.SelectQuery("SELECT * FROM Books");
+
+			var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN" + isbnLength) == isbn select book;
+
+			DataView result = bookInformation.AsDataView();
 
 
 			//jei knyga rasta, tai atidarom langa su informacija apie ja, jei knyga nerasta praso ieskoti vel.
-			if (bookdata.Rows.Count > 0)
+			if (result.Count > 0)
 			{
 				this.Hide();
-				Book bookMenu = new Book(bookdata);
+				Book bookMenu = new Book(result);
 				bookMenu.Show();
 				SQLConnection.AddISBNToHistory(User.Id, isbn);
 			}
