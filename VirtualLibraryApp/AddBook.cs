@@ -6,9 +6,6 @@ namespace VirtualLibraryApp
 {
 	public partial class AddBook : Form
 	{
-
-		Regex regex;
-
 		public AddBook()
 		{
 			InitializeComponent();
@@ -16,6 +13,7 @@ namespace VirtualLibraryApp
 
 		private void AddBookButton_Click(object sender, EventArgs e)
 		{
+			Regex regex;
 			String bookName = BookNameBox.Text;
 			String ISBN13 = ISBN13Box.Text;
 			regex = new Regex("^[0-9]{13}");
