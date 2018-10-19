@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.CameraScanButton = new System.Windows.Forms.Button();
+			this.AddBook = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// CameraScanButton
@@ -44,12 +45,26 @@
 			this.CameraScanButton.UseVisualStyleBackColor = false;
 			this.CameraScanButton.Click += new System.EventHandler(this.CameraScanButton_Click);
 			// 
+			// AddBook
+			// 
+			this.AddBook.BackColor = System.Drawing.Color.Gold;
+			this.AddBook.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.AddBook.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.AddBook.Location = new System.Drawing.Point(307, 350);
+			this.AddBook.Name = "AddBook";
+			this.AddBook.Size = new System.Drawing.Size(214, 90);
+			this.AddBook.TabIndex = 1;
+			this.AddBook.Text = "Add Book";
+			this.AddBook.UseVisualStyleBackColor = false;
+			this.AddBook.Click += new System.EventHandler(this.AddBook_Click);
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.AddBook);
 			this.Controls.Add(this.CameraScanButton);
 			this.Name = "Main";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -62,5 +77,6 @@
 		#endregion
 
 		private System.Windows.Forms.Button CameraScanButton;
+		private System.Windows.Forms.Button AddBook;
 	}
 }
