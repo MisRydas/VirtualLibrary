@@ -16,14 +16,14 @@ namespace VirtualLibraryApp
 			Regex regex;
 			String bookName = BookNameBox.Text;
 			String ISBN13 = ISBN13Box.Text;
-			regex = new Regex("^[0-9]{13}");
+			regex = new Regex(@"^\d{13}$");
 			if(!regex.IsMatch(ISBN13))
 			{
 				MessageBox.Show("Wrong ISBN-13 Code. No spaces, letters, punctuations and code must have 13 numbers. Please correct it.");
 				return;
 			}
 			String ISBN10 = ISBN10Box.Text;
-			regex = new Regex("^[0-9]{10}");
+			regex = new Regex(@"^\d{10}$");
 			if (!regex.IsMatch(ISBN10))
 			{
 				MessageBox.Show("Wrong ISBN-10 Code. No spaces, letters, punctuations and code must have 13 numbers. Please correct it.");
@@ -32,7 +32,7 @@ namespace VirtualLibraryApp
 			String author = AuthorBox.Text;
 			String publisher = PublisherBox.Text;
 			int.TryParse(PublishedBox.Text, out int published);
-			regex = new Regex("^[0-9]{4}");
+			regex = new Regex(@"^([1-2]{1})(\d{3})$");
 			if (!regex.IsMatch(published.ToString()))
 			{
 				MessageBox.Show("Wrong Published Date format. Please correct it. For example: 2018");
