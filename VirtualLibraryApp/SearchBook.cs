@@ -1,24 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace VirtualLibraryApp
 {
 	public partial class SearchBook : Form
 	{
+		Regex regex;
+		DataView result;
 
-		public User User { get; set; }
+	//	public User User { get; set; }
 
-		public SearchBook(User user)
+		public SearchBook()
 		{
 			InitializeComponent();
-			this.User = user;
+	//		this.User = user;
+		}
+
+		private void SearchButton_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(SearchTextBox.Text))
+			{
+				MessageBox.Show("Write keyword to find book.");
+			}
+			else
+			{
+
+			}
 		}
 	}
 }
