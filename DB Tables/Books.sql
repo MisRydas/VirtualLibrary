@@ -4,6 +4,7 @@ CREATE TABLE `Books` (
    `ISBN10` varchar(100) NULL,
    `BookName` varchar(100) NOT NULL,
    `Author` varchar(100) NOT NULL, 
+   `Genre` varchar(100) NOT NULL,  
    `Publisher` varchar(100) NULL,   
    `Published` int(11) NOT NULL,
    `ListPrice` double NULL,
