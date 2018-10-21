@@ -25,5 +25,12 @@ namespace VirtualLibraryApp
 			Camera cameraMenu = new Camera(User);
 			cameraMenu.Show();
 		}
+
+		private void SearchBook_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			SearchBook searchBookMenu = new SearchBook(User);
+			searchBookMenu.Show();
+		}
 	}
 }

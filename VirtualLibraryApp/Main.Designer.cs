@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.CameraScanButton = new System.Windows.Forms.Button();
+			this.SearchBook = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// CameraScanButton
@@ -44,12 +45,26 @@
 			this.CameraScanButton.UseVisualStyleBackColor = false;
 			this.CameraScanButton.Click += new System.EventHandler(this.CameraScanButton_Click);
 			// 
+			// SearchBook
+			// 
+			this.SearchBook.BackColor = System.Drawing.Color.Gold;
+			this.SearchBook.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SearchBook.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.SearchBook.Location = new System.Drawing.Point(307, 64);
+			this.SearchBook.Name = "SearchBook";
+			this.SearchBook.Size = new System.Drawing.Size(214, 90);
+			this.SearchBook.TabIndex = 1;
+			this.SearchBook.Text = "Search Book";
+			this.SearchBook.UseVisualStyleBackColor = false;
+			this.SearchBook.Click += new System.EventHandler(this.SearchBook_Click);
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.SearchBook);
 			this.Controls.Add(this.CameraScanButton);
 			this.Name = "Main";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -62,5 +77,6 @@
 		#endregion
 
 		private System.Windows.Forms.Button CameraScanButton;
+		private System.Windows.Forms.Button SearchBook;
 	}
 }
