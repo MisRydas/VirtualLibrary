@@ -15,7 +15,7 @@ namespace VirtualLibraryApp
         {
             User user = new User();
             string query = String.Format("SELECT * FROM Users WHERE Id = {0};", id);
-            DataTable dt = SelectQuery(query);
+            DataTable dt = query.SelectQuery();
             user.Id = (int)dt.Rows[0]["Id"];
             user.UserName = (string)dt.Rows[0]["UserName"];
             if (dt.Rows[0]["FirstName"] != DBNull.Value) user.FirstName = (string)dt.Rows[0]["FirstName"];
@@ -26,13 +26,13 @@ namespace VirtualLibraryApp
         public static void AddNewUser(String UserName, String Password, String FirstName, String LastName)
         {
             string query = String.Format("Insert into Users (UserName, Password, FirstName, LastName) VALUES ('{0}', '{1}', '{2}', '{3}');;", UserName, Password, FirstName, LastName);
-            Query(query);
+            query.Query();
         }
 
         public static void AddISBNToHistory(int UserId, String ISBN)
         {
             string query = String.Format("Insert into ISBNSearches (UserId, ISBN) VALUES ('{0}', '{1}');;", UserId, ISBN);
-            Query(query);
+            query.Query();
         }
 
 		public static void AddNewBook(String BookName, String ISBN13, String ISBN10, String Author, String Publisher, int Published, double ListPrice, String CoverLink)
@@ -40,7 +40,7 @@ namespace VirtualLibraryApp
 			string query = String.Format("Insert into Books (BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink) VALUES " +
 										"('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');;",
 										BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink);
-			Query(query);
-		}
+            query.Query();
+        }
     }
 }
