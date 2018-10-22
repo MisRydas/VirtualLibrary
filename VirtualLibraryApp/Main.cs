@@ -41,5 +41,12 @@ namespace VirtualLibraryApp
 			AddBook addBookMenu = new AddBook();
 			addBookMenu.Show();
 		}
-	}
+
+        private void lastSearchesButton_Click(object sender, EventArgs e)
+        {
+            LastSearches ls = new LastSearches(User);
+            this.Hide();
+            ls.ShowDialog();
+        }
+    }
 }

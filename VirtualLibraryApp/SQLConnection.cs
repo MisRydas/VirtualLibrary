@@ -55,5 +55,17 @@ namespace VirtualLibraryApp
             String query = "Select * FROM Users;";
             return query.SelectQuery();
         }
+
+        public static DataTable GetLastSearches(int userId)
+        {
+            String query = String.Format("SELECT b.ISBN13, b.CoverLink FROM ISBNSearches s JOIN Books b ON s.ISBN = b.ISBN13 WHERE s.UserId = {0} ORDER BY s.Time DESC;", userId.ToString());
+            return query.SelectQuery();
+        }
+
+        public static DataView GetBookByISBNInDataView(string isbn)
+        {
+            String query = String.Format("SELECT * FROM Books WHERE ISBN13 = {0};", isbn);
+            return query.SelectQuery().AsDataView();
+        }
     }
 }
