@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
-    public partial class RegistrationWindow : Form
+
+	public partial class RegistrationWindow : Form
     {
-        public RegistrationWindow()
+		public RegistrationWindow()
         {
             InitializeComponent();
         }
@@ -35,7 +30,18 @@ namespace VirtualLibraryApp
                 //Nusiskaitomos reikšmės iš textboxų
                 String UserName = usernameTextBox.Text.Trim();
                 String Password = passwordTextBox.Text.Trim();
-                String FirstName = firstNameTextBox.Text.Trim();
+
+				Regex regex;
+
+				regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+
+				if(!regex.IsMatch(Password))
+				{
+					MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
+					return;
+				}
+
+				String FirstName = firstNameTextBox.Text.Trim();
                 String LastName = lastNameTextBox.Text.Trim();
                 //Pridedamas useris į DB
                 SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);

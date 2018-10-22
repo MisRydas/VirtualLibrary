@@ -67,5 +67,13 @@ namespace VirtualLibraryApp
             string query = String.Format("Insert into ISBNSearches (UserId, ISBN) VALUES ('{0}', '{1}');;", UserId, ISBN);
             Query(query);
         }
+
+		public static void AddNewBook(String BookName, String ISBN13, String ISBN10, String Author, String Publisher, int Published, double ListPrice, String CoverLink)
+		{
+			string query = String.Format("Insert into Books (BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink) VALUES " +
+										"('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');;",
+										BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink);
+			Query(query);
+		}
     }
 }
