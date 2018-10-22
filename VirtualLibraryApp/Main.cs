@@ -15,8 +15,9 @@ namespace VirtualLibraryApp
 		private void Main_Load(object sender, EventArgs e)
 		{
 			//Tikrina ar prisijunge administratorius, jei taip, tai atsiranda papildoma funkcija prideti knygas
-			if(User.Id == 1)
-			{
+			if(User.IsAdmin)
+
+            {
 				AddBook.Show();
 			}
 			else
@@ -40,5 +41,12 @@ namespace VirtualLibraryApp
 			AddBook addBookMenu = new AddBook();
 			addBookMenu.Show();
 		}
-	}
+
+        private void lastSearchesButton_Click(object sender, EventArgs e)
+        {
+            LastSearches ls = new LastSearches(User);
+            this.Hide();
+            ls.ShowDialog();
+        }
+    }
 }
