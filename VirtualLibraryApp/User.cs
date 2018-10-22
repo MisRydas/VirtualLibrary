@@ -12,6 +12,7 @@ namespace VirtualLibraryApp
         public String UserName { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
+        public Boolean IsAdmin { get; set; }
         public User()
         {
         }

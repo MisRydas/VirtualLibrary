@@ -20,6 +20,7 @@ namespace VirtualLibraryApp
             user.UserName = (string)dt.Rows[0]["UserName"];
             if (dt.Rows[0]["FirstName"] != DBNull.Value) user.FirstName = (string)dt.Rows[0]["FirstName"];
             if (dt.Rows[0]["LastName"] != DBNull.Value) user.LastName = (string)dt.Rows[0]["LastName"];
+            user.IsAdmin = (ulong)dt.Rows[0]["IsAdmin"] == 1 ? true : false;
             return user;
         }
 
