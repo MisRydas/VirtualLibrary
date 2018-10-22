@@ -95,6 +95,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLConnection.cs" />
+    <Compile Include="SQLConnectionExtension.cs" />
     <Compile Include="User.cs" />
     <Compile Include="RegistrationWindow.cs">
       <SubType>Form</SubType>
