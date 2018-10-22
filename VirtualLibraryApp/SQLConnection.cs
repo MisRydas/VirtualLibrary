@@ -42,5 +42,17 @@ namespace VirtualLibraryApp
 										BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink);
             query.Query();
         }
+
+        public static DataTable GetAllBooksInDataTable()
+        {
+            String query = "Select * FROM Books;";
+            return query.SelectQuery();
+        }
+
+        public static DataTable GetAllUsersInDataTable()
+        {
+            String query = "Select * FROM Users;";
+            return query.SelectQuery();
+        }
     }
 }

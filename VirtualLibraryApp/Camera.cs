@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using MessagingToolkit.Barcode;
+using static VirtualLibraryApp.SQLConnection;
 
 
 namespace VirtualLibraryApp
@@ -51,7 +52,8 @@ namespace VirtualLibraryApp
 			//ieskom knygos su isbn
 			//	bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
 
-			DataTable bookData = SQLConnection.SelectQuery("SELECT * FROM Books");
+            
+            DataTable bookData = GetAllBooksInDataTable();
 
 			var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN" + isbnLength) == isbn select book;
 
