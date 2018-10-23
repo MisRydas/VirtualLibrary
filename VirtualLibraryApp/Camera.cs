@@ -4,20 +4,40 @@ using System.Drawing;
 using System.Windows.Forms;
 using MessagingToolkit.Barcode;
 using static VirtualLibraryApp.SQLConnection;
+using DarrenLee.Media;
 
 
 namespace VirtualLibraryApp
 {
-	public partial class Camera : Form
+	public partial class CameraScreen : Form
 	{
         public User User { get; set; }
-		public Camera(User User)
+
+        Camera myCamera = new Camera();
+		public CameraScreen(User User)
 		{
             this.User = User;
 			InitializeComponent();
-		}
 
-		private void LoadBarcodeButton_Click(object sender, EventArgs e)
+            GetInfo();
+            myCamera.OnFrameArrived += myCamera_OnFrameArrived;
+		}
+        private void GetInfo()
+        {
+            var myCameraResolutions = myCamera.GetSupportedResolutions();
+
+            foreach (var r in myCameraResolutions)
+                CameraResolutionComboBox.Items.Add(r);
+
+            CameraResolutionComboBox.SelectedIndex = 0;
+        }
+        private void myCamera_OnFrameArrived(object source, FrameArrivedEventArgs e)
+        {
+            Image img = e.GetFrame();
+            BarcodeImageBox.Image = img;
+
+        }
+        private void LoadBarcodeButton_Click(object sender, EventArgs e)
 		{
 			//Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
 			OpenFileDialog OD = new OpenFileDialog();
@@ -73,5 +93,46 @@ namespace VirtualLibraryApp
 				MessageBox.Show("We don't have this book at this time, please try another one.");
 			}
 		}
-	}
+
+        private void ScanButton_Click(object sender, EventArgs e)
+        {
+            //skenuoja knygos barcode tuo metu, jei jo nepagauna, nemeta jokio erroro ir reik spaust vel
+            try
+            {
+                //Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
+                BarcodeDecoder Scanner = new BarcodeDecoder();
+                Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
+                //Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
+                //System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
+
+
+                //Tikrina ISBN formatą ar isbn13 ar isbn10, jei nei vienas, tai rastas blogas kodas.
+                if (result.Text.Length == 13)
+                {
+                    CheckISBN(result.Text, 13);
+                }
+                else if (result.Text.Length == 10)
+                {
+                    CheckISBN(result.Text, 10);
+                }
+                else
+                {
+                    MessageBox.Show("Wrong ISBN, please try again.");
+                }
+            }
+            catch (MessagingToolkit.Barcode.NotFoundException)
+            {
+            }
+        }
+
+        private void CameraResolutionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myCamera.Start(CameraResolutionComboBox.SelectedIndex);
+        }
+
+        private void CameraScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myCamera.Stop();
+        }
+    }
 }

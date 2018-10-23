@@ -31,7 +31,7 @@ namespace VirtualLibraryApp
 			//Paspaudus skenuoti, bus atidarytas naujas langas, kuriame bus galima pasirinkti barcode
 			//(Vėliau bus pakeista į kameros skenavima).
 			this.Hide();
-			Camera cameraMenu = new Camera(User);
+			CameraScreen cameraMenu = new CameraScreen(User);
 			cameraMenu.Show();
 		}
 
