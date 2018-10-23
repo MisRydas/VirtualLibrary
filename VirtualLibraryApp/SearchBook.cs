@@ -73,7 +73,7 @@ namespace VirtualLibraryApp
 
 		DataView BookInfo(String ISBN13)
 		{
-			DataTable bookData = SQLConnection.SelectQuery("SELECT * FROM Books");
+			DataTable bookData = SQLConnection.GetAllBooksInDataTable();
 
 			var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN13") == ISBN13 select book;
 
@@ -102,9 +102,11 @@ namespace VirtualLibraryApp
 
 		public Books(String genre)
 		{
-			DataTable bookData = SQLConnection.SelectQuery("SELECT BookName, CoverLink, ISBN13 FROM Books WHERE Genre Like \"%" + genre + "%\";");
+			DataTable bookData = SQLConnection.GetAllBooksInDataTable();
 
-			DataView result = bookData.AsDataView();
+			var bookInformation = from book in bookData.AsEnumerable() where (book.Field<string>("Genre").IndexOf(genre, StringComparison.OrdinalIgnoreCase) != -1) select book;
+
+			DataView result = bookInformation.AsDataView();
 
 			books = new BookInfo[result.Count];
 
