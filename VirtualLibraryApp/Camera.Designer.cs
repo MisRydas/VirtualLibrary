@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+
             this.LoadBarcodeButton = new System.Windows.Forms.Button();
             this.BarcodeImageBox = new System.Windows.Forms.PictureBox();
             this.ScanButton = new System.Windows.Forms.Button();
@@ -98,13 +99,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarcodeImageBox)).EndInit();
             this.ResumeLayout(false);
 
+			this.Back = new System.Windows.Forms.Button();
+			// 
+			// Back
+			// 
+			this.Back.BackColor = System.Drawing.Color.Gold;
+			this.Back.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Back.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Back.Location = new System.Drawing.Point(12, 12);
+			this.Back.Name = "Back";
+			this.Back.Size = new System.Drawing.Size(92, 54);
+			this.Back.TabIndex = 23;
+			this.Back.Text = "Back";
+			this.Back.UseVisualStyleBackColor = false;
+			this.Back.Click += new System.EventHandler(this.Back_Click);
+
+
 		}
 
 		#endregion
 
 		private System.Windows.Forms.PictureBox BarcodeImageBox;
 		private System.Windows.Forms.Button LoadBarcodeButton;
+
         private System.Windows.Forms.Button ScanButton;
         private System.Windows.Forms.ComboBox CameraResolutionComboBox;
-    }
+    
+
+		private System.Windows.Forms.Button Back;
+	}
+
 }
