@@ -32,6 +32,7 @@
 			this.SearchButton = new System.Windows.Forms.Button();
 			this.BooksGroup = new System.Windows.Forms.GroupBox();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.Back = new System.Windows.Forms.Button();
 			this.BooksGroup.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -75,12 +76,26 @@
 			this.panel1.Size = new System.Drawing.Size(788, 335);
 			this.panel1.TabIndex = 2;
 			// 
+			// Back
+			// 
+			this.Back.BackColor = System.Drawing.Color.Gold;
+			this.Back.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Back.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Back.Location = new System.Drawing.Point(12, 12);
+			this.Back.Name = "Back";
+			this.Back.Size = new System.Drawing.Size(92, 54);
+			this.Back.TabIndex = 24;
+			this.Back.Text = "Back";
+			this.Back.UseVisualStyleBackColor = false;
+			this.Back.Click += new System.EventHandler(this.Back_Click);
+			// 
 			// SearchBook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.Back);
 			this.Controls.Add(this.BooksGroup);
 			this.Controls.Add(this.SearchButton);
 			this.Controls.Add(this.SearchTextBox);
@@ -98,5 +113,6 @@
 		private System.Windows.Forms.Button SearchButton;
 		private System.Windows.Forms.GroupBox BooksGroup;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button Back;
 	}
 }

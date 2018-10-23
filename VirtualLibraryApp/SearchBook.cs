@@ -7,7 +7,7 @@ namespace VirtualLibraryApp
 {
 	public partial class SearchBook : Form
 	{
-		public User User { get; set; }
+		public User User;
 
 		public SearchBook(User user)
 		{
@@ -57,7 +57,7 @@ namespace VirtualLibraryApp
 		{
 			this.Hide();
 			string isbn = ((Label)sender).Name;
-			Book bookMenu = new Book(BookInfo(isbn));
+			Book bookMenu = new Book(User, BookInfo(isbn));
 			bookMenu.Show();
 			SQLConnection.AddISBNToHistory(User.Id, isbn);
 		}
@@ -66,18 +66,25 @@ namespace VirtualLibraryApp
 		{
 			this.Hide();
 			string isbn = ((PictureBox)sender).Name;
-			Book bookMenu = new Book(BookInfo(isbn));
+			Book bookMenu = new Book(User, BookInfo(isbn));
 			bookMenu.Show();
 			SQLConnection.AddISBNToHistory(User.Id, isbn);
 		}
 
 		DataView BookInfo(String ISBN13)
 		{
-			DataTable bookData = SQLConnection.SelectQuery("SELECT * FROM Books");
+			DataTable bookData = SQLConnection.GetAllBooksInDataTable();
 
 			var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN13") == ISBN13 select book;
 
 			return bookInformation.AsDataView();
+		}
+
+		private void Back_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Main mainMenu = new Main(User);
+			mainMenu.Show();
 		}
 	}
 
@@ -102,9 +109,11 @@ namespace VirtualLibraryApp
 
 		public Books(String genre)
 		{
-			DataTable bookData = SQLConnection.SelectQuery("SELECT BookName, CoverLink, ISBN13 FROM Books WHERE Genre Like \"%" + genre + "%\";");
+			DataTable bookData = SQLConnection.GetAllBooksInDataTable();
 
-			DataView result = bookData.AsDataView();
+			var bookInformation = from book in bookData.AsEnumerable() where (book.Field<string>("Genre").IndexOf(genre, StringComparison.OrdinalIgnoreCase) != -1) select book;
+
+			DataView result = bookInformation.AsDataView();
 
 			books = new BookInfo[result.Count];
 

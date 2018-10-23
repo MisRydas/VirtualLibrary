@@ -61,6 +61,12 @@ namespace VirtualLibraryApp
         {
             usernameTextBox.Text = passwordTextBox.Text = firstNameTextBox.Text = lastNameTextBox.Text = confirmPasswordTextBox.Text ="";
         }
-        
-    }
+
+		private void Back_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Login loginMenu = new Login();
+			loginMenu.Show();
+		}
+	}
 }
