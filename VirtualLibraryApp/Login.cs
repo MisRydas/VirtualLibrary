@@ -2,7 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using static VirtualLibraryApp.SQLConnection;
 
 namespace VirtualLibraryApp
 {
@@ -32,7 +32,7 @@ namespace VirtualLibraryApp
 		{
 
 			//Gaunam informacija apie naudotojus is sql serverio
-			DataTable userData = SQLConnection.SelectQuery("SELECT * FROM Users");
+			DataTable userData = GetAllUsersInDataTable();
 
 			//Tikriname ar yra toks vartotojas duomenu bazeje
 			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == UsernameTextBox.Text && user.Field<string>("password") == PasswordTextBox.Text select user;

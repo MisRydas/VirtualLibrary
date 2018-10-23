@@ -14,7 +14,16 @@ namespace VirtualLibraryApp
 
 		private void Main_Load(object sender, EventArgs e)
 		{
+			//Tikrina ar prisijunge administratorius, jei taip, tai atsiranda papildoma funkcija prideti knygas
+			if(User.IsAdmin)
 
+            {
+				AddBook.Show();
+			}
+			else
+			{
+				AddBook.Hide();
+			}
 		}
 
 		private void CameraScanButton_Click(object sender, EventArgs e)
@@ -32,5 +41,19 @@ namespace VirtualLibraryApp
 			SearchBook searchBookMenu = new SearchBook(User);
 			searchBookMenu.Show();
 		}
-	}
+	
+		private void AddBook_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			AddBook addBookMenu = new AddBook();
+			addBookMenu.Show();
+		}
+
+        private void lastSearchesButton_Click(object sender, EventArgs e)
+        {
+            LastSearches ls = new LastSearches(User);
+            this.Hide();
+            ls.ShowDialog();
+        }
+    }
 }
