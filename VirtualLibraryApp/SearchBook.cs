@@ -8,14 +8,13 @@ namespace VirtualLibraryApp
 {
 	public partial class SearchBook : Form
 	{
-		//	public User User { get; set; }
+		public User User { get; set; }
 
-		public SearchBook()
+		public SearchBook(User user)
 		{
 			InitializeComponent();
-			BookCover.Hide();
-			BookName.Hide();
-			//		this.User = user;
+			
+			this.User = user;
 		}
 
 		private void SearchButton_Click(object sender, EventArgs e)
@@ -30,30 +29,46 @@ namespace VirtualLibraryApp
 
 				int i = 0;
 
-
 				foreach (BookInfo book in searchedBooks)
 				{
-					PictureBox bookCover = BookCover;
-					LinkLabel bookName = BookName;
-					BookCover.Load(book.coverLink.ToString());
-					bookName.Text = book.name;
-					bookCover.Name = book.ISBN13;
-					bookName.Name = book.ISBN13;
-					bookCover.Location = new System.Drawing.Point(30, 15 + (170 * i));
-					bookName.Location = new System.Drawing.Point(130, 15 + (170 * i));
-					bookCover.Show();
-					bookName.Show();
+					PictureBox bookCoverBox = new PictureBox();
+					bookCoverBox.Location = new System.Drawing.Point(20, 15 + (170 * i));
+					bookCoverBox.Name = book.ISBN13;
+					bookCoverBox.Size = new System.Drawing.Size(90, 130);
+					bookCoverBox.SizeMode = PictureBoxSizeMode.StretchImage;
+					bookCoverBox.Load(book.coverLink.ToString());
+					panel1.Controls.Add(bookCoverBox);
+					bookCoverBox.Click += bookCoverBox_Click;
+					
+					Label bookNameLabel = new Label();
+					bookNameLabel.Location = new System.Drawing.Point(115, 10 + (170 * i));
+					bookNameLabel.Name = book.ISBN13;
+					bookNameLabel.Size = new System.Drawing.Size(450, 80);
+					bookNameLabel.Font = new System.Drawing.Font("Calibri", 16);
+					bookNameLabel.Text = book.name;
+					panel1.Controls.Add(bookNameLabel);
+					bookNameLabel.Click += bookNameLabel_Click;
 					i++;
 				}
 			}
 		}
 
-		private void BookCover_Click(object sender, EventArgs e)
+		private void bookNameLabel_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			Book bookMenu = new Book(BookInfo(BookName.Name));
+			string isbn = ((Label)sender).Name;
+			Book bookMenu = new Book(BookInfo(isbn));
 			bookMenu.Show();
-			//	SQLConnection.AddISBNToHistory(User.Id, isbn);
+			SQLConnection.AddISBNToHistory(User.Id, isbn);
+		}
+
+		private void bookCoverBox_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			string isbn = ((PictureBox)sender).Name;
+			Book bookMenu = new Book(BookInfo(isbn));
+			bookMenu.Show();
+			SQLConnection.AddISBNToHistory(User.Id, isbn);
 		}
 
 		DataView BookInfo(String ISBN13)
@@ -63,14 +78,6 @@ namespace VirtualLibraryApp
 			var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN13") == ISBN13 select book;
 
 			return bookInformation.AsDataView();
-		}
-
-		private void BookName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			this.Hide();
-			Book bookMenu = new Book(BookInfo(BookName.Name));
-			bookMenu.Show();
-			//	SQLConnection.AddISBNToHistory(User.Id, isbn);
 		}
 	}
 
@@ -93,9 +100,9 @@ namespace VirtualLibraryApp
 	{
 		private BookInfo[] books;
 
-		public Books(String ISBN13)
+		public Books(String genre)
 		{
-			DataTable bookData = SQLConnection.SelectQuery("SELECT BookName, CoverLink, ISBN13 FROM Books WHERE ISBN13 =\"" + ISBN13 + "\";");
+			DataTable bookData = SQLConnection.SelectQuery("SELECT BookName, CoverLink, ISBN13 FROM Books WHERE Genre =\"" + genre + "\";");
 
 			DataView result = bookData.AsDataView();
 

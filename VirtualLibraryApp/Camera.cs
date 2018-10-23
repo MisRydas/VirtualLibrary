@@ -23,12 +23,10 @@ namespace VirtualLibraryApp
             OD.InitialDirectory = System.IO.Directory.GetParent(@"../../../ ").FullName + @"\Barcode Images";
 			if (OD.ShowDialog() == DialogResult.OK)
 				BarcodeImageBox.Load(OD.FileName);
+
 			//Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
 			BarcodeDecoder Scanner = new BarcodeDecoder();
 			Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
-			//Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
-			//System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
-
 
 			//Tikrina ISBN formatą ar isbn13 ar isbn10, jei nei vienas, tai rastas blogas kodas.
 			if (result.Text.Length == 13)

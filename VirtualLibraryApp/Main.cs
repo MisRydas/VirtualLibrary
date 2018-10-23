@@ -29,7 +29,7 @@ namespace VirtualLibraryApp
 		private void SearchBook_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			SearchBook searchBookMenu = new SearchBook();
+			SearchBook searchBookMenu = new SearchBook(User);
 			searchBookMenu.Show();
 		}
 	}
