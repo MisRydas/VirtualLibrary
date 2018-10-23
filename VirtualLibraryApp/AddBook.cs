@@ -6,8 +6,11 @@ namespace VirtualLibraryApp
 {
 	public partial class AddBook : Form
 	{
-		public AddBook()
+		User User;
+
+		public AddBook(User User)
 		{
+			this.User = User;
 			InitializeComponent();
 		}
 
@@ -46,6 +49,13 @@ namespace VirtualLibraryApp
 			MessageBox.Show("Book has been successfully added!");
 			this.Hide();
 			Main mainMenu = new Main(SQLConnection.GetUserById(1));
+			mainMenu.Show();
+		}
+
+		private void Back_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Main mainMenu = new Main(User);
 			mainMenu.Show();
 		}
 	}

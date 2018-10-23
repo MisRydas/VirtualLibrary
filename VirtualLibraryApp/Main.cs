@@ -45,7 +45,7 @@ namespace VirtualLibraryApp
 		private void AddBook_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			AddBook addBookMenu = new AddBook();
+			AddBook addBookMenu = new AddBook(User);
 			addBookMenu.Show();
 		}
 

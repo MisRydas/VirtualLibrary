@@ -30,6 +30,7 @@
 		{
 			this.LoadBarcodeButton = new System.Windows.Forms.Button();
 			this.BarcodeImageBox = new System.Windows.Forms.PictureBox();
+			this.Back = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.BarcodeImageBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -57,12 +58,26 @@
 			this.BarcodeImageBox.TabIndex = 0;
 			this.BarcodeImageBox.TabStop = false;
 			// 
+			// Back
+			// 
+			this.Back.BackColor = System.Drawing.Color.Gold;
+			this.Back.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Back.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Back.Location = new System.Drawing.Point(12, 12);
+			this.Back.Name = "Back";
+			this.Back.Size = new System.Drawing.Size(92, 54);
+			this.Back.TabIndex = 23;
+			this.Back.Text = "Back";
+			this.Back.UseVisualStyleBackColor = false;
+			this.Back.Click += new System.EventHandler(this.Back_Click);
+			// 
 			// Camera
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.Back);
 			this.Controls.Add(this.LoadBarcodeButton);
 			this.Controls.Add(this.BarcodeImageBox);
 			this.Name = "Camera";
@@ -77,5 +92,6 @@
 
 		private System.Windows.Forms.PictureBox BarcodeImageBox;
 		private System.Windows.Forms.Button LoadBarcodeButton;
+		private System.Windows.Forms.Button Back;
 	}
 }

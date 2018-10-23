@@ -12,10 +12,11 @@ namespace VirtualLibraryApp
 {
 	public partial class Book : Form
 	{
+		User User;
 
-
-		public Book(DataView bookdata)
+		public Book(User User, DataView bookdata)
 		{
+			this.User = User;
 			InitializeComponent();
 
 			//Informacija apie knyga
@@ -27,6 +28,13 @@ namespace VirtualLibraryApp
 			Published.Text = bookdata[0]["Published"].ToString();
 			ListPrice.Text = bookdata[0]["ListPrice"].ToString();
 			BookCoverBox.Load(bookdata[0]["CoverLink"].ToString());
+		}
+
+		private void Back_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Main mainMenu = new Main(User);
+			mainMenu.Show();
 		}
 	}
 }

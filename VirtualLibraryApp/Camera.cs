@@ -10,7 +10,8 @@ namespace VirtualLibraryApp
 {
 	public partial class Camera : Form
 	{
-        public User User { get; set; }
+		User User;
+
 		public Camera(User User)
 		{
             this.User = User;
@@ -62,7 +63,7 @@ namespace VirtualLibraryApp
 			if (result.Count > 0)
 			{
 				this.Hide();
-				Book bookMenu = new Book(result);
+				Book bookMenu = new Book(User, result);
 				bookMenu.Show();
 				SQLConnection.AddISBNToHistory(User.Id, isbn);
 			}
@@ -70,6 +71,13 @@ namespace VirtualLibraryApp
 			{
 				MessageBox.Show("We don't have this book at this time, please try another one.");
 			}
+		}
+
+		private void Back_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Main mainMenu = new Main(User);
+			mainMenu.Show();
 		}
 	}
 }

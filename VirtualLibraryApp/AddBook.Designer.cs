@@ -45,6 +45,7 @@
 			this.ListPriceBox = new System.Windows.Forms.TextBox();
 			this.BookCoverLinkBox = new System.Windows.Forms.TextBox();
 			this.AddBookButton = new System.Windows.Forms.Button();
+			this.Back = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -204,12 +205,26 @@
 			this.AddBookButton.UseVisualStyleBackColor = false;
 			this.AddBookButton.Click += new System.EventHandler(this.AddBookButton_Click);
 			// 
+			// Back
+			// 
+			this.Back.BackColor = System.Drawing.Color.Gold;
+			this.Back.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Back.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Back.Location = new System.Drawing.Point(12, 12);
+			this.Back.Name = "Back";
+			this.Back.Size = new System.Drawing.Size(92, 54);
+			this.Back.TabIndex = 18;
+			this.Back.Text = "Back";
+			this.Back.UseVisualStyleBackColor = false;
+			this.Back.Click += new System.EventHandler(this.Back_Click);
+			// 
 			// AddBook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.Back);
 			this.Controls.Add(this.AddBookButton);
 			this.Controls.Add(this.BookCoverLinkBox);
 			this.Controls.Add(this.ListPriceBox);
@@ -253,5 +268,6 @@
 		private System.Windows.Forms.TextBox ListPriceBox;
 		private System.Windows.Forms.TextBox BookCoverLinkBox;
 		private System.Windows.Forms.Button AddBookButton;
+		private System.Windows.Forms.Button Back;
 	}
 }
