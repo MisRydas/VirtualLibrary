@@ -55,5 +55,12 @@ namespace VirtualLibraryApp
             this.Hide();
             ls.ShowDialog();
         }
-    }
+
+		private void LogOut_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Login loginMenu = new Login();
+			loginMenu.Show();
+		}
+	}
 }

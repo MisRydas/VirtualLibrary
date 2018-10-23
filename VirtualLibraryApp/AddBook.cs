@@ -33,6 +33,7 @@ namespace VirtualLibraryApp
 				return;
 			}
 			String author = AuthorBox.Text;
+			String genre = GenreBox.Text;
 			String publisher = PublisherBox.Text;
 			int.TryParse(PublishedBox.Text, out int published);
 			regex = new Regex(@"^([1-2]{1})(\d{3})$");
@@ -44,7 +45,7 @@ namespace VirtualLibraryApp
 			double.TryParse(ListPriceBox.Text, out double listPrice);
 			String coverLink = BookCoverLinkBox.Text;
 
-			SQLConnection.AddNewBook(bookName, ISBN13, ISBN10, author, publisher, published, listPrice, coverLink);
+			SQLConnection.AddNewBook(bookName, ISBN13, ISBN10, author, genre, publisher, published, listPrice, coverLink);
 
 			MessageBox.Show("Book has been successfully added!");
 			this.Hide();

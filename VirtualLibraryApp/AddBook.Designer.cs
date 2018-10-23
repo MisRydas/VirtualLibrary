@@ -46,13 +46,15 @@
 			this.BookCoverLinkBox = new System.Windows.Forms.TextBox();
 			this.AddBookButton = new System.Windows.Forms.Button();
 			this.Back = new System.Windows.Forms.Button();
+			this.GenreBox = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(268, 75);
+			this.label1.Location = new System.Drawing.Point(268, 37);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(106, 24);
 			this.label1.TabIndex = 0;
@@ -62,7 +64,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(300, 113);
+			this.label2.Location = new System.Drawing.Point(300, 75);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(74, 24);
 			this.label2.TabIndex = 1;
@@ -72,7 +74,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(300, 150);
+			this.label3.Location = new System.Drawing.Point(300, 112);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(74, 24);
 			this.label3.TabIndex = 2;
@@ -82,7 +84,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(305, 188);
+			this.label5.Location = new System.Drawing.Point(305, 150);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(69, 24);
 			this.label5.TabIndex = 4;
@@ -131,7 +133,7 @@
 			// BookNameBox
 			// 
 			this.BookNameBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.BookNameBox.Location = new System.Drawing.Point(380, 72);
+			this.BookNameBox.Location = new System.Drawing.Point(380, 34);
 			this.BookNameBox.Name = "BookNameBox";
 			this.BookNameBox.Size = new System.Drawing.Size(204, 32);
 			this.BookNameBox.TabIndex = 9;
@@ -139,7 +141,7 @@
 			// ISBN13Box
 			// 
 			this.ISBN13Box.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ISBN13Box.Location = new System.Drawing.Point(380, 110);
+			this.ISBN13Box.Location = new System.Drawing.Point(380, 72);
 			this.ISBN13Box.Name = "ISBN13Box";
 			this.ISBN13Box.Size = new System.Drawing.Size(204, 32);
 			this.ISBN13Box.TabIndex = 10;
@@ -147,7 +149,7 @@
 			// ISBN10Box
 			// 
 			this.ISBN10Box.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ISBN10Box.Location = new System.Drawing.Point(380, 147);
+			this.ISBN10Box.Location = new System.Drawing.Point(380, 109);
 			this.ISBN10Box.Name = "ISBN10Box";
 			this.ISBN10Box.Size = new System.Drawing.Size(204, 32);
 			this.ISBN10Box.TabIndex = 11;
@@ -155,7 +157,7 @@
 			// AuthorBox
 			// 
 			this.AuthorBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.AuthorBox.Location = new System.Drawing.Point(380, 185);
+			this.AuthorBox.Location = new System.Drawing.Point(380, 147);
 			this.AuthorBox.Name = "AuthorBox";
 			this.AuthorBox.Size = new System.Drawing.Size(204, 32);
 			this.AuthorBox.TabIndex = 12;
@@ -218,12 +220,32 @@
 			this.Back.UseVisualStyleBackColor = false;
 			this.Back.Click += new System.EventHandler(this.Back_Click);
 			// 
+			// GenreBox
+			// 
+			this.GenreBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.GenreBox.Location = new System.Drawing.Point(380, 185);
+			this.GenreBox.Name = "GenreBox";
+			this.GenreBox.Size = new System.Drawing.Size(204, 32);
+			this.GenreBox.TabIndex = 20;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(305, 188);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(61, 24);
+			this.label4.TabIndex = 19;
+			this.label4.Text = "Genre";
+			// 
 			// AddBook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.GenreBox);
+			this.Controls.Add(this.label4);
 			this.Controls.Add(this.Back);
 			this.Controls.Add(this.AddBookButton);
 			this.Controls.Add(this.BookCoverLinkBox);
@@ -269,5 +291,7 @@
 		private System.Windows.Forms.TextBox BookCoverLinkBox;
 		private System.Windows.Forms.Button AddBookButton;
 		private System.Windows.Forms.Button Back;
+		private System.Windows.Forms.TextBox GenreBox;
+		private System.Windows.Forms.Label label4;
 	}
 }

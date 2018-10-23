@@ -32,6 +32,7 @@
 			this.CameraScanButton = new System.Windows.Forms.Button();
 			this.AddBook = new System.Windows.Forms.Button();
 			this.lastSearchesButton = new System.Windows.Forms.Button();
+			this.LogOut = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// SearchBook
@@ -40,7 +41,7 @@
 			this.SearchBook.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SearchBook.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.SearchBook.Location = new System.Drawing.Point(319, 256);
-			this.SearchBook.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.SearchBook.Margin = new System.Windows.Forms.Padding(2);
 			this.SearchBook.Name = "SearchBook";
 			this.SearchBook.Size = new System.Drawing.Size(214, 90);
 			this.SearchBook.TabIndex = 1;
@@ -87,12 +88,26 @@
 			this.lastSearchesButton.UseVisualStyleBackColor = false;
 			this.lastSearchesButton.Click += new System.EventHandler(this.lastSearchesButton_Click);
 			// 
+			// LogOut
+			// 
+			this.LogOut.BackColor = System.Drawing.Color.Gold;
+			this.LogOut.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LogOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.LogOut.Location = new System.Drawing.Point(12, 12);
+			this.LogOut.Name = "LogOut";
+			this.LogOut.Size = new System.Drawing.Size(130, 54);
+			this.LogOut.TabIndex = 24;
+			this.LogOut.Text = "Log Out";
+			this.LogOut.UseVisualStyleBackColor = false;
+			this.LogOut.Click += new System.EventHandler(this.LogOut_Click);
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
+			this.Controls.Add(this.LogOut);
 			this.Controls.Add(this.SearchBook);
 			this.Controls.Add(this.lastSearchesButton);
 			this.Controls.Add(this.AddBook);
@@ -111,5 +126,6 @@
 		private System.Windows.Forms.Button SearchBook;
 		private System.Windows.Forms.Button AddBook;
     private System.Windows.Forms.Button lastSearchesButton;
-    }
+		private System.Windows.Forms.Button LogOut;
+	}
 }
