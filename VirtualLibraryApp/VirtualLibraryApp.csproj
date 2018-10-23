@@ -34,16 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge">
-      <HintPath>..\..\..\..\Desktop\Camera\AForge.dll</HintPath>
+      <HintPath>.\AForge.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video">
-      <HintPath>..\..\..\..\Desktop\Camera\AForge.Video.dll</HintPath>
+      <HintPath>.\AForge.Video.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video.DirectShow">
-      <HintPath>..\..\..\..\Desktop\Camera\AForge.Video.DirectShow.dll</HintPath>
+      <HintPath>.\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
     <Reference Include="DarrenLee.Media">
-      <HintPath>..\..\..\..\Desktop\Camera\DarrenLee.Media.dll</HintPath>
+      <HintPath>.\DarrenLee.Media.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
