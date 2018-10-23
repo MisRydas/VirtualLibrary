@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -25,6 +24,7 @@ namespace VirtualLibraryApp
 			}
 			else
 			{
+				panel1.Controls.Clear();
 				Books searchedBooks = new Books(SearchTextBox.Text);
 
 				int i = 0;
@@ -102,7 +102,7 @@ namespace VirtualLibraryApp
 
 		public Books(String genre)
 		{
-			DataTable bookData = SQLConnection.SelectQuery("SELECT BookName, CoverLink, ISBN13 FROM Books WHERE Genre =\"" + genre + "\";");
+			DataTable bookData = SQLConnection.SelectQuery("SELECT BookName, CoverLink, ISBN13 FROM Books WHERE Genre Like \"%" + genre + "%\";");
 
 			DataView result = bookData.AsDataView();
 
