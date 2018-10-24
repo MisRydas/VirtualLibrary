@@ -36,6 +36,7 @@ namespace VirtualLibraryApp
 				Book b = new Book(User, result);
 				this.Hide();
 				b.ShowDialog();
+                this.Close();
 			}
 		}
 
@@ -48,6 +49,7 @@ namespace VirtualLibraryApp
                 Book b = new Book(User, result);
                 this.Hide();
                 b.ShowDialog();
+                this.Close();
             }
         }
 
@@ -59,6 +61,7 @@ namespace VirtualLibraryApp
                 Book b = new Book(User, result);
                 this.Hide();
                 b.ShowDialog();
+                this.Close();
             }
         }
 
