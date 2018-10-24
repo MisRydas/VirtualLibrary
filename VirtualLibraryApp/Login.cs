@@ -61,7 +61,8 @@ namespace VirtualLibraryApp
         {
             this.Hide();
             RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();
+            registrationWindow.ShowDialog();
+            this.Show();
         }
     }
 }
