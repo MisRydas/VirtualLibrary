@@ -260,6 +260,7 @@
             // 
             // AddBook
             // 
+            this.AcceptButton = this.AddBookButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
