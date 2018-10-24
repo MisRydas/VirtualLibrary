@@ -72,6 +72,7 @@ namespace VirtualLibraryApp
 		{
 			//ieskom knygos su isbn
 			//	bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
+            SQLConnection.AddISBNToHistory(User.Id, isbn);
 
 
 			DataTable bookData = GetAllBooksInDataTable();
@@ -87,7 +88,6 @@ namespace VirtualLibraryApp
 				this.Hide();
 				Book bookMenu = new Book(User, result);
 				bookMenu.ShowDialog();
-				SQLConnection.AddISBNToHistory(User.Id, isbn);
                 this.Close();
 			}
 			else
