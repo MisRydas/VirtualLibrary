@@ -40,19 +40,22 @@ namespace VirtualLibraryApp
 			//Gauname informacija apie vartotoja, jei toks buvo rastas
 			DataView result = userLogin.AsDataView();
 
-			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
-			//lentele, kad duomenys blogi.
-						if (result.Count == 1)
-						{
-							this.Hide();
-							Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
-							mainMenu.Show();
-						}
-						else
-						{
-							MessageBox.Show("Incorrect Username or Password. Please, try again.");
-						}
-		}
+            //Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
+            //lentele, kad duomenys blogi.
+            if (result.Count == 1)
+            {
+                UsernameTextBox.Text = "";
+                PasswordTextBox.Text = "";
+                this.Hide();
+                Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
+                mainMenu.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect Username or Password. Please, try again.");
+            }
+        }
 
         private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
