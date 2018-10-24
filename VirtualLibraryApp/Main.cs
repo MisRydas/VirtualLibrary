@@ -39,7 +39,8 @@ namespace VirtualLibraryApp
 		{
 			this.Hide();
 			SearchBook searchBookMenu = new SearchBook(User);
-			searchBookMenu.Show();
+			searchBookMenu.ShowDialog();
+            this.Show();
 		}
 	
 		private void AddBook_Click(object sender, EventArgs e)
