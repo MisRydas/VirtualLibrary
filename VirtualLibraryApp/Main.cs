@@ -54,6 +54,7 @@ namespace VirtualLibraryApp
             LastSearches ls = new LastSearches(User);
             this.Hide();
             ls.ShowDialog();
+            this.Show();
         }
 
 		private void LogOut_Click(object sender, EventArgs e)
