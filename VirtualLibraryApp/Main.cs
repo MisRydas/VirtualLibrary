@@ -32,7 +32,8 @@ namespace VirtualLibraryApp
 			//(Vėliau bus pakeista į kameros skenavima).
 			this.Hide();
 			CameraScreen cameraMenu = new CameraScreen(User);
-			cameraMenu.Show();
+			cameraMenu.ShowDialog();
+            this.Show();
 		}
 
 		private void SearchBook_Click(object sender, EventArgs e)

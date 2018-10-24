@@ -86,8 +86,9 @@ namespace VirtualLibraryApp
 			{
 				this.Hide();
 				Book bookMenu = new Book(User, result);
-				bookMenu.Show();
+				bookMenu.ShowDialog();
 				SQLConnection.AddISBNToHistory(User.Id, isbn);
+                this.Close();
 			}
 			else
 			{
