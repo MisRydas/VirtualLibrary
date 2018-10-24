@@ -47,7 +47,8 @@ namespace VirtualLibraryApp
 		{
 			this.Hide();
 			AddBook addBookMenu = new AddBook(User);
-			addBookMenu.Show();
+			addBookMenu.ShowDialog();
+            this.Show();
 		}
 
         private void lastSearchesButton_Click(object sender, EventArgs e)

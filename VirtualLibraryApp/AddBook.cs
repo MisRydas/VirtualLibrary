@@ -48,16 +48,12 @@ namespace VirtualLibraryApp
 			SQLConnection.AddNewBook(bookName, ISBN13, ISBN10, author, genre, publisher, published, listPrice, coverLink);
 
 			MessageBox.Show("Book has been successfully added!");
-			this.Hide();
-			Main mainMenu = new Main(SQLConnection.GetUserById(1));
-			mainMenu.Show();
+            this.Close();
 		}
 
 		private void Back_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Main mainMenu = new Main(User);
-			mainMenu.Show();
+            this.Close();
 		}
 	}
 }
