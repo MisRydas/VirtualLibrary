@@ -27,7 +27,7 @@ namespace VirtualLibraryApp
 			}
 			String ISBN10 = ISBN10Box.Text;
 			regex = new Regex(@"^\d{10}$");
-			if (!regex.IsMatch(ISBN10))
+			if (ISBN10.Length != 0 && !regex.IsMatch(ISBN10))
 			{
 				MessageBox.Show("Wrong ISBN-10 Code. No spaces, letters, punctuations and code must have 13 numbers. Please correct it.");
 				return;

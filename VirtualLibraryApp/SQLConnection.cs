@@ -64,9 +64,11 @@ namespace VirtualLibraryApp
 
 		public static DataTable GetAllMissingBooksISBN()
 		{
-			String query = String.Format("SELECT DISTINCT S.ISBN " +
-										"FROM ISBNSearches S, Books B " +
-										"WHERE LENGTH(S.ISBN) = 13 AND S.ISBN NOT IN (B.ISBN13) OR LENGTH(S.ISBN) = 10 AND S.ISBN NOT IN (B.ISBN10) " +
+			String query = String.Format("SELECT * " +
+										"FROM ISBNSearches S " +
+										"WHERE LENGTH(S.ISBN) = 13 AND S.ISBN NOT IN (SELECT ISBN13 FROM Books) OR " +
+									    "LENGTH(S.ISBN) = 10 AND S.ISBN NOT IN (SELECT ISBN10 FROM Books) " +
+										"GROUP BY ISBN " +
 									    "ORDER BY S.Time DESC;");
 			return query.SelectQuery();
 		}

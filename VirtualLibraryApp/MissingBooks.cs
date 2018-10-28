@@ -5,16 +5,24 @@ namespace VirtualLibraryApp
 {
 	public partial class MissingBooks : Form
 	{
-		public MissingBooks()
+		User user;
+
+		public MissingBooks(User user)
 		{
+			this.user = user;
+
 			InitializeComponent();
 
 			DataTable missingBooks = SQLConnection.GetAllMissingBooksISBN();
 
 			DataView result = missingBooks.AsDataView();
 
-			MessageBox.Show(result[0][0].ToString() /*+ "\n" + result[1][0].ToString() + "\n" + result[2][0].ToString() + "\n" + result[3][0].ToString()*/);
+			dataGridView1.DataSource = result;
+		}
 
+		private void Back_Click(object sender, System.EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

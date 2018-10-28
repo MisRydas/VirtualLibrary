@@ -16,7 +16,7 @@ namespace VirtualLibraryApp
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MissingBooks());
+			Application.Run(new Login());
 		}
 	}
 }

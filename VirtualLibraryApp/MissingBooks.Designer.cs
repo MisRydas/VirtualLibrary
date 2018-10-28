@@ -28,28 +28,36 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.BooksGroup = new System.Windows.Forms.GroupBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.BooksGroup.SuspendLayout();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.Back = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// BooksGroup
+			// dataGridView1
 			// 
-			this.BooksGroup.Controls.Add(this.panel1);
-			this.BooksGroup.Location = new System.Drawing.Point(147, 65);
-			this.BooksGroup.Name = "BooksGroup";
-			this.BooksGroup.Size = new System.Drawing.Size(558, 362);
-			this.BooksGroup.TabIndex = 3;
-			this.BooksGroup.TabStop = false;
-			this.BooksGroup.Text = "Missing Books";
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AllowUserToOrderColumns = true;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Location = new System.Drawing.Point(120, 69);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowTemplate.Height = 24;
+			this.dataGridView1.Size = new System.Drawing.Size(591, 370);
+			this.dataGridView1.TabIndex = 0;
 			// 
-			// panel1
+			// Back
 			// 
-			this.panel1.AutoScroll = true;
-			this.panel1.Location = new System.Drawing.Point(6, 21);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(546, 335);
-			this.panel1.TabIndex = 2;
+			this.Back.BackColor = System.Drawing.Color.Gold;
+			this.Back.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Back.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Back.Location = new System.Drawing.Point(12, 12);
+			this.Back.Name = "Back";
+			this.Back.Size = new System.Drawing.Size(92, 54);
+			this.Back.TabIndex = 23;
+			this.Back.Text = "Back";
+			this.Back.UseVisualStyleBackColor = false;
+			this.Back.Click += new System.EventHandler(this.Back_Click);
 			// 
 			// MissingBooks
 			// 
@@ -57,18 +65,19 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(852, 503);
-			this.Controls.Add(this.BooksGroup);
+			this.Controls.Add(this.Back);
+			this.Controls.Add(this.dataGridView1);
 			this.Name = "MissingBooks";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MissingBooks";
-			this.BooksGroup.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.GroupBox BooksGroup;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.Button Back;
 	}
 }
