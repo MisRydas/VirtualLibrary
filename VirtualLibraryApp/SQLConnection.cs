@@ -8,7 +8,7 @@ using SQLConnectionExtensions;
 
 namespace VirtualLibraryApp
 {
-    class SQLConnection
+    public class SQLConnection
     {
 
         public static User GetUserById(int id)

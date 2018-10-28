@@ -36,6 +36,7 @@ namespace VirtualLibraryApp
 				Book b = new Book(User, result);
 				this.Hide();
 				b.ShowDialog();
+                this.Close();
 			}
 		}
 
@@ -48,6 +49,7 @@ namespace VirtualLibraryApp
                 Book b = new Book(User, result);
                 this.Hide();
                 b.ShowDialog();
+                this.Close();
             }
         }
 
@@ -59,14 +61,13 @@ namespace VirtualLibraryApp
                 Book b = new Book(User, result);
                 this.Hide();
                 b.ShowDialog();
+                this.Close();
             }
         }
 
 		private void Back_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Main mainMenu = new Main(User);
-			mainMenu.Show();
+            this.Close();
 		}
 	}
 }

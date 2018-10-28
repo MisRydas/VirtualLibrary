@@ -32,21 +32,24 @@ namespace VirtualLibraryApp
 			//(Vėliau bus pakeista į kameros skenavima).
 			this.Hide();
 			CameraScreen cameraMenu = new CameraScreen(User);
-			cameraMenu.Show();
+			cameraMenu.ShowDialog();
+            this.Show();
 		}
 
 		private void SearchBook_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 			SearchBook searchBookMenu = new SearchBook(User);
-			searchBookMenu.Show();
+			searchBookMenu.ShowDialog();
+            this.Show();
 		}
 	
 		private void AddBook_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 			AddBook addBookMenu = new AddBook(User);
-			addBookMenu.Show();
+			addBookMenu.ShowDialog();
+            this.Show();
 		}
 
         private void lastSearchesButton_Click(object sender, EventArgs e)
@@ -54,13 +57,12 @@ namespace VirtualLibraryApp
             LastSearches ls = new LastSearches(User);
             this.Hide();
             ls.ShowDialog();
+            this.Show();
         }
 
 		private void LogOut_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Login loginMenu = new Login();
-			loginMenu.Show();
+			this.Close();
 		}
 	}
 }

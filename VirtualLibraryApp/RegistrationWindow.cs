@@ -50,10 +50,7 @@ namespace VirtualLibraryApp
                 Clear();
 
                 //Grizta i login screen
-                this.Hide();
-                Login login = new Login();
-                login.Show();
-
+                this.Close();
             }
         }
 
@@ -64,9 +61,7 @@ namespace VirtualLibraryApp
 
 		private void Back_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Login loginMenu = new Login();
-			loginMenu.Show();
+            this.Close();
 		}
 	}
 }

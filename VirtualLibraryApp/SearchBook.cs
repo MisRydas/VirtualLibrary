@@ -58,17 +58,19 @@ namespace VirtualLibraryApp
 			this.Hide();
 			string isbn = ((Label)sender).Name;
 			Book bookMenu = new Book(User, BookInfo(isbn));
-			bookMenu.Show();
+			bookMenu.ShowDialog();
 			SQLConnection.AddISBNToHistory(User.Id, isbn);
-		}
+            this.Close();
+        }
 
 		private void bookCoverBox_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 			string isbn = ((PictureBox)sender).Name;
 			Book bookMenu = new Book(User, BookInfo(isbn));
-			bookMenu.Show();
+			bookMenu.ShowDialog();
 			SQLConnection.AddISBNToHistory(User.Id, isbn);
+            this.Close();
 		}
 
 		DataView BookInfo(String ISBN13)
@@ -82,9 +84,7 @@ namespace VirtualLibraryApp
 
 		private void Back_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Main mainMenu = new Main(User);
-			mainMenu.Show();
+            this.Close();
 		}
 	}
 

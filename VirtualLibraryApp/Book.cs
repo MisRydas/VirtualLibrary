@@ -32,9 +32,7 @@ namespace VirtualLibraryApp
 
 		private void Back_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Main mainMenu = new Main(User);
-			mainMenu.Show();
+            this.Close();
 		}
 	}
 }
