@@ -72,8 +72,7 @@ namespace VirtualLibraryApp
 		{
 			//ieskom knygos su isbn
 			//	bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
-            SQLConnection.AddISBNToHistory(User.Id, isbn);
-
+			SQLConnection.AddISBNToHistory(User.Id, isbn);
 
 			DataTable bookData = GetAllBooksInDataTable();
 
@@ -92,7 +91,7 @@ namespace VirtualLibraryApp
 			}
 			else
 			{
-				MessageBox.Show("We don't have this book at this time, please try another one.");
+				MessageBox.Show("We don't have this book at the moment, please try another one.");
 			}
 		}
 

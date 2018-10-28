@@ -62,7 +62,16 @@ namespace VirtualLibraryApp
             return query.SelectQuery();
         }
 
-        public static DataView GetBookByISBNInDataView(string isbn)
+		public static DataTable GetAllMissingBooksISBN()
+		{
+			String query = String.Format("SELECT DISTINCT S.ISBN " +
+										"FROM ISBNSearches S, Books B " +
+										"WHERE LENGTH(S.ISBN) = 13 AND S.ISBN NOT IN (B.ISBN13) OR LENGTH(S.ISBN) = 10 AND S.ISBN NOT IN (B.ISBN10) " +
+									    "ORDER BY S.Time DESC;");
+			return query.SelectQuery();
+		}
+
+		public static DataView GetBookByISBNInDataView(string isbn)
         {
             String query = String.Format("SELECT * FROM Books WHERE ISBN13 = {0};", isbn);
             return query.SelectQuery().AsDataView();
