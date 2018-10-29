@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CheckExtentions;
+using CheckExtensions;
 
 namespace VirtualLibraryApp.Tests
 {
@@ -16,7 +16,7 @@ namespace VirtualLibraryApp.Tests
 			AddBook addBook = new AddBook(user);
 
 			//Act
-			bool result = CheckExtention.CheckPublished(date);
+			bool result = CheckExtension.CheckPublished(date);
 
 			//Assert
 			Assert.IsTrue(result);
@@ -28,7 +28,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			int date = 0;
 			//Act
-			bool result = CheckExtention.CheckPublished(date);
+			bool result = CheckExtension.CheckPublished(date);
 			//Assert
 			Assert.IsTrue(result);
 		}
@@ -39,7 +39,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			int date = 0123;
 			//Act
-			bool result = CheckExtention.CheckPublished(date);
+			bool result = CheckExtension.CheckPublished(date);
 			//Assert
 			Assert.IsFalse(result);
 		}
@@ -50,7 +50,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			int date = 301;
 			//Act
-			bool result = CheckExtention.CheckPublished(date);
+			bool result = CheckExtension.CheckPublished(date);
 			//Assert
 			Assert.IsFalse(result);
 		}

@@ -1,7 +1,7 @@
 ﻿using System;
 using VirtualLibraryApp;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CheckExtentions;
+using CheckExtensions;
 
 namespace VirtualLibraryApp.Tests
 {
@@ -14,7 +14,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			string ISBN10 = "0142437239";
 			//Act
-			bool result = CheckExtention.CheckISBN10(ISBN10);
+			bool result = CheckExtension.CheckISBN10(ISBN10);
 			//Assert
 			Assert.IsTrue(result);
 		}
@@ -25,7 +25,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			string ISBN10 = "";
 			//Act
-			bool result = CheckExtention.CheckISBN10(ISBN10);
+			bool result = CheckExtension.CheckISBN10(ISBN10);
 			//Assert
 			Assert.IsTrue(result);
 		}
@@ -36,7 +36,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			string ISBN10 = "123456";
 			//Act
-			bool result = CheckExtention.CheckISBN10(ISBN10);
+			bool result = CheckExtension.CheckISBN10(ISBN10);
 			//Assert
 			Assert.IsFalse(result);
 		}

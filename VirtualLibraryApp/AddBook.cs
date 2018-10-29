@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using CheckExtentions;
+using CheckExtensions;
 
 namespace VirtualLibraryApp
 {
@@ -18,13 +18,13 @@ namespace VirtualLibraryApp
 		{
 			String bookName = BookNameBox.Text;
 			String ISBN13 = ISBN13Box.Text;
-			if(!CheckExtention.CheckISBN13(ISBN13))
+			if(!CheckExtension.CheckISBN13(ISBN13))
 			{
 				MessageBox.Show("Wrong ISBN-13 Code. No spaces, letters, punctuations and code must have 13 numbers. Please correct it.");
 				return;
 			}
 			String ISBN10 = ISBN10Box.Text;
-			if (!CheckExtention.CheckISBN10(ISBN10))
+			if (!CheckExtension.CheckISBN10(ISBN10))
 			{
 				MessageBox.Show("Wrong ISBN-10 Code. No spaces, letters, punctuations and code must have 10 numbers. Please correct it.");
 				return;
@@ -33,7 +33,7 @@ namespace VirtualLibraryApp
 			String genre = GenreBox.Text;
 			String publisher = PublisherBox.Text;
 			int.TryParse(PublishedBox.Text, out int published);
-			if (!CheckExtention.CheckPublished(published))
+			if (!CheckExtension.CheckPublished(published))
 			{
 				MessageBox.Show("Wrong Published Date format. Please correct it. For example: 2018");
 				return;

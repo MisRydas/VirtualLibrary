@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace CheckExtentions
+namespace CheckExtensions
 {
-	public static class CheckExtention
+	public static class CheckExtension
 	{
 		static Regex regex;
 
