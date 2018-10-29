@@ -63,5 +63,34 @@ namespace VirtualLibraryApp
 		{
             this.Close();
 		}
-	}
+
+        public bool CheckFirstName(String FirstName)
+        {
+            String empty = "";
+
+            return empty != FirstName ? true : false;
+        }
+
+        public bool CheckLastName(String LastName)
+        {
+            String empty = "";
+
+            return empty != LastName ? true : false;
+        }
+
+        public bool CheckPassword(String Password)
+        {
+            Regex regex;
+            regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+
+            return regex.IsMatch(Password.ToString()) ? true : false;
+        }
+        public bool CheckUsername(String Username)
+        {
+            Regex regex;
+            regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+
+            return regex.IsMatch(Username.ToString()) ? true : false;
+        }
+    }
 }
