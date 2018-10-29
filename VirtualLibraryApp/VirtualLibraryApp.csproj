@@ -92,6 +92,7 @@
     <Compile Include="Camera.Designer.cs">
       <DependentUpon>Camera.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDBConnection.cs" />
     <Compile Include="LastSearches.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +117,7 @@
     <Compile Include="MissingBooks.Designer.cs">
       <DependentUpon>MissingBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySQLConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchBook.cs">
@@ -125,7 +127,6 @@
       <DependentUpon>SearchBook.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLConnection.cs" />
-    <Compile Include="SQLConnectionExtension.cs" />
     <Compile Include="User.cs" />
     <Compile Include="RegistrationWindow.cs">
       <SubType>Form</SubType>

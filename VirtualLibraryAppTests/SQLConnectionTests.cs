@@ -37,5 +37,17 @@ namespace VirtualLibraryApp.Tests
             User userFromDB = SQLConnection.GetUserById(3);
             Assert.AreEqual<User>(user, userFromDB);
         }
+        [TestMethod()]
+        public void GetUserByIdTest_ReturnFalse()
+        {
+            User user = new User
+            {
+                Id = 1,
+                UserName = "admin",
+                IsAdmin = true
+            };
+            User userFromDB = SQLConnection.GetUserById(3);
+            Assert.AreNotEqual<User>(user, userFromDB);
+        }
     }
 }
