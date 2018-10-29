@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="CheckISBN10Tests.cs" />
     <Compile Include="CheckISBN13Tests.cs" />
+    <Compile Include="CheckPublishedDateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLConnectionTests.cs" />
   </ItemGroup>
