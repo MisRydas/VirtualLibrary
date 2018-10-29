@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace SQLConnectionExtensions
+namespace VirtualLibraryApp
 {
-    static class SQLConnectionExtension
+    public class MySQLConnection : IDBConnection
     {
         static String server = "78.61.151.149";
         static String database = "LibraryAppDB";
@@ -24,7 +24,7 @@ namespace SQLConnectionExtensions
             return conn;
         }
 
-        public static void Query(this String query) //Paprastas metodas INSERT, DELETE sakiniams vykdyti, negražina rezultato.
+        public void Query(String query) //Paprastas metodas INSERT, DELETE sakiniams vykdyti, negražina rezultato.
         {
             MySqlConnection conn = Connect();
             MySqlCommand command = new MySqlCommand(query, conn);
@@ -32,7 +32,7 @@ namespace SQLConnectionExtensions
             conn.Close();
         }
 
-        public static DataTable SelectQuery(this String query) //Metodas SELECT sakiniams vykdyti, nes gražina reikšme supildytą į DataTable
+        public DataTable SelectQuery(String query) //Metodas SELECT sakiniams vykdyti, nes gražina reikšme supildytą į DataTable
         {
             MySqlConnection conn = Connect();
             MySqlCommand command = new MySqlCommand(query, conn);
