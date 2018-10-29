@@ -19,10 +19,12 @@ namespace VirtualLibraryApp
 
             {
 				AddBook.Show();
+				MissingBooks.Show();
 			}
 			else
 			{
 				AddBook.Hide();
+				MissingBooks.Hide();
 			}
 		}
 
@@ -59,6 +61,14 @@ namespace VirtualLibraryApp
             ls.ShowDialog();
             this.Show();
         }
+
+		private void MissingBooks_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			MissingBooks missingBooksMenu = new MissingBooks(User);
+			missingBooksMenu.ShowDialog();
+			this.Show();
+		}
 
 		private void LogOut_Click(object sender, EventArgs e)
 		{
