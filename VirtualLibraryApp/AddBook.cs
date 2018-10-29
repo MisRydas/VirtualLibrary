@@ -24,7 +24,7 @@ namespace VirtualLibraryApp
 				return;
 			}
 			String ISBN10 = ISBN10Box.Text;
-			if (ISBN10.Length != 0 && !CheckISBN10(ISBN10))
+			if (!CheckISBN10(ISBN10))
 			{
 				MessageBox.Show("Wrong ISBN-10 Code. No spaces, letters, punctuations and code must have 10 numbers. Please correct it.");
 				return;
@@ -33,7 +33,7 @@ namespace VirtualLibraryApp
 			String genre = GenreBox.Text;
 			String publisher = PublisherBox.Text;
 			int.TryParse(PublishedBox.Text, out int published);
-			if (published != 0 && !CheckPublished(published))
+			if (!CheckPublished(published))
 			{
 				MessageBox.Show("Wrong Published Date format. Please correct it. For example: 2018");
 				return;
@@ -55,7 +55,7 @@ namespace VirtualLibraryApp
 		public bool CheckISBN13(string ISBN13)
 		{
 			Regex regex;
-			regex = new Regex(@"^\d{13}$");
+			regex = new Regex(@"^$|^\d{13}$");
 
 			if (regex.IsMatch(ISBN13))
 			{
@@ -70,7 +70,7 @@ namespace VirtualLibraryApp
 		public bool CheckISBN10(string ISBN10)
 		{
 			Regex regex;
-			regex = new Regex(@"^\d{10}$");
+			regex = new Regex(@"^$|^\d{10}$");
 			if (regex.IsMatch(ISBN10))
 			{
 				return true;
