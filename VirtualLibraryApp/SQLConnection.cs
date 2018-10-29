@@ -70,7 +70,7 @@ namespace VirtualLibraryApp
 
 		public static DataTable GetAllMissingBooksISBN()
 		{
-			String query = String.Format("SELECT S.ISBN " +
+			String query = String.Format("SELECT S.ISBN, COUNT(S.ISBN) AS 'Kiek kartų ieškota', S.Time AS 'Pirmą kartą ieškota' " +
 										"FROM ISBNSearches S " +
 										"WHERE LENGTH(S.ISBN) = 13 AND S.ISBN NOT IN (SELECT ISBN13 FROM Books) OR " +
 									    "LENGTH(S.ISBN) = 10 AND S.ISBN NOT IN (SELECT ISBN10 FROM Books) " +
