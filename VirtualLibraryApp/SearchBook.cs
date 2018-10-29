@@ -57,7 +57,7 @@ namespace VirtualLibraryApp
 		{
 			this.Hide();
 			string isbn = ((Label)sender).Name;
-			Book bookMenu = new Book(User, BookInfo(isbn));
+			Book bookMenu = new Book(User, SQLConnection.GetBookByISBNInDataView(isbn));
 			bookMenu.ShowDialog();
 			SQLConnection.AddISBNToHistory(User.Id, isbn);
             this.Close();
@@ -67,19 +67,10 @@ namespace VirtualLibraryApp
 		{
 			this.Hide();
 			string isbn = ((PictureBox)sender).Name;
-			Book bookMenu = new Book(User, BookInfo(isbn));
+			Book bookMenu = new Book(User, SQLConnection.GetBookByISBNInDataView(isbn));
 			bookMenu.ShowDialog();
 			SQLConnection.AddISBNToHistory(User.Id, isbn);
             this.Close();
-		}
-
-		DataView BookInfo(String ISBN13)
-		{
-			DataTable bookData = SQLConnection.GetAllBooksInDataTable();
-
-			var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN13") == ISBN13 select book;
-
-			return bookInformation.AsDataView();
 		}
 
 		private void Back_Click(object sender, EventArgs e)
