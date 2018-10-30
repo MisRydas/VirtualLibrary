@@ -64,5 +64,23 @@ namespace VirtualLibraryApp
             registrationWindow.ShowDialog();
             this.Show();
         }
+
+        public bool CheckLogin (String username, String password)
+        {
+            DataTable userData = GetAllUsersInDataTable();
+            var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == username && user.Field<string>("password") == password select user;
+            DataView result = userLogin.AsDataView();
+
+            if (result.Count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
     }
 }
