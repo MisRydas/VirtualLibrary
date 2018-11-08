@@ -40,6 +40,11 @@ namespace VirtualLibraryApp
 			BarcodeImageBox.Image = img;
 
 		}
+
+        //sukuriamas delegatas
+        delegate void Check1013(string s, int i);
+
+
 		private void LoadBarcodeButton_Click(object sender, EventArgs e)
 		{
 			//Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
@@ -52,19 +57,38 @@ namespace VirtualLibraryApp
 			BarcodeDecoder Scanner = new BarcodeDecoder();
 			Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
 
+            //instantiate'inam delegata naudodami anonymous method'a
+            Check1013 ch1013 = delegate (string a, int c)
+            {
+                if (c == 13)
+                {
+                CheckISBN(a, 13);
+                }
+                else if (c == 10)
+                {
+                CheckISBN(a, 10);
+                }
+                else
+                {
+                MessageBox.Show("Wrong ISBN, please try again.");
+                }
+            };
+            //iskvieciam delegata
+            ch1013(result.Text, result.Text.Length);
+            
 			//Tikrina ISBN formatą ar isbn13 ar isbn10, jei nei vienas, tai rastas blogas kodas.
-			if (result.Text.Length == 13)
-			{
-				CheckISBN(result.Text, 13);
-			}
-			else if (result.Text.Length == 10)
-			{
-				CheckISBN(result.Text, 10);
-			}
-			else
-			{
-				MessageBox.Show("Wrong ISBN, please try again.");
-			}
+			//if (result.Text.Length == 13)
+			//{
+			//	CheckISBN(result.Text, 13);
+			//}
+			//else if (result.Text.Length == 10)
+			//{
+			//	CheckISBN(result.Text, 10);
+			//}
+			//else
+			//{
+			//	MessageBox.Show("Wrong ISBN, please try again.");
+			//}
 		}
 
 		//Tikrinam isbn ar yra tokia knyga duombazej
@@ -138,7 +162,8 @@ namespace VirtualLibraryApp
 
 		private void Back1_Click(object sender, EventArgs e)
 		{
-			this.Close();
+            myCamera.Stop();
+            this.Close();
 		}
 	}
 }
