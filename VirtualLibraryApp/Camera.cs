@@ -57,15 +57,15 @@ namespace VirtualLibraryApp
 			Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
 
             //instantiate'inam delegata naudodami anonymous method'a
-            Check1013 ch1013 = delegate (string a, int c)
+            Check1013 ch1013 = delegate (string text, int length)
             {
-                if (c == 13)
+                if (length == 13)
                 {
-                CheckISBN(a, 13);
+                CheckISBN(text, 13);
                 }
-                else if (c == 10)
+                else if (length == 10)
                 {
-                CheckISBN(a, 10);
+                CheckISBN(text, 10);
                 }
                 else
                 {
@@ -130,15 +130,15 @@ namespace VirtualLibraryApp
                 //System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
 
                 //instantiate'inam delegata naudodami anonymous method'a
-                Check1013 ch1013 = delegate (string a, int c)
+                Check1013 ch1013 = delegate (string text, int length)
                 {
-                    if (c == 13)
+                    if (length == 13)
                     {
-                        CheckISBN(a, 13);
+                        CheckISBN(text, 13);
                     }
-                    else if (c == 10)
+                    else if (length == 10)
                     {
-                        CheckISBN(a, 10);
+                        CheckISBN(text, 10);
                     }
                     else
                     {
@@ -147,6 +147,7 @@ namespace VirtualLibraryApp
                 };
                 //iskvieciam delegata
                 ch1013(result.Text, result.Text.Length);
+
                 //Tikrina ISBN formatą ar isbn13 ar isbn10, jei nei vienas, tai rastas blogas kodas.
                 //if (result.Text.Length == 13)
                 //{

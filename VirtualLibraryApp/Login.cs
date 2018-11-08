@@ -8,6 +8,7 @@ namespace VirtualLibraryApp
 {
 	public partial class Login : Form
 	{
+        private delegate void CheckData(int i, string s);
 		public Login()
 		{
 			InitializeComponent();
@@ -40,21 +41,41 @@ namespace VirtualLibraryApp
 			//Gauname informacija apie vartotoja, jei toks buvo rastas
 			DataView result = userLogin.AsDataView();
 
-            //Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
-            //lentele, kad duomenys blogi.
-            if (result.Count == 1)
+            //delegato instatntiate'inimas naudojant lamba expression
+            CheckData chd = (i, s) =>
             {
-                UsernameTextBox.Text = "";
-                PasswordTextBox.Text = "";
-                this.Hide();
-                Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
-                mainMenu.ShowDialog();
-                this.Show();
-            }
-            else
-            {
-                MessageBox.Show("Incorrect Username or Password. Please, try again.");
-            }
+                if (i == 1)
+                {
+                    UsernameTextBox.Text = "";
+                    PasswordTextBox.Text = "";
+                    this.Hide();
+                    Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
+                    mainMenu.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show(s);
+                }
+            };
+
+            chd(result.Count, "Incorrect Username or Password. Please, try again.");
+
+            ////Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
+            ////lentele, kad duomenys blogi.
+            //if (result.Count == 1)
+            //{
+            //    UsernameTextBox.Text = "";
+            //    PasswordTextBox.Text = "";
+            //    this.Hide();
+            //    Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
+            //    mainMenu.ShowDialog();
+            //    this.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Incorrect Username or Password. Please, try again.");
+            //}
         }
 
         private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
