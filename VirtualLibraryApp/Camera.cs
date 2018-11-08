@@ -16,7 +16,9 @@ namespace VirtualLibraryApp
 
 		Camera myCamera = new Camera();
 
-		public CameraScreen(User User)
+        //sukuriamas delegatas
+        private delegate void Check1013(string s, int i);
+        public CameraScreen(User User)
 
 		{
 			this.User = User;
@@ -40,9 +42,6 @@ namespace VirtualLibraryApp
 			BarcodeImageBox.Image = img;
 
 		}
-
-        //sukuriamas delegatas
-        delegate void Check1013(string s, int i);
 
 
 		private void LoadBarcodeButton_Click(object sender, EventArgs e)
@@ -127,24 +126,41 @@ namespace VirtualLibraryApp
 				//Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
 				BarcodeDecoder Scanner = new BarcodeDecoder();
 				Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
-				//Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
-				//System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
+                //Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
+                //System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
 
-
-				//Tikrina ISBN formatą ar isbn13 ar isbn10, jei nei vienas, tai rastas blogas kodas.
-				if (result.Text.Length == 13)
-				{
-					CheckISBN(result.Text, 13);
-				}
-				else if (result.Text.Length == 10)
-				{
-					CheckISBN(result.Text, 10);
-				}
-				else
-				{
-					MessageBox.Show("Wrong ISBN, please try again.");
-				}
-			}
+                //instantiate'inam delegata naudodami anonymous method'a
+                Check1013 ch1013 = delegate (string a, int c)
+                {
+                    if (c == 13)
+                    {
+                        CheckISBN(a, 13);
+                    }
+                    else if (c == 10)
+                    {
+                        CheckISBN(a, 10);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong ISBN, please try again.");
+                    }
+                };
+                //iskvieciam delegata
+                ch1013(result.Text, result.Text.Length);
+                //Tikrina ISBN formatą ar isbn13 ar isbn10, jei nei vienas, tai rastas blogas kodas.
+                //if (result.Text.Length == 13)
+                //{
+                //	CheckISBN(result.Text, 13);
+                //}
+                //else if (result.Text.Length == 10)
+                //{
+                //	CheckISBN(result.Text, 10);
+                //}
+                //else
+                //{
+                //	MessageBox.Show("Wrong ISBN, please try again.");
+                //}
+            }
 			catch (MessagingToolkit.Barcode.NotFoundException)
 			{
 			}
