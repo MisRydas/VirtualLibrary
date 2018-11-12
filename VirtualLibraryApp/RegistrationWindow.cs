@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
+    delegate void CreateAccount(string u, string p, string f, string l);
 
 	public partial class RegistrationWindow : Form
     {
@@ -13,6 +14,15 @@ namespace VirtualLibraryApp
         }
 
         private void createAccountButton_Click(object sender, EventArgs e)
+        {
+            CreateAccount crAcc = new CreateAccount(CreateAcc);
+            crAcc(usernameTextBox.Text, passwordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
+                //Grizta i login screen
+                this.Close();
+            
+        }
+        //delegate
+        private void CreateAcc(string u, string p, string f, string l)
         {
             // Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
             if (usernameTextBox.Text == "" || passwordTextBox.Text == "" || firstNameTextBox.Text == "" || lastNameTextBox.Text == "")
@@ -31,29 +41,26 @@ namespace VirtualLibraryApp
                 String UserName = usernameTextBox.Text.Trim();
                 String Password = passwordTextBox.Text.Trim();
 
-				Regex regex;
+                Regex regex;
 
-				regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+                regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
 
-				if(!regex.IsMatch(Password))
-				{
-					MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
-					return;
-				}
+                if (!regex.IsMatch(Password))
+                {
+                    MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
+                    return;
+                }
 
-				String FirstName = firstNameTextBox.Text.Trim();
+                String FirstName = firstNameTextBox.Text.Trim();
                 String LastName = lastNameTextBox.Text.Trim();
                 //Pridedamas useris į DB
                 SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
                 MessageBox.Show("Registration is successful");
                 //Laukai isvalomi
                 Clear();
-
-                //Grizta i login screen
-                this.Close();
             }
-        }
 
+        }
         void Clear()
         {
             usernameTextBox.Text = passwordTextBox.Text = firstNameTextBox.Text = lastNameTextBox.Text = confirmPasswordTextBox.Text ="";
