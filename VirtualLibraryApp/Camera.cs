@@ -10,6 +10,7 @@ using DarrenLee.Media;
 namespace VirtualLibraryApp
 {
     delegate void Check(int i, string s);
+    delegate Result Deleg();
     public partial class CameraScreen : Form
 	{
 
@@ -44,23 +45,30 @@ namespace VirtualLibraryApp
 
 		private void LoadBarcodeButton_Click(object sender, EventArgs e)
 		{
-			//Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
-			OpenFileDialog OD = new OpenFileDialog();
-			OD.InitialDirectory = System.IO.Directory.GetParent(@"../../../ ").FullName + @"\Barcode Images";
-            if (OD.ShowDialog() == DialogResult.OK)
-                BarcodeImageBox.Load(OD.FileName);
 
-			//Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
-			BarcodeDecoder Scanner = new BarcodeDecoder();
-			Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
-
+            Result result;
             Check ch1013 = new Check(Check1013);
+            Deleg res = new Deleg(Nsmn);
 
             //iskvieciam delegata
+            result = res();
             ch1013(result.Text.Length, result.Text);
         }
 
-        //Tikrinam isbn ar yra tokia knyga duombazej
+        private Result Nsmn()
+        {
+            //Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
+            OpenFileDialog OD = new OpenFileDialog();
+            OD.InitialDirectory = System.IO.Directory.GetParent(@"../../../ ").FullName + @"\Barcode Images";
+            if (OD.ShowDialog() == DialogResult.OK)
+                BarcodeImageBox.Load(OD.FileName);
+
+            //Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
+            BarcodeDecoder Scanner = new BarcodeDecoder();
+            Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
+
+            return result;
+        }
 
 
         public void CheckISBN(string isbn, int isbnLength)
