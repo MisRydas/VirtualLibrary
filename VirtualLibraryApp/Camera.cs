@@ -48,26 +48,11 @@ namespace VirtualLibraryApp
 
             Result result;
             Check ch1013 = new Check(Check1013);
-            Deleg res = new Deleg(Nsmn);
+            Deleg res = new Deleg(BarcodeLoader);
 
             //iskvieciam delegata
             result = res();
             ch1013(result.Text.Length, result.Text);
-        }
-
-        private Result Nsmn()
-        {
-            //Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
-            OpenFileDialog OD = new OpenFileDialog();
-            OD.InitialDirectory = System.IO.Directory.GetParent(@"../../../ ").FullName + @"\Barcode Images";
-            if (OD.ShowDialog() == DialogResult.OK)
-                BarcodeImageBox.Load(OD.FileName);
-
-            //Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
-            BarcodeDecoder Scanner = new BarcodeDecoder();
-            Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
-
-            return result;
         }
 
 
@@ -105,12 +90,9 @@ namespace VirtualLibraryApp
 			//skenuoja knygos barcode tuo metu, jei jo nepagauna, nemeta jokio erroro ir reik spaust vel
 			try
 			{
-				//Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
-				BarcodeDecoder Scanner = new BarcodeDecoder();
-				Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
-                //Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
-                //System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
-
+                Result result;
+                Deleg res = new Deleg(ScanClick);
+                result = res();
                 //instantiate'inam delegata naudodami anonymous method'a
                 Check ch1013 = new Check(Check1013);
                 //iskvieciam delegata
@@ -122,7 +104,30 @@ namespace VirtualLibraryApp
 			}
 		}
 
-        //delegato metodas
+        //delegatu metodai
+        private Result ScanClick()
+        {
+            //Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
+            BarcodeDecoder Scanner = new BarcodeDecoder();
+            Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
+            //Atidaromas tinklapis su informacija apie ieskoma knyga.(Tik kaip pavyzdys, vėliau bus pakeista).
+            //System.Diagnostics.Process.Start("https://isbnsearch.org/isbn/" + result.Text);
+            return result;
+        }
+        private Result BarcodeLoader()
+        {
+            //Atidaromas aplankas, kuriame yra barcode pavyzdziai ir pasirinkus barcod'a jis yra uzkraunamas.
+            OpenFileDialog OD = new OpenFileDialog();
+            OD.InitialDirectory = System.IO.Directory.GetParent(@"../../../ ").FullName + @"\Barcode Images";
+            if (OD.ShowDialog() == DialogResult.OK)
+                BarcodeImageBox.Load(OD.FileName);
+
+            //Nuskenuojami barcodo duomenis ir gaunamas knygos isbn kodas.
+            BarcodeDecoder Scanner = new BarcodeDecoder();
+            Result result = Scanner.Decode(new Bitmap(BarcodeImageBox.Image));
+
+            return result;
+        }
         private void Check1013(int length, string text)
         {
             if (length == 13)
