@@ -93,6 +93,7 @@
       <DependentUpon>Camera.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckExtension.cs" />
+    <Compile Include="Delegates.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="LastSearches.cs">
       <SubType>Form</SubType>
