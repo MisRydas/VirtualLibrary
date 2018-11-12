@@ -5,21 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace VirtualLibraryApp
 {
     public class MySQLConnection : IDBConnection
     {
-        static String server = "78.61.151.149";
-        static String database = "LibraryAppDB";
-        static String uid = "LibraryAppUser";
-        static String password = "AudiBMW";
-        static String connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-        database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";Sslmode=none;";
-
         private static MySqlConnection Connect()
         {
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString);
             conn.Open();
             return conn;
         }
