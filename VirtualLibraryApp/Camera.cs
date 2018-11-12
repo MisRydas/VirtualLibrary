@@ -16,9 +16,6 @@ namespace VirtualLibraryApp
 		public User User { get; set; }
 
 		Camera myCamera = new Camera();
-
-        //sukuriamas delegatas
-        //private delegate void Check1013(string s, int i);
         public CameraScreen(User User)
 
 		{
@@ -117,7 +114,8 @@ namespace VirtualLibraryApp
 			}
 		}
 
-        public void Check1013(int length, string text)
+        //delegato metodas
+        private void Check1013(int length, string text)
         {
             if (length == 13)
             {
