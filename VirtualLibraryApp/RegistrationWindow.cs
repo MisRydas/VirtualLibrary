@@ -21,7 +21,7 @@ namespace VirtualLibraryApp
                 this.Close();
             
         }
-
+        //delegate
         private void CreateAcc(string u, string p, string f, string l)
         {
             // Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
