@@ -6,11 +6,11 @@ using MessagingToolkit.Barcode;
 using static VirtualLibraryApp.SQLConnection;
 using DarrenLee.Media;
 
-
+delegate void Check(int i, string s);
+delegate Result Deleg();
 namespace VirtualLibraryApp
 {
-    delegate void Check(int i, string s);
-    delegate Result Deleg();
+
     public partial class CameraScreen : Form
 	{
 

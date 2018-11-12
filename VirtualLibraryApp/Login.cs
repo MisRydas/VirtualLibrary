@@ -4,11 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 using static VirtualLibraryApp.SQLConnection;
 
+delegate void CheckData(int i, string s);
+delegate DataView LogInD();
 namespace VirtualLibraryApp
 {
 	public partial class Login : Form
 	{
-        private delegate void CheckData(int i, string s);
 		public Login()
 		{
 			InitializeComponent();
@@ -31,17 +32,12 @@ namespace VirtualLibraryApp
 
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
-
-			//Gaunam informacija apie naudotojus is sql serverio
-			DataTable userData = GetAllUsersInDataTable();
-
-			//Tikriname ar yra toks vartotojas duomenu bazeje
-			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == UsernameTextBox.Text && user.Field<string>("password") == PasswordTextBox.Text select user;
-
-			//Gauname informacija apie vartotoja, jei toks buvo rastas
-			DataView result = userLogin.AsDataView();
+            DataView result;
+            LogInD logIn = new LogInD(LogInDeleg);
 
             //delegato instatntiate'inimas naudojant lamba expression
+            result = logIn();
+
             CheckData chd = (i, s) =>
             {
                 if (i == 1)
@@ -61,21 +57,6 @@ namespace VirtualLibraryApp
 
             chd(result.Count, "Incorrect Username or Password. Please, try again.");
 
-            ////Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
-            ////lentele, kad duomenys blogi.
-            //if (result.Count == 1)
-            //{
-            //    UsernameTextBox.Text = "";
-            //    PasswordTextBox.Text = "";
-            //    this.Hide();
-            //    Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
-            //    mainMenu.ShowDialog();
-            //    this.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Incorrect Username or Password. Please, try again.");
-            //}
         }
 
         private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -85,7 +66,19 @@ namespace VirtualLibraryApp
             registrationWindow.ShowDialog();
             this.Show();
         }
+        //delegates
+        private DataView LogInDeleg()
+        {
+            //Gaunam informacija apie naudotojus is sql serverio
+            DataTable userData = GetAllUsersInDataTable();
 
+            //Tikriname ar yra toks vartotojas duomenu bazeje
+            var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == UsernameTextBox.Text && user.Field<string>("password") == PasswordTextBox.Text select user;
+
+            //Gauname informacija apie vartotoja, jei toks buvo rastas
+            DataView result = userLogin.AsDataView();
+            return result;
+        }
         public bool CheckLogin (String username, String password)
         {
             DataTable userData = GetAllUsersInDataTable();
