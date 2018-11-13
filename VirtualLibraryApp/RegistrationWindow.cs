@@ -4,10 +4,14 @@ using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
-    delegate void CreateAccount(string u, string p, string f, string l);
-
 	public partial class RegistrationWindow : Form
     {
+		//Sukuriam nauja delegata eventui.
+		public delegate void EventHandler(string u, string p, string c, string f, string l);
+
+		//Sukuriam eventa.
+		public event EventHandler CreateEvent;
+
 		public RegistrationWindow()
         {
             InitializeComponent();
@@ -15,53 +19,59 @@ namespace VirtualLibraryApp
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
-            CreateAccount crAcc = new CreateAccount(CreateAcc);
-            crAcc(usernameTextBox.Text, passwordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
-                //Grizta i login screen
-                this.Close();
-            
-        }
-        //delegate
-        private void CreateAcc(string u, string p, string f, string l)
-        {
-            // Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
-            if (usernameTextBox.Text == "" || passwordTextBox.Text == "" || firstNameTextBox.Text == "" || lastNameTextBox.Text == "")
-            {
-                MessageBox.Show("Please fill mandatory fields");
-            }
-            // Jei passwordai nevienodi programa meta errora
-            else if (passwordTextBox.Text != confirmPasswordTextBox.Text)
-            {
-                MessageBox.Show("Passwords do not match");
-            }
-            // Jei visi laukai irasyti ir slaptazodziai sutampa, tuomet programa i DB iraso naujo vartuotojo duomenis
-            else
-            {
-                //Nusiskaitomos reikšmės iš textboxų
-                String UserName = usernameTextBox.Text.Trim();
-                String Password = passwordTextBox.Text.Trim();
+			//Pridedam registracijos eventa.
+			CreateEvent = new EventHandler(CreateAcc);
+			//Paleidziam eventa.
+			CreateEvent.Invoke(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
+		}
 
-                Regex regex;
+		//delegate
+		public void CreateAcc(string username, string password, string cPassword, string firstname, string lastname)
+		{
+			// Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
+			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(cPassword) || string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname))
+			{
+				MessageBox.Show("Please fill mandatory fields");
+			}
+			// Jei passwordai nevienodi programa meta errora
+			else if (password != cPassword)
+			{
+				MessageBox.Show("Passwords do not match");
+			}
+			// Jei visi laukai irasyti ir slaptazodziai sutampa, tuomet programa i DB iraso naujo vartuotojo duomenis
+			else
+			{
+				//Nusiskaitomos reikšmės iš textboxų
+				String UserName = username.Trim();
+				String Password = password.Trim();
 
-                regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+				Regex regex;
 
-                if (!regex.IsMatch(Password))
-                {
-                    MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
-                    return;
-                }
+				regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
 
-                String FirstName = firstNameTextBox.Text.Trim();
-                String LastName = lastNameTextBox.Text.Trim();
-                //Pridedamas useris į DB
-                SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
-                MessageBox.Show("Registration is successful");
-                //Laukai isvalomi
-                Clear();
-            }
+				if (!regex.IsMatch(Password))
+				{
+					MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
+					return;
+				}
+				else
+				{
+					String FirstName = firstname.Trim();
+					String LastName = lastname.Trim();
+					//Pridedamas useris į DB
+					SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
+					MessageBox.Show("Registration is successful");
 
-        }
-        void Clear()
+					//Grizta i login screen
+					this.Close();
+
+					//Laukai isvalomi
+					Clear();
+				}
+			}
+		}
+
+		void Clear()
         {
             usernameTextBox.Text = passwordTextBox.Text = firstNameTextBox.Text = lastNameTextBox.Text = confirmPasswordTextBox.Text ="";
         }
