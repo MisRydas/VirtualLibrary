@@ -7,7 +7,7 @@ using static VirtualLibraryApp.SQLConnection;
 using DarrenLee.Media;
 using System.Threading.Tasks;
 
-delegate void Check(int i, string s);
+delegate void Check<T1, T2>(T1 i, T2 s);
 delegate Result Deleg();
 namespace VirtualLibraryApp
 {
@@ -48,7 +48,7 @@ namespace VirtualLibraryApp
 		{
 
             Result result;
-            Check ch1013 = new Check(Check1013);
+            Check<int, string> ch1013 = new Check<int, string>(Check1013);
             Deleg res = new Deleg(BarcodeLoader);
 
             //iskvieciam delegata
@@ -103,7 +103,7 @@ namespace VirtualLibraryApp
                 Deleg res = new Deleg(ScanClick);
                 result = res();
                 //instantiate'inam delegata naudodami anonymous method'a
-                Check ch1013 = new Check(Check1013);
+                Check<int, string> ch1013 = new Check<int, string>(Check1013);
                 //iskvieciam delegata
                 ch1013(result.Text.Length, result.Text);
 
