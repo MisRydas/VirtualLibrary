@@ -13,6 +13,12 @@ namespace VirtualLibraryApp
 		public Login()
 		{
 			InitializeComponent();
+			if(Properties.Settings.Default.RememberMe)
+			{
+				this.RememberMe.Checked = true;
+				this.UsernameTextBox.Text = Properties.Settings.Default.Username;
+				this.PasswordTextBox.Text = Properties.Settings.Default.Password;
+			}
 		}
 
 		private void Login_Load(object sender, EventArgs e)
@@ -44,6 +50,18 @@ namespace VirtualLibraryApp
                 {
                     u = "";
                     p = "";
+
+					if (RememberMe.Checked)
+					{
+						Properties.Settings.Default.Username = UsernameTextBox.Text;
+						Properties.Settings.Default.Password = PasswordTextBox.Text;
+						Properties.Settings.Default.Save();
+					}
+					else
+					{
+						UsernameTextBox.Text = "";
+						PasswordTextBox.Text = "";
+					}
                     this.Hide();
                     Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
                     mainMenu.ShowDialog();
@@ -96,5 +114,10 @@ namespace VirtualLibraryApp
 
         }
 
-    }
+		private void RememberMe_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.RememberMe = this.RememberMe.Checked;
+			Properties.Settings.Default.Save();
+		}
+	}
 }
