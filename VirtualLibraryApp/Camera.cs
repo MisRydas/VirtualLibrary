@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using MessagingToolkit.Barcode;
 using static VirtualLibraryApp.SQLConnection;
 using DarrenLee.Media;
+using System.Threading.Tasks;
 
 delegate void Check(int i, string s);
 delegate Result Deleg();
@@ -15,7 +16,7 @@ namespace VirtualLibraryApp
 	{
 
 		public User User { get; set; }
-
+		DataView result;
 		Camera myCamera = new Camera();
         public CameraScreen(User User)
 
@@ -56,21 +57,13 @@ namespace VirtualLibraryApp
         }
 
 
-        public void CheckISBN(string isbn, int isbnLength)
+        public async void CheckISBN(string isbn, int isbnLength)
         {
-            //ieskom knygos su isbn
-            //	bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
-            SQLConnection.AddISBNToHistory(User.Id, isbn);
 
-            DataTable bookData = GetAllBooksInDataTable();
+			await GetBookInDataView(isbn, isbnLength);
 
-            var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN" + isbnLength) == isbn select book;
-
-            DataView result = bookInformation.AsDataView();
-
-
-            //jei knyga rasta, tai atidarom langa su informacija apie ja, jei knyga nerasta praso ieskoti vel.
-            if (result.Count > 0)
+			//jei knyga rasta, tai atidarom langa su informacija apie ja, jei knyga nerasta praso ieskoti vel.
+			if (result.Count > 0)
             {
                 this.Hide();
                 Book bookMenu = new Book(User, result);
@@ -83,9 +76,25 @@ namespace VirtualLibraryApp
             }
         }
 
+		public Task GetBookInDataView(string isbn, int isbnLength)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				//ieskom knygos su isbn
+				//	bookdata = SQLConnection.SelectQuery("SELECT * FROM Books WHERE ISBN" + isbnLength + " = '" + isbn + "';");
+				SQLConnection.AddISBNToHistory(User.Id, isbn);
+
+				DataTable bookData = GetAllBooksInDataTable();
+
+				var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN" + isbnLength) == isbn select book;
+
+				result = bookInformation.AsDataView();
+			});
+		}
 
 
-        private void ScanButton_Click(object sender, EventArgs e)
+
+		private void ScanButton_Click(object sender, EventArgs e)
 		{
 			//skenuoja knygos barcode tuo metu, jei jo nepagauna, nemeta jokio erroro ir reik spaust vel
 			try
@@ -101,6 +110,7 @@ namespace VirtualLibraryApp
             }
 			catch (MessagingToolkit.Barcode.NotFoundException)
 			{
+				MessageBox.Show("Can't find barcode, please try again.");
 			}
 		}
 
