@@ -25,12 +25,12 @@ namespace VirtualLibraryApp
         private void CreateAcc(string u, string p, string f, string l)
         {
             // Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
-            if (usernameTextBox.Text == "" || passwordTextBox.Text == "" || firstNameTextBox.Text == "" || lastNameTextBox.Text == "")
+            if (u == "" || p == "" || f == "" || l == "")
             {
                 MessageBox.Show("Please fill mandatory fields");
             }
             // Jei passwordai nevienodi programa meta errora
-            else if (passwordTextBox.Text != confirmPasswordTextBox.Text)
+            else if (p != confirmPasswordTextBox.Text)
             {
                 MessageBox.Show("Passwords do not match");
             }
@@ -38,8 +38,8 @@ namespace VirtualLibraryApp
             else
             {
                 //Nusiskaitomos reikšmės iš textboxų
-                String UserName = usernameTextBox.Text.Trim();
-                String Password = passwordTextBox.Text.Trim();
+                String UserName = u.Trim();
+                String Password = p.Trim();
 
                 Regex regex;
 
@@ -51,8 +51,8 @@ namespace VirtualLibraryApp
                     return;
                 }
 
-                String FirstName = firstNameTextBox.Text.Trim();
-                String LastName = lastNameTextBox.Text.Trim();
+                String FirstName = f.Trim();
+                String LastName = l.Trim();
                 //Pridedamas useris į DB
                 SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
                 MessageBox.Show("Registration is successful");

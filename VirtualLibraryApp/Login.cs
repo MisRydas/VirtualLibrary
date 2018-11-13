@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using static VirtualLibraryApp.SQLConnection;
 
-delegate void CheckData(int i, string s);
+delegate void CheckData(int i, string s, string u, string p);
 delegate DataView LogInD();
 namespace VirtualLibraryApp
 {
@@ -38,12 +38,12 @@ namespace VirtualLibraryApp
             //delegato instatntiate'inimas naudojant lamba expression
             result = logIn();
 
-            CheckData chd = (i, s) =>
+            CheckData chd = (i, s, u, p) =>
             {
                 if (i == 1)
                 {
-                    UsernameTextBox.Text = "";
-                    PasswordTextBox.Text = "";
+                    u = "";
+                    p = "";
                     this.Hide();
                     Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
                     mainMenu.ShowDialog();
@@ -55,7 +55,7 @@ namespace VirtualLibraryApp
                 }
             };
 
-            chd(result.Count, "Incorrect Username or Password. Please, try again.");
+            chd(result.Count, "Incorrect Username or Password. Please, try again.", UsernameTextBox.Text, PasswordTextBox.Text);
 
         }
 
