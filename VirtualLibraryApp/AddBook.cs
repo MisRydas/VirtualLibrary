@@ -54,7 +54,9 @@ namespace VirtualLibraryApp
                 return;
             }
             book.Published = int.Parse(published);
-            book.ListPrice = double.Parse(listPrice);
+            double.TryParse(listPrice, out double x);
+
+            book.ListPrice = x;
 
             book.CoverLink = coverLink;
 
