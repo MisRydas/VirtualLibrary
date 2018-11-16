@@ -3,7 +3,7 @@ using System.Collections;
 using System.Data;
 using System.Windows.Forms;
 
-delegate void Search(string s);
+delegate void Search();
 namespace VirtualLibraryApp
 {
 	public partial class SearchBook : Form
@@ -20,7 +20,7 @@ namespace VirtualLibraryApp
 		private void SearchButton_Click(object sender, EventArgs e)
 		{
             Search searchB = new Search(SearchB);
-            searchB(SearchTextBox.Text);
+            searchB();
 		}
 
 
@@ -49,16 +49,16 @@ namespace VirtualLibraryApp
             this.Close();
 		}
         //delegatai
-        private void SearchB(string s)
+        private void SearchB()
         {
-            if (string.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(SearchTextBox.Text))
             {
                 MessageBox.Show("Write keyword to find book.");
             }
             else
             {
                 panel1.Controls.Clear();
-                Books searchedBooks = new Books(s);
+                Books searchedBooks = new Books(SearchTextBox.Text);
 
                 int i = 0;
 
