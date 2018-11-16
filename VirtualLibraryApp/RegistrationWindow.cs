@@ -41,25 +41,26 @@ namespace VirtualLibraryApp
 			// Jei visi laukai irasyti ir slaptazodziai sutampa, tuomet programa i DB iraso naujo vartuotojo duomenis
 			else
 			{
-				//Nusiskaitomos reikšmės iš textboxų
-				String UserName = username.Trim();
-				String Password = password.Trim();
+                //Nusiskaitomos reikšmės iš textboxų
+                User user = new User();
+				user.UserName = username.Trim();
 
 				Regex regex;
 
 				regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
 
-				if (!regex.IsMatch(Password))
+				if (!regex.IsMatch(password.Trim()))
 				{
 					MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
 					return;
 				}
 				else
-				{
-					String FirstName = firstname.Trim();
-					String LastName = lastname.Trim();
+                {
+                    user.Password = password.Trim();
+                    user.FirstName = firstname.Trim();
+                    user.LastName = lastname.Trim();
 					//Pridedamas useris į DB
-					SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
+					SQLConnection.AddNewItem(user);
 					MessageBox.Show("Registration is successful");
 
 					//Grizta i login screen
