@@ -75,7 +75,11 @@ namespace VirtualLibraryApp
             {
                 error += "Wrong ListPrice format\n";
             }
-            else book.ListPrice = double.Parse(listPrice);
+            else
+            {
+                double.TryParse(listPrice, out double x);
+                book.ListPrice = x;
+            }
 
             book.CoverLink = coverLink;
             if(error.Length == 0)
