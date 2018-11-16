@@ -11,7 +11,7 @@ namespace VirtualLibraryApp.Tests
 		public void CheckPublishedDate_WithValidInput_ReturnTrue()
 		{
 			//Arrange
-			int date = 2018;
+			string date = "2018";
 			User user = new User();
 			AddBook addBook = new AddBook(user);
 
@@ -26,7 +26,7 @@ namespace VirtualLibraryApp.Tests
 		public void CheckPublishedDate_WithNoInput_ReturnTrue()
 		{
 			//Arrange
-			int date = 0;
+			string date = "0";
 			//Act
 			bool result = CheckExtension.CheckPublished(date);
 			//Assert
@@ -37,7 +37,7 @@ namespace VirtualLibraryApp.Tests
 		public void CheckPublishedDate_WithWrongInput_ReturnFalse1()
 		{
 			//Arrange
-			int date = 0123;
+			string date = "0123";
 			//Act
 			bool result = CheckExtension.CheckPublished(date);
 			//Assert
@@ -48,7 +48,7 @@ namespace VirtualLibraryApp.Tests
 		public void CheckPublishedDate_WithWrongInput_ReturnFalse2()
 		{
 			//Arrange
-			int date = 301;
+			string date = "301";
 			//Act
 			bool result = CheckExtension.CheckPublished(date);
 			//Assert

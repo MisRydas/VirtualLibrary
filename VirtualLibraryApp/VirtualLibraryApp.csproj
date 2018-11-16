@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge">
@@ -114,6 +114,7 @@
     <Compile Include="Book.Designer.cs">
       <DependentUpon>Book.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookItem.cs" />
     <Compile Include="Camera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +123,7 @@
     </Compile>
     <Compile Include="CheckExtension.cs" />
     <Compile Include="IDBConnection.cs" />
+    <Compile Include="IItem.cs" />
     <Compile Include="LastSearches.cs">
       <SubType>Form</SubType>
     </Compile>

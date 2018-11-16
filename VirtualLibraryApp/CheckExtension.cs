@@ -39,11 +39,11 @@ namespace CheckExtensions
 			}
 		}
 
-		public static bool CheckPublished(int published)
+		public static bool CheckPublished(string published)
 		{
 			Regex regex;
 			regex = new Regex(@"^0$|^([1-2]{1})(\d{3})$");
-			if (regex.IsMatch(published.ToString()))
+			if (regex.IsMatch(published))
 			{
 				return true;
 			}
