@@ -2,79 +2,45 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using VirtualLibraryCode;
 using static VirtualLibraryApp.SQLConnection;
 
-delegate void CheckData(int i, string s);
-delegate DataView LogInD();
 namespace VirtualLibraryApp
 {
-	public partial class Login : Form
-	{
+	public partial class Login : Form	{
+
+		private LoginCode loginCode;
+		private LoginEventsArgs eventArgs;
+
 		public Login()
 		{
 			InitializeComponent();
-			if(Properties.Settings.Default.RememberMe)
-			{
-				this.RememberMe.Checked = true;
-				this.UsernameTextBox.Text = Properties.Settings.Default.Username;
-				this.PasswordTextBox.Text = Properties.Settings.Default.Password;
-			}
+			loginCode = new LoginCode();
+			eventArgs = new LoginEventsArgs();
 		}
 
-		private void Login_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void UsernameTextBox_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void PasswordTextBox_TextChanged(object sender, EventArgs e)
-		{
-
-		}
 
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
-            DataView result;
-            LogInD logIn = new LogInD(LogInDeleg);
+			loginCode.ThrowLoginEvent += (username, password, eventArg) => { loginCode.LoginCheck(username, password, eventArg); };
+			loginCode.LoginCheck(UsernameTextBox.Text, PasswordTextBox.Text, eventArgs);
 
-            //delegato instatntiate'inimas naudojant lamba expression
-            result = logIn();
+			if(eventArgs.correctData)
+			{
+				UsernameTextBox.Text = "";
+				PasswordTextBox.Text = "";
+				this.Hide();
+				Main mainMenu = new Main(SQLConnection.GetUserById((int)eventArgs.result[0]["Id"])); //Bus pakeista i eventArgs.user
+				mainMenu.ShowDialog();
+				this.Show();
+			}
+			else
+			{
+				MessageBox.Show("Incorrect Username or Password. Please, try again.");
+			}
+		}
 
-            CheckData chd = (i, s) =>
-            {
-                if (i == 1)
-                {
-					if (RememberMe.Checked)
-					{
-						Properties.Settings.Default.Username = UsernameTextBox.Text;
-						Properties.Settings.Default.Password = PasswordTextBox.Text;
-						Properties.Settings.Default.Save();
-					}
-					else
-					{
-						UsernameTextBox.Text = "";
-						PasswordTextBox.Text = "";
-					}
-                    this.Hide();
-                    Main mainMenu = new Main(SQLConnection.GetUserById((int)result[0]["Id"]));
-                    mainMenu.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show(s);
-                }
-            };
-
-            chd(result.Count, "Incorrect Username or Password. Please, try again.");
-
-        }
-
-        private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             RegistrationWindow registrationWindow = new RegistrationWindow();

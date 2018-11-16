@@ -238,5 +238,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualLibraryCode\VirtualLibraryCode.csproj">
+      <Project>{5965cda4-c4a8-46ed-9407-676cdb9cab0c}</Project>
+      <Name>VirtualLibraryCode</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
