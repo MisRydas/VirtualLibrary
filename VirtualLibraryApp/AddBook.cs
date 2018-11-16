@@ -20,7 +20,6 @@ namespace VirtualLibraryApp
             AddingBooks addB = new AddingBooks(Add);
 
             addB(BookNameBox.Text, ISBN13Box.Text, ISBN10Box.Text, AuthorBox.Text, GenreBox.Text, PublisherBox.Text, PublishedBox.Text, ListPriceBox.Text, BookCoverLinkBox.Text);
-			MessageBox.Show("Book has been successfully added!");
             this.Close();
 		}
 
@@ -60,6 +59,7 @@ namespace VirtualLibraryApp
             book.CoverLink = coverLink;
 
             SQLConnection.AddNewItem(book);
+            MessageBox.Show("Book has been successfully added!");
         }
-	}
+    }
 }
