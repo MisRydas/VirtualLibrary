@@ -19,6 +19,50 @@ namespace VirtualLibraryApp
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
+            CreateAccount crAcc = new CreateAccount(CreateAcc);
+            crAcc(usernameTextBox.Text, passwordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
+                //Grizta i login screen
+                this.Close();
+            
+        }
+        //delegate
+        private void CreateAcc(string u, string p, string f, string l)
+        {
+            // Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
+            if (u == "" || p == "" || f == "" || l == "")
+            {
+                MessageBox.Show("Please fill mandatory fields");
+            }
+            // Jei passwordai nevienodi programa meta errora
+            else if (p != confirmPasswordTextBox.Text)
+            {
+                MessageBox.Show("Passwords do not match");
+            }
+            // Jei visi laukai irasyti ir slaptazodziai sutampa, tuomet programa i DB iraso naujo vartuotojo duomenis
+            else
+            {
+                //Nusiskaitomos reikšmės iš textboxų
+                String UserName = u.Trim();
+                String Password = p.Trim();
+
+                Regex regex;
+
+                regex = new Regex(@"^(?=(.*\d){1})(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+
+                if (!regex.IsMatch(Password))
+                {
+                    MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
+                    return;
+                }
+
+                String FirstName = f.Trim();
+                String LastName = l.Trim();
+                //Pridedamas useris į DB
+                SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
+                MessageBox.Show("Registration is successful");
+                //Laukai isvalomi
+                Clear();
+            }
 			//Pridedam registracijos eventa.
 			CreateEvent = new EventHandler(CreateAcc);
 			//Paleidziam eventa.
