@@ -13,7 +13,7 @@ namespace CheckExtensions
 
 		public static bool CheckISBN13(string ISBN13)
 		{
-			regex = new Regex(@"^$|^\d{13}$");
+			regex = new Regex(@"^\d{13}$");
 
 			if (regex.IsMatch(ISBN13))
 			{
