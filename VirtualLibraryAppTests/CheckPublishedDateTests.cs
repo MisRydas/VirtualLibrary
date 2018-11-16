@@ -23,14 +23,14 @@ namespace VirtualLibraryApp.Tests
 		}
 
 		[TestMethod]
-		public void CheckPublishedDate_WithNoInput_ReturnTrue()
+		public void CheckPublishedDate_WithNoInput_ReturnFalse()
 		{
 			//Arrange
 			string date = "0";
 			//Act
 			bool result = CheckExtension.CheckPublished(date);
 			//Assert
-			Assert.IsTrue(result);
+			Assert.IsFalse(result);
 		}
 
 		[TestMethod]
