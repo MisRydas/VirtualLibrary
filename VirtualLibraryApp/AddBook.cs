@@ -9,6 +9,7 @@ namespace VirtualLibraryApp
 	public partial class AddBook : Form
 	{
 		User User;
+        string error = "";
 		public AddBook(User User)
 		{
 			this.User = User;
@@ -20,9 +21,14 @@ namespace VirtualLibraryApp
             AddingBooks addB = new AddingBooks(Add);
 
             addB(BookNameBox.Text, ISBN13Box.Text, ISBN10Box.Text, AuthorBox.Text, GenreBox.Text, PublisherBox.Text, PublishedBox.Text, ListPriceBox.Text, BookCoverLinkBox.Text);
-			MessageBox.Show("Book has been successfully added!");
-            this.Close();
-		}
+            if (error.Length == 0)
+            {
+                MessageBox.Show("Book has been successfully added!");
+                this.Close();
+            }
+            else
+                MessageBox.Show(error);
+        }
 
 		private void Back_Click(object sender, EventArgs e)
 		{
@@ -32,34 +38,52 @@ namespace VirtualLibraryApp
         //delegatai
         private void Add (string bookName, string isbn13, string isbn10, string author, string genre, string publisher, string published, string listPrice, string coverLink)
         {
+            error = "";
             BookItem book = new BookItem();
+            if (bookName.Length == 0)
+            {
+                error += "Book Name is mandatory field\n";
+            }
             book.Name = bookName;
             book.ISBN13 = isbn13;
             if (!CheckExtension.CheckISBN13(isbn13))
             {
-                MessageBox.Show("Wrong ISBN-13 Code. No spaces, letters, punctuations and code must have 13 numbers. Please correct it.");
-                return;
+                error += "Wrong ISBN-13 Code. No spaces, letters, punctuations. ISBN must have 13 numbers\n";
             }
             book.ISBN10 = isbn10;
             if (!CheckExtension.CheckISBN10(isbn10))
             {
-                MessageBox.Show("Wrong ISBN-10 Code. No spaces, letters, punctuations and code must have 10 numbers. Please correct it.");
-                return;
+                error += "Wrong ISBN-10 Code. No spaces, letters, punctuations. ISBN must have 10 numbers\n";
+            }
+            if (author.Length == 0)
+            {
+                error += "Author is mandatory field\n";
             }
             book.Author = author;
+            if (genre.Length == 0)
+            {
+                error += "Genre is mandatory field\n";
+            }
             book.Genre = genre;
             book.Publisher = publisher;
             if (!CheckExtension.CheckPublished(published))
             {
-                MessageBox.Show("Wrong Published Date format. Please correct it. For example: 2018");
-                return;
+                error += "Wrong Published Date format. Example: 2018\n";
             }
-            book.Published = int.Parse(published);
-            book.ListPrice = double.Parse(listPrice);
+            else book.Published = int.Parse(published);
+            if (!CheckExtension.CheckListPrice(listPrice))
+            {
+                error += "Wrong ListPrice format\n";
+            }
+            else
+            {
+                double.TryParse(listPrice, out double x);
+                book.ListPrice = x;
+            }
 
             book.CoverLink = coverLink;
-
-            SQLConnection.AddNewItem(book);
+            if(error.Length == 0)
+                SQLConnection.AddNewItem(book);
         }
-	}
+    }
 }
