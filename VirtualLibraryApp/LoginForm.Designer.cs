@@ -1,6 +1,6 @@
 ﻿namespace VirtualLibraryApp
 {
-	partial class Login
+	partial class LoginForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -38,7 +38,6 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.newAccount = new System.Windows.Forms.LinkLabel();
-			this.RememberMe = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -160,19 +159,7 @@
 			this.newAccount.Text = "Create new Account";
 			this.newAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NewAccount_LinkClicked);
 			// 
-			// RememberMe
-			// 
-			this.RememberMe.AutoSize = true;
-			this.RememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.RememberMe.Location = new System.Drawing.Point(552, 370);
-			this.RememberMe.Name = "RememberMe";
-			this.RememberMe.Size = new System.Drawing.Size(141, 24);
-			this.RememberMe.TabIndex = 10;
-			this.RememberMe.Text = "Remember Me";
-			this.RememberMe.UseVisualStyleBackColor = true;
-			this.RememberMe.CheckedChanged += new System.EventHandler(this.RememberMe_CheckedChanged);
-			// 
-			// Login
+			// LoginForm
 			// 
 			this.AcceptButton = this.SignInButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -180,7 +167,6 @@
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(852, 503);
-			this.Controls.Add(this.RememberMe);
 			this.Controls.Add(this.newAccount);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label4);
@@ -193,7 +179,7 @@
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.Name = "Login";
+			this.Name = "LoginForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -214,6 +200,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel newAccount;
-		private System.Windows.Forms.CheckBox RememberMe;
 	}
 }

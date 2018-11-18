@@ -2,35 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
-using static VirtualLibraryCode.SQLConnection;
+using static Logic.SQLConnection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VirtualLibraryCode
+namespace Logic
 {
-	public class LoginEventsArgs : EventArgs
+	public class LoginDataProvider
 	{
-		public bool correctData { get; set; }
-		public DataView result { get; set; } //Bus pakeista i 		public User user { get; set; }
+		public bool correctData;
+		public User user;
 
-
-		public LoginEventsArgs()
+		public LoginDataProvider()
 		{
 			correctData = false;
-			DataView result; //Bus pakeista i User user;
-
 		}
 	}
 
-	public class LoginCode
+	public class Login
     {
 
 		//sukuriam delegata.
-		public delegate void LoginEventHandler(string username, string password, LoginEventsArgs eventArgs);
+	//	public delegate void LoginEventHandler(string username, string password, LoginEventsArgs eventArgs);
 		//Sukuriam eventa.
-		public event LoginEventHandler ThrowLoginEvent = delegate { };
+	//	public event LoginEventHandler ThrowLoginEvent = delegate { };
 
-		public void LoginCheck(string username, string password, LoginEventsArgs eventArgs)
+		public void LoginCheck(string username, string password, LoginDataProvider eventArgs)
 		{
 			//Gaunam informacija apie naudotojus is sql serverio
 			DataTable userData = GetAllUsersInDataTable();
@@ -47,8 +44,7 @@ namespace VirtualLibraryCode
 			if (result.Count == 1)
 			{
 				eventArgs.correctData = true;
-				eventArgs.result = result; //Bus pakeista i 				eventArgs.user = SQLConnection.GetUserById((int)result[0]["Id"]);
-
+				eventArgs.user = SQLConnection.GetUserById((int)result[0]["Id"]);
 			}
 			else
 			{

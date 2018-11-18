@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VirtualLibraryCode
+namespace Logic
 {
 	public class MySQLConnection : IDBConnection
 	{

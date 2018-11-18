@@ -7,8 +7,8 @@
     <ProjectGuid>{5965CDA4-C4A8-46ED-9407-676CDB9CAB0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VirtualLibraryCode</RootNamespace>
-    <AssemblyName>VirtualLibraryCode</AssemblyName>
+    <RootNamespace>Logic</RootNamespace>
+    <AssemblyName>Logic</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -46,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDBConnection.cs" />
-    <Compile Include="LoginCode.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="MySQLConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.cs" />
     <Compile Include="SQLConnection.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

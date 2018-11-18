@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using CheckExtensions;

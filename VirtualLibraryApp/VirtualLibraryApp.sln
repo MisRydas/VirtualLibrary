@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibraryApp", "Virtua
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibraryAppTests", "..\VirtualLibraryAppTests\VirtualLibraryAppTests.csproj", "{E5A0925B-2C4F-42DD-9BB2-B223F0D60B90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibraryCode", "..\VirtualLibraryCode\VirtualLibraryCode.csproj", "{5965CDA4-C4A8-46ED-9407-676CDB9CAB0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "..\VirtualLibraryCode\Logic.csproj", "{5965CDA4-C4A8-46ED-9407-676CDB9CAB0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

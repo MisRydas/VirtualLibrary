@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using VirtualLibraryCode;
+using Logic;
 
 namespace VirtualLibraryApp
 {
-	public partial class Main : Form
+	public partial class MainForm : Form
 	{
         User User { get; set; }
-		public Main(User User)
+		public MainForm(User User)
 		{
             this.User = User;
 			InitializeComponent();

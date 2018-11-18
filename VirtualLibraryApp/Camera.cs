@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using Logic;
 using System.Windows.Forms;
 using MessagingToolkit.Barcode;
 using static VirtualLibraryApp.SQLConnection;

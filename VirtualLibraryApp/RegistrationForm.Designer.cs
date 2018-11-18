@@ -1,6 +1,6 @@
 ﻿namespace VirtualLibraryApp
 {
-    partial class RegistrationWindow
+    partial class RegistrationForm
     {
         /// <summary>
         /// Required designer variable.

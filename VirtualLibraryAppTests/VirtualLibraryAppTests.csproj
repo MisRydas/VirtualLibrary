@@ -73,6 +73,10 @@
       <Project>{20B6DB10-D153-4959-896C-A661CA98710F}</Project>
       <Name>VirtualLibraryApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VirtualLibraryCode\Logic.csproj">
+      <Project>{5965cda4-c4a8-46ed-9407-676cdb9cab0c}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

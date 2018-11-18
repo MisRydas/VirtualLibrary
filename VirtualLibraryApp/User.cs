@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VirtualLibraryApp
 {
-    public struct User
+    public struct UserOld
     {
         public int Id { get; set; }
         public String UserName { get; set; }

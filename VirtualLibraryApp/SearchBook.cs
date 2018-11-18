@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic;
 using System.Collections;
 using System.Data;
 using System.Windows.Forms;

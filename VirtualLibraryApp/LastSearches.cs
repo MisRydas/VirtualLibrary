@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic;
 using System.Data;
 using System.Windows.Forms;
 using static VirtualLibraryApp.SQLConnection;

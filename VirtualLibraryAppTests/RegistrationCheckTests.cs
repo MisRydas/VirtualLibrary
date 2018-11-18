@@ -70,7 +70,7 @@ namespace VirtualLibraryAppTests
 
             bool allTrue;
 
-            RegistrationWindow registrationWindow = new RegistrationWindow();
+            RegistrationForm registrationWindow = new RegistrationForm();
 
             bool resultFN = registrationWindow.CheckFirstName(firstName);
             bool resultLN = registrationWindow.CheckFirstName(lastName);

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Logic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace VirtualLibraryApp
