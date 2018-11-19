@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<Button
+		android:text="Back"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/backButton" />
+	<TextView
+		android:text="Book name"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:layout_marginTop="20.0dp"
+		android:id="@+id/txtBookName" />
+	<EditText
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/bookNameTextBox" />
+	<TextView
+		android:text="ISBN 13"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="19.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtISBN13" />
+	<EditText
+		android:layout_width="255.0dp"
+		android:layout_height="22.5dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/ISBN13TextBox" />
+	<TextView
+		android:text="ISBN 10"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtISBN10" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/ISBN10TextBox" />
+	<TextView
+		android:text="Author"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtAuthor" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/authorTextBox" />
+	<TextView
+		android:text="Genre"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtGenre" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/genreTextBox" />
+	<TextView
+		android:text="Publisher"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtPublisher" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/publisherTextBox" />
+	<TextView
+		android:text="Published"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtPublished" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/publishedTextBox" />
+	<TextView
+		android:text="List Price"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtListPrice" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/listPriceTextBox" />
+	<TextView
+		android:text="Book Cover Link"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtBookCoverLink" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_width="255.0dp"
+		android:layout_height="34.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/bookCoverLinkTextBox1" />
+	<Button
+		android:text="Add Book"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/addBookButton" />
+
+</LinearLayout>
