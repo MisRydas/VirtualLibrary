@@ -13,8 +13,8 @@
 		android:id="@+id/backButton" />
 	<ImageView
 		android:src="@android:drawable/ic_menu_gallery"
-		android:layout_width="252.0dp"
-		android:layout_height="448.0dp"
+		android:layout_width="184.0dp"
+		android:layout_height="288.5dp"
 		android:layout_marginLeft="70.0dp"
 		android:id="@+id/imageView1" />
 	<Button

@@ -11,6 +11,16 @@
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:id="@+id/backButton" />
+		<ScrollView
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/scrollView1">
+		<TableLayout
+			android:layout_width = "fill_parent"
+			android:layout_height = "fill_parent"
+			android:stretchColumns = "1">
 	<TextView
 		android:text="Book name"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -127,5 +137,7 @@
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:id="@+id/addBookButton" />
+		</TableLayout>
+		</ScrollView>
 
 </LinearLayout>
