@@ -35,23 +35,16 @@ namespace Logic
 			return user;
 		}
 
-		public static void AddNewUser(String UserName, String Password, String FirstName, String LastName)
-		{
-			string query = String.Format("Insert into Users (UserName, Password, FirstName, LastName) VALUES ('{0}', '{1}', '{2}', '{3}');;", UserName, Password, FirstName, LastName);
-			Conn.Query(query);
-		}
-
 		public static void AddISBNToHistory(int UserId, String ISBN)
 		{
 			string query = String.Format("Insert into ISBNSearches (UserId, ISBN) VALUES ('{0}', '{1}');;", UserId, ISBN);
 			Conn.Query(query);
 		}
 
-		public static void AddNewBook(String BookName, String ISBN13, String ISBN10, String Author, String Genre, String Publisher, int Published, double ListPrice, String CoverLink)
+		public static void AddNewItem(IItem item)
 		{
-			string query = String.Format("Insert into Books (BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink, Genre) VALUES " +
-										"('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}');;",
-										BookName, ISBN13, ISBN10, Author, Publisher, Published, ListPrice, CoverLink, Genre);
+			string query = String.Format("Insert into {0} {1} VALUES {2};",
+										item.TableName(), item.TypesInString(), item.ValuesInString());
 			Conn.Query(query);
 		}
 

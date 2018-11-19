@@ -30,6 +30,8 @@ namespace Logic
 
 	public class Registration
 	{
+		User user = new User();
+
 		public void CreateAccount(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData)
 		{
 			registrationData.ResetData();
@@ -47,8 +49,8 @@ namespace Logic
 			else
 			{
 				//Nusiskaitomos reikšmės iš textboxų
-				String UserName = username.Trim();
-				String Password = password.Trim();
+				user.UserName = username.Trim();
+				user.Password = password.Trim();
 
 				if (!CheckPassword(password))
 				{
@@ -57,10 +59,10 @@ namespace Logic
 				}
 				else
 				{
-					String FirstName = firstname.Trim();
-					String LastName = lastname.Trim();
+					user.FirstName = firstname.Trim();
+					user.LastName = lastname.Trim();
 					//Pridedamas useris į DB
-					SQLConnection.AddNewUser(UserName, Password, FirstName, LastName);
+					SQLConnection.AddNewItem(user);
 				}
 			}
 		}

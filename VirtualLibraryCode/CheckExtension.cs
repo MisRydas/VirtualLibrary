@@ -13,7 +13,7 @@ namespace CheckExtensions
 
 		public static bool CheckISBN13(string ISBN13)
 		{
-			regex = new Regex(@"^$|^\d{13}$");
+			regex = new Regex(@"^\d{13}$");
 
 			if (regex.IsMatch(ISBN13))
 			{
@@ -39,11 +39,27 @@ namespace CheckExtensions
 			}
 		}
 
-		public static bool CheckPublished(int published)
+		public static bool CheckPublished(string published)
 		{
 			Regex regex;
-			regex = new Regex(@"^0$|^([1-2]{1})(\d{3})$");
-			if (regex.IsMatch(published.ToString()))
+			regex = new Regex(@"^([1-2]{1})(\d{3})$");
+
+			if (regex.IsMatch(published))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public static bool CheckListPrice(string price)
+		{
+			Regex regex = new Regex(@"^$|^([0-9]{1,}).(\d{2})$");
+			Regex regex2 = new Regex(@"^([0-9]{1,}).(\d{1})$");
+			Regex regex3 = new Regex(@"^([0-9]{1,})$");
+			if (regex.IsMatch(price) || regex2.IsMatch(price) || regex3.IsMatch(price))
 			{
 				return true;
 			}

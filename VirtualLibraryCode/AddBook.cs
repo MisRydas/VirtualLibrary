@@ -30,35 +30,36 @@ namespace Logic
 
 	public class AddBook
 	{
-		public void Add(string mbookName, string misbn13, string misbn10, string mauthor, string mgenre, string mpublisher, int mpublished, int mprice, string mcoverLink, AddBookDataProvider addBookData)
+		public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, int published, int price, string coverLink, AddBookDataProvider addBookData)
 		{
 			addBookData.ResetData();
-			String bookName = mbookName;
-			String ISBN13 = misbn13;
-			if (!CheckExtension.CheckISBN13(ISBN13))
+			BookItem book = new BookItem();
+			book.Name = bookName;
+			book.ISBN13 = isbn13;
+			if (!CheckExtension.CheckISBN13(book.ISBN13))
 			{
 				addBookData.wrongISBN13 = true;
 				return;
 			}
-			String ISBN10 = misbn13;
-			if (!CheckExtension.CheckISBN10(ISBN10))
+			book.ISBN10 = isbn13;
+			if (!CheckExtension.CheckISBN10(book.ISBN10))
 			{
 				addBookData.wrongISBN10 = true;
 				return;
 			}
-			String author = mauthor;
-			String genre = mgenre;
-			String publisher = mpublisher;
-			int published = mpublished;
-			if (!CheckExtension.CheckPublished(published))
+			book.Author = author;
+			book.Genre = genre;
+			book.Publisher = publisher;
+			book.Published = published;
+			if (!CheckExtension.CheckPublished(book.Published.ToString()))
 			{
 				addBookData.wrongDate = true;
 				return;
 			}
-			int listPrice = mprice;
-			String coverLink = mcoverLink;
+			book.ListPrice = price;
+			book.CoverLink = coverLink;
 
-			SQLConnection.AddNewBook(bookName, ISBN13, ISBN10, author, genre, publisher, published, listPrice, coverLink);
+			SQLConnection.AddNewItem(book);
 		}
 	}
 }
