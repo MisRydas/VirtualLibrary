@@ -51,15 +51,7 @@
   <PropertyGroup>
     <ManifestCertificateThumbprint>F94C2717ABBF34FEA6381B1AB2340955DF44876E</ManifestCertificateThumbprint>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>VirtualLibraryApp_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="AForge">
       <HintPath>.\AForge.dll</HintPath>
