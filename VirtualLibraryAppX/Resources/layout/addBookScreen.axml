@@ -51,6 +51,7 @@
 	<TextView
 		android:text="Author"
 		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtAuthor" />
