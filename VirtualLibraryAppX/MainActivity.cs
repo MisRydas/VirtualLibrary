@@ -13,7 +13,7 @@ namespace VirtualLibraryAppX
         {
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.loginScreen);
+            SetContentView(Resource.Layout.lastSearches);
         }
     }
 }

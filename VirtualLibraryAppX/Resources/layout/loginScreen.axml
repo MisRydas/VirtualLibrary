@@ -10,30 +10,30 @@
 	android:alwaysDrawnWithCache="true">
 	<TextView
 		android:text="Login"
-		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/txtLogin"
-		android:layout_marginTop="35.0dp"
+		android:layout_marginTop="15.0dp"
 		android:layout_marginBottom="20.0dp"
 		android:layout_marginRight="20.0dp"
 		android:gravity="center"/>
 	<TextView
 		android:text="Username"
-		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/txtUsername"
-		android:layout_marginTop="125.0dp"
+		android:layout_marginTop="75.0dp"
 		android:layout_marginBottom="20.0dp"
 		android:layout_marginRight="20.0dp"
 		android:layout_marginLeft="50.0dp"/>
 	<TextView
 		android:text="Password"
-		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="220.0dp"
+		android:layout_marginTop="150.0dp"
 		android:layout_marginBottom="20.0dp"
 		android:layout_marginRight="20.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -42,7 +42,7 @@
 		android:layout_width="213.0dp"
 		android:layout_height="49.0dp"
 		android:id="@+id/usernameTextBox"
-		android:layout_marginTop="150.0dp"
+		android:layout_marginTop="90.0dp"
 		android:layout_marginBottom="20.0dp"
 		android:layout_marginRight="20.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -51,7 +51,7 @@
 		android:layout_width="213.0dp"
 		android:layout_height="49.0dp"
 		android:id="@+id/paswwordTextBox"
-		android:layout_marginTop="240.0dp"
+		android:layout_marginTop="165.0dp"
 		android:layout_marginBottom="50.0dp"
 		android:layout_marginRight="20.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -61,16 +61,17 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:id="@+id/loginButton"
-		android:layout_marginTop="370.0dp"
-		android:layout_marginBottom="50.0dp"
-		android:layout_marginRight="20.0dp"
-		android:layout_marginLeft="140.0dp" />
+		android:layout_marginTop="230.0dp"
+		android:layout_marginBottom="0.0dp"
+		android:layout_marginRight="0.0dp"
+		android:layout_centerHorizontal="true"
+		/>
 	<TextView
 		android:text="OR"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="420.0dp"
+		android:layout_marginTop="280.0dp"
 		android:layout_marginRight="20.0dp"
 		android:gravity="center"
 		android:id="@+id/txtOR"/>
@@ -79,9 +80,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:id="@+id/createAccButton"
-		android:layout_marginTop="450.0dp"
-		android:layout_marginBottom="50.0dp"
-		android:layout_marginRight="20.0dp"
-		android:layout_marginLeft="100.0dp" />
+		android:layout_marginTop="320.0dp"
+		android:layout_centerHorizontal="true"
+		/>
 
 </RelativeLayout>
