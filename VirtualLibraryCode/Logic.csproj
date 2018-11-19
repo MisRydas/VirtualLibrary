@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge">
       <HintPath>..\VirtualLibraryApp\AForge.dll</HintPath>
@@ -47,7 +50,7 @@
       <HintPath>..\VirtualLibraryApp\MessagingToolkit.Barcode.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\VirtualLibraryApp\bin\Debug\MySql.Data.dll</HintPath>
+      <HintPath>..\VirtualLibraryApp\packages\MySql.Data.8.0.12\lib\netstandard2.0\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

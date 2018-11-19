@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<Button
+		android:text="Log out"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/logOutButton" />
+	<Button
+		android:text="Scan ISBN"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="100.0dp"
+		android:id="@+id/scanISBNButton" />
+	<Button
+		android:text="Last Searches"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/lastSearchesButton" />
+	<Button
+		android:text="Search Book"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/searchBookButton" />
+	<Button
+		android:text="Add Book"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/addBookButton" />
+	<Button
+		android:text="Missing Books"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/missingBooksButton" />
+
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<Button
+		android:text="Back"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/backButton" />
+	<ImageView
+		android:src="@android:drawable/ic_menu_gallery"
+		android:layout_width="150.0dp"
+		android:layout_height="211.0dp"
+		android:gravity ="center"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/bookCoverBox" />
+	<TextView
+		android:text="Book Name"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity= "center"
+		android:id="@+id/txtBookName" />
+	<TextView
+		android:text="ISBN-13:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtISBN13" />
+	<TextView
+		android:text="NULL"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="120.5dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="120.0dp"
+		android:layout_marginTop="-20.0dp"
+		android:id="@+id/ISBN13" />
+		<TextView
+		android:text="ISBN-10:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtISBN10" />
+	<TextView
+		android:text="NULL"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="120.5dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="120.0dp"
+		android:layout_marginTop="-20.0dp"
+		android:id="@+id/ISBN10" />
+		<TextView
+		android:text="Author:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtAuthor" />
+	<TextView
+		android:text="NULL"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="120.5dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="120.0dp"
+		android:layout_marginTop="-20.0dp"
+		android:id="@+id/author" />
+		<TextView
+		android:text="Publisher:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtPublisher" />
+	<TextView
+		android:text="NULL"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="120.5dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="120.0dp"
+		android:layout_marginTop="-20.0dp"
+		android:id="@+id/publisher" />
+		<TextView
+		android:text="Published:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtPublished" />
+	<TextView
+		android:text="NULL"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="120.5dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="120.0dp"
+		android:layout_marginTop="-20.0dp"
+		android:id="@+id/published" />
+		<TextView
+		android:text="List Price:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50.0dp"
+		android:id="@+id/txtListPrice" />
+	<TextView
+		android:text="NULL"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="120.5dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="120.0dp"
+		android:layout_marginTop="-20.0dp"
+		android:id="@+id/listPrice" />
+
+</LinearLayout>
