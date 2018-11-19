@@ -7,59 +7,56 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-	public class AddBookDataProvider
-	{
-		public bool wrongISBN13;
-		public bool wrongISBN10;
-		public bool wrongDate;
-
-		public AddBookDataProvider()
-		{
-			wrongISBN13 = false;
-			wrongISBN10 = false;
-			wrongDate = false;
-		}
-
-		public void ResetData()
-		{
-			wrongISBN13 = false;
-			wrongISBN10 = false;
-			wrongDate = false;
-		}
-	}
-
 	public class AddBook
 	{
-		public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, int published, int price, string coverLink, AddBookDataProvider addBookData)
+		public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, string published, string listPrice, string coverLink, out string error)
 		{
-			addBookData.ResetData();
-			BookItem book = new BookItem();
-			book.Name = bookName;
-			book.ISBN13 = isbn13;
-			if (!CheckExtension.CheckISBN13(book.ISBN13))
-			{
-				addBookData.wrongISBN13 = true;
-				return;
-			}
-			book.ISBN10 = isbn13;
-			if (!CheckExtension.CheckISBN10(book.ISBN10))
-			{
-				addBookData.wrongISBN10 = true;
-				return;
-			}
-			book.Author = author;
-			book.Genre = genre;
-			book.Publisher = publisher;
-			book.Published = published;
-			if (!CheckExtension.CheckPublished(book.Published.ToString()))
-			{
-				addBookData.wrongDate = true;
-				return;
-			}
-			book.ListPrice = price;
-			book.CoverLink = coverLink;
+            error = "";
+            BookItem book = new BookItem();
+            if (bookName.Length == 0)
+            {
+                error += "Book Name is mandatory field\n";
+            }
+            book.Name = bookName;
+            book.ISBN13 = isbn13;
+            if (!CheckExtension.CheckISBN13(isbn13))
+            {
+                error += "Wrong ISBN-13 Code. No spaces, letters, punctuations. ISBN must have 13 numbers\n";
+            }
+            book.ISBN10 = isbn10;
+            if (!CheckExtension.CheckISBN10(isbn10))
+            {
+                error += "Wrong ISBN-10 Code. No spaces, letters, punctuations. ISBN must have 10 numbers\n";
+            }
+            if (author.Length == 0)
+            {
+                error += "Author is mandatory field\n";
+            }
+            book.Author = author;
+            if (genre.Length == 0)
+            {
+                error += "Genre is mandatory field\n";
+            }
+            book.Genre = genre;
+            book.Publisher = publisher;
+            if (!CheckExtension.CheckPublished(published))
+            {
+                error += "Wrong Published Date format. Example: 2018\n";
+            }
+            else book.Published = int.Parse(published);
+            if (!CheckExtension.CheckListPrice(listPrice))
+            {
+                error += "Wrong ListPrice format\n";
+            }
+            else
+            {
+                double.TryParse(listPrice, out double x);
+                book.ListPrice = x;
+            }
 
-			SQLConnection.AddNewItem(book);
-		}
+            book.CoverLink = coverLink;
+            if (error.Length == 0)
+                SQLConnection.AddNewItem(book);
+        }
 	}
 }
