@@ -14,6 +14,19 @@ namespace VirtualLibraryAppX
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.loginScreen);
-        }
+
+
+			Button createAccButton = FindViewById<Button>(Resource.Id.createAccButton);
+			Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
+
+
+			createAccButton.Click += delegate {
+				SetContentView(Resource.Layout.registrationScreen);
+			};
+
+			loginButton.Click += delegate {
+				SetContentView(Resource.Layout.mainScreen);
+			};
+		}
     }
 }
