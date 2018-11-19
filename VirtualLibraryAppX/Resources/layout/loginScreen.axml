@@ -50,7 +50,6 @@
 	<EditText
 		android:layout_width="213.0dp"
 		android:layout_height="49.0dp"
-		android:layout_below="@id/passwordTextBox"
 		android:id="@+id/paswwordTextBox"
 		android:layout_marginTop="240.0dp"
 		android:layout_marginBottom="50.0dp"
@@ -61,7 +60,6 @@
 		android:text="Login"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/paswwordTextBox"
 		android:id="@+id/loginButton"
 		android:layout_marginTop="370.0dp"
 		android:layout_marginBottom="50.0dp"
@@ -75,13 +73,11 @@
 		android:layout_marginTop="420.0dp"
 		android:layout_marginRight="20.0dp"
 		android:gravity="center"
-		android:layout_below="@id/loginButton"
 		android:id="@+id/txtOR"/>
 	<Button
 		android:text="Create An Account"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/txtOR"
 		android:id="@+id/createAccButton"
 		android:layout_marginTop="450.0dp"
 		android:layout_marginBottom="50.0dp"

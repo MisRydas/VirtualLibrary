@@ -28,13 +28,11 @@
 		android:text="ISBN 13"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="19.0dp"
-		android:layout_height="34.0dp"
+		android:layout_height="wrap_content"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtISBN13" />
 	<EditText
 		android:layout_width="255.0dp"
-		android:layout_height="22.5dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/ISBN13TextBox" />
@@ -42,13 +40,10 @@
 		android:text="ISBN 10"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtISBN10" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -56,14 +51,10 @@
 	<TextView
 		android:text="Author"
 		android:textAppearance="?android:attr/textAppearanceSmall"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtAuthor" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -72,13 +63,10 @@
 		android:text="Genre"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtGenre" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -87,13 +75,10 @@
 		android:text="Publisher"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtPublisher" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -102,13 +87,10 @@
 		android:text="Published"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtPublished" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -117,13 +99,10 @@
 		android:text="List Price"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtListPrice" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
@@ -132,13 +111,10 @@
 		android:text="Book Cover Link"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
 		android:id="@+id/txtBookCoverLink" />
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
 		android:layout_width="255.0dp"
 		android:layout_height="34.0dp"
 		android:layout_marginLeft="50.0dp"
