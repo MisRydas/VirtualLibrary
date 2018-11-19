@@ -10,33 +10,23 @@ namespace VirtualLibraryApp
 	{
 		User user;
 		AddBook addBook;
-		AddBookDataProvider addBookData;
 
 		public AddBookForm(User user)
 		{
 			this.user = user;
 			InitializeComponent();
 			addBook = new AddBook();
-			addBookData = new AddBookDataProvider();
 		}
 
 		private void AddBookButton_Click(object sender, EventArgs e)
 		{
 			addBook.Add(BookNameBox.Text, ISBN13Box.Text, ISBN10Box.Text, AuthorBox.Text, GenreBox.Text, 
-						PublisherBox.Text, Convert.ToInt32(PublishedBox.Text), Convert.ToInt32(ListPriceBox.Text), 
-						BookCoverLinkBox.Text, addBookData);
+						PublisherBox.Text, PublishedBox.Text, ListPriceBox.Text, 
+						BookCoverLinkBox.Text, out string error);
 
-			if (addBookData.wrongISBN13)
+			if (error.Length != 0)
 			{
-				MessageBox.Show("Wrong ISBN-13 Code. No spaces, letters, punctuations and code must have 13 numbers. Please correct it.");
-			}
-			else if (addBookData.wrongISBN10)
-			{
-				MessageBox.Show("Wrong ISBN-10 Code. No spaces, letters, punctuations and code must have 10 numbers. Please correct it.");
-			}
-			else if (addBookData.wrongISBN10)
-			{
-				MessageBox.Show("Wrong Published Date format. Please correct it. For example: 2018");
+				MessageBox.Show(error);
 			}
 			else
 			{
