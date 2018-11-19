@@ -35,7 +35,7 @@ namespace VirtualLibraryApp
 		public static void OpenBookMenu(Form senderMenu, User user, DataView bookData)
 		{
 			senderMenu.Hide();
-			Book bookMenu = new Book(user, bookData);
+			BookForm bookMenu = new BookForm(user, bookData);
 			bookMenu.ShowDialog();
 			senderMenu.Show();
 		}

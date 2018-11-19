@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
-	public partial class Book : Form
+	public partial class BookForm : Form
 	{
 		User User;
 
-		public Book(User User, DataView bookdata)
+		public BookForm(User User, DataView bookdata)
 		{
 			this.User = User;
 			InitializeComponent();
