@@ -52,7 +52,7 @@ namespace Logic
 				user.UserName = username.Trim();
 				user.Password = password.Trim();
 
-				if (!CheckPassword(password))
+				if (!CheckPassword(password.Trim()))
 				{
 					registrationData.passwordIsNotCorrect = true;
 					return;

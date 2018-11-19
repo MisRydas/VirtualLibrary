@@ -13,7 +13,7 @@ namespace VirtualLibraryApp.Tests
     {
         [TestMethod()]
         public void GetUserByIdTest()
-        {
+        {			
             User user = new User
             {
                 Id = 1,
