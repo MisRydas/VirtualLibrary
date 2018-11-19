@@ -14,7 +14,7 @@ namespace VirtualLibraryApp.Tests
 			//Arrange
 			int date = 2018;
 			User user = new User();
-			AddBook addBook = new AddBook(user);
+			AddBookForm addBook = new AddBookForm(user);
 
 			//Act
 			bool result = CheckExtension.CheckPublished(date);

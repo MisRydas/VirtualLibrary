@@ -6,17 +6,18 @@ namespace VirtualLibraryApp
 {
 	public partial class MainForm : Form
 	{
-        User User { get; set; }
-		public MainForm(User User)
+		User user;
+
+		public MainForm(User user)
 		{
-            this.User = User;
+            this.user = user;
 			InitializeComponent();
 		}
 
 		private void Main_Load(object sender, EventArgs e)
 		{
 			//Tikrina ar prisijunge administratorius, jei taip, tai atsiranda papildoma funkcija prideti knygas
-			if(User.IsAdmin)
+			if(user.IsAdmin)
 
             {
 				AddBook.Show();
@@ -31,44 +32,27 @@ namespace VirtualLibraryApp
 
 		private void CameraScanButton_Click(object sender, EventArgs e)
 		{
-			//Paspaudus skenuoti, bus atidarytas naujas langas, kuriame bus galima pasirinkti barcode
-			//(Vėliau bus pakeista į kameros skenavima).
-			this.Hide();
-	///		CameraScreen cameraMenu = new CameraScreen(User);
-	//		cameraMenu.ShowDialog();
-            this.Show();
+			Navigation.OpenCameraMenu(this, user);
 		}
 
 		private void SearchBook_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-	//		SearchBook searchBookMenu = new SearchBook(User);
-	//		searchBookMenu.ShowDialog();
-            this.Show();
+			Navigation.OpenSearchBookMenu(this, user);
 		}
 	
 		private void AddBook_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-	//		AddBook addBookMenu = new AddBook(User);
-	//		addBookMenu.ShowDialog();
-            this.Show();
+			Navigation.OpenAddBookMenu(this, user);
 		}
 
-        private void lastSearchesButton_Click(object sender, EventArgs e)
+		private void lastSearchesButton_Click(object sender, EventArgs e)
         {
-      //      LastSearches ls = new LastSearches(User);
-            this.Hide();
-      //      ls.ShowDialog();
-            this.Show();
+			Navigation.OpenLastSearchesMenu(this, user);
         }
 
 		private void MissingBooks_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-		//	MissingBooks missingBooksMenu = new MissingBooks(User);
-		//	missingBooksMenu.ShowDialog();
-			this.Show();
+			Navigation.OpenMissingBooksMenu(this, user);
 		}
 
 		private void LogOut_Click(object sender, EventArgs e)

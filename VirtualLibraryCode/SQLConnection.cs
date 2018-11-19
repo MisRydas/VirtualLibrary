@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-	class SQLConnection
+	public class SQLConnection
 	{
 		private static IDBConnection conn = null;
 		private static IDBConnection Conn

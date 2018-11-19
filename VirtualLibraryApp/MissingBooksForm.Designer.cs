@@ -1,6 +1,6 @@
 ﻿namespace VirtualLibraryApp
 {
-	partial class MissingBooks
+	partial class MissingBooksForm
 	{
 		/// <summary>
 		/// Required designer variable.

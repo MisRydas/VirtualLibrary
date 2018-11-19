@@ -1,6 +1,6 @@
 ﻿namespace VirtualLibraryApp
 {
-    partial class LastSearches
+    partial class LastSearchesForm
     {
         /// <summary>
         /// Required designer variable.

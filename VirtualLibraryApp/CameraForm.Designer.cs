@@ -1,6 +1,6 @@
 ﻿namespace VirtualLibraryApp
 {
-	partial class CameraScreen
+	partial class CameraForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.LoadBarcodeButton = new System.Windows.Forms.Button();
 			this.BarcodeImageBox = new System.Windows.Forms.PictureBox();
 			this.ScanButton = new System.Windows.Forms.Button();
 			this.CameraResolutionComboBox = new System.Windows.Forms.ComboBox();
@@ -36,19 +35,6 @@
 			this.Back1 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.BarcodeImageBox)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// LoadBarcodeButton
-			// 
-			this.LoadBarcodeButton.BackColor = System.Drawing.Color.Gold;
-			this.LoadBarcodeButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LoadBarcodeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.LoadBarcodeButton.Location = new System.Drawing.Point(515, 413);
-			this.LoadBarcodeButton.Name = "LoadBarcodeButton";
-			this.LoadBarcodeButton.Size = new System.Drawing.Size(210, 67);
-			this.LoadBarcodeButton.TabIndex = 1;
-			this.LoadBarcodeButton.Text = "Load Barcode";
-			this.LoadBarcodeButton.UseVisualStyleBackColor = false;
-			this.LoadBarcodeButton.Click += new System.EventHandler(this.LoadBarcodeButton_Click);
 			// 
 			// BarcodeImageBox
 			// 
@@ -103,7 +89,7 @@
 			this.Back1.UseVisualStyleBackColor = false;
 			this.Back1.Click += new System.EventHandler(this.Back1_Click);
 			// 
-			// CameraScreen
+			// CameraForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -112,9 +98,8 @@
 			this.Controls.Add(this.Back1);
 			this.Controls.Add(this.CameraResolutionComboBox);
 			this.Controls.Add(this.ScanButton);
-			this.Controls.Add(this.LoadBarcodeButton);
 			this.Controls.Add(this.BarcodeImageBox);
-			this.Name = "CameraScreen";
+			this.Name = "CameraForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Camera";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CameraScreen_FormClosing);
@@ -126,11 +111,10 @@
 		#endregion
 
 		private System.Windows.Forms.PictureBox BarcodeImageBox;
-		private System.Windows.Forms.Button LoadBarcodeButton;
 
-        private System.Windows.Forms.Button ScanButton;
-        private System.Windows.Forms.ComboBox CameraResolutionComboBox;
-    
+		private System.Windows.Forms.Button ScanButton;
+		private System.Windows.Forms.ComboBox CameraResolutionComboBox;
+
 
 		private System.Windows.Forms.Button Back;
 		private System.Windows.Forms.Button Back1;

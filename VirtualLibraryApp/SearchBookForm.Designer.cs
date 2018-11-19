@@ -1,6 +1,6 @@
 ﻿namespace VirtualLibraryApp
 {
-	partial class SearchBook
+	partial class SearchBookForm
 	{
 		/// <summary>
 		/// Required designer variable.

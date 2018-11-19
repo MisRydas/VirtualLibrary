@@ -31,12 +31,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge">
+      <HintPath>..\VirtualLibraryApp\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video">
+      <HintPath>..\VirtualLibraryApp\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>..\VirtualLibraryApp\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="DarrenLee.Media">
+      <HintPath>..\VirtualLibraryApp\DarrenLee.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.Barcode">
+      <HintPath>..\VirtualLibraryApp\MessagingToolkit.Barcode.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\VirtualLibraryApp\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,11 +61,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBook.cs" />
+    <Compile Include="CheckExtension.cs" />
+    <Compile Include="LastSearches.cs" />
+    <Compile Include="MissingBooks.cs" />
+    <Compile Include="Scanner.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MySQLConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.cs" />
+    <Compile Include="SearchBook.cs" />
     <Compile Include="SQLConnection.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
