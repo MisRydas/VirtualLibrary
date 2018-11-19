@@ -21,7 +21,7 @@ namespace VirtualLibraryApp.Tests
                 IsAdmin = true
             };
             User userFromDB = SQLConnection.GetUserById(1);
-            Assert.AreEqual<User>(user, userFromDB);
+            Assert.IsTrue(user == userFromDB);
         }
         [TestMethod()]
         public void GetUserByIdTest2()
@@ -35,7 +35,7 @@ namespace VirtualLibraryApp.Tests
                 IsAdmin = true
             };
             User userFromDB = SQLConnection.GetUserById(3);
-            Assert.AreEqual<User>(user, userFromDB);
+            Assert.IsTrue(user == userFromDB);
         }
         [TestMethod()]
         public void GetUserByIdTest_ReturnFalse()
@@ -47,7 +47,7 @@ namespace VirtualLibraryApp.Tests
                 IsAdmin = true
             };
             User userFromDB = SQLConnection.GetUserById(3);
-            Assert.AreNotEqual<User>(user, userFromDB);
+            Assert.IsTrue(user != userFromDB);
         }
     }
 }
