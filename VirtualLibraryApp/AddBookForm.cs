@@ -22,22 +22,23 @@ namespace VirtualLibraryApp
 		{
 			addBook.Add(BookNameBox.Text, ISBN13Box.Text, ISBN10Box.Text, AuthorBox.Text, GenreBox.Text, 
 						PublisherBox.Text, PublishedBox.Text, ListPriceBox.Text, 
-						BookCoverLinkBox.Text, out string error);
-
-			if (error.Length != 0)
-			{
-				MessageBox.Show(error);
-			}
-			else
-			{
-				MessageBox.Show("Book has been successfully added!");
-				this.Close();
-			}
+						BookCoverLinkBox.Text, ShowMessageBox, OnBookAdded);
 		}
 
 		private void Back_Click(object sender, EventArgs e)
 		{
             this.Close();
 		}
-	}
+
+        public void ShowMessageBox(string message)
+        {
+            MessageBox.Show(message);
+        }
+
+        public void OnBookAdded()
+        {
+            MessageBox.Show("Book has been successfully added!");
+            this.Close();
+        }
+    }
 }

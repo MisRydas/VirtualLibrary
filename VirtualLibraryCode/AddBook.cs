@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 namespace Logic
 {
 	public class AddBook
-	{
-		public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, string published, string listPrice, string coverLink, out string error)
+    {
+        public delegate void OnError(string message);
+        public delegate void OnSuccess();
+        public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, string published, string listPrice, string coverLink, OnError onError, OnSuccess onSucess)
 		{
-            error = "";
+            string error = "";
             BookItem book = new BookItem();
             if (bookName.Length == 0)
             {
@@ -56,7 +58,11 @@ namespace Logic
 
             book.CoverLink = coverLink;
             if (error.Length == 0)
+            {
                 SQLConnection.AddNewItem(book);
+                onSucess();
+            }
+            else onError(error);
         }
 	}
 }
