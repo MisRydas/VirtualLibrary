@@ -22,18 +22,18 @@ namespace VirtualLibraryApp
 		{
 			addBook.Add(BookNameBox.Text, ISBN13Box.Text, ISBN10Box.Text, AuthorBox.Text, GenreBox.Text, 
 						PublisherBox.Text, PublishedBox.Text, ListPriceBox.Text, 
-						BookCoverLinkBox.Text, ShowMessageBox, OnBookAdded);
+						BookCoverLinkBox.Text, 
+                        (string message) =>
+                            {
+                                MessageBox.Show(message);
+                            }
+                        , OnBookAdded);
 		}
 
 		private void Back_Click(object sender, EventArgs e)
 		{
             this.Close();
 		}
-
-        public void ShowMessageBox(string message)
-        {
-            MessageBox.Show(message);
-        }
 
         public void OnBookAdded()
         {
