@@ -9,9 +9,9 @@ namespace Logic
 {
 	public class AddBook
     {
-        public delegate void OnError(string message);
+        public delegate void OnError<T1>(T1 message);
         public delegate void OnSuccess();
-        public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, string published, string listPrice, string coverLink, OnError onError, OnSuccess onSucess)
+        public void Add(string bookName, string isbn13, string isbn10, string author, string genre, string publisher, string published, string listPrice, string coverLink, OnError<String> onError, OnSuccess onSucess)
 		{
             string error = "";
             BookItem book = new BookItem();

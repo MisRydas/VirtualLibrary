@@ -6,27 +6,22 @@ namespace VirtualLibraryApp
 {
 	public partial class RegistrationForm : Form
     {
-		//Sukuriam delegata eventui.
-		//	public delegate void EventHandler(string u, string p, string c, string f, string l);
-
-		//Sukuriam eventa.
-		//	public event EventHandler CreateEvent;
-
-
 		Registration registration;
 		RegistrationDataProvider registrationData;
 
 		public RegistrationForm()
         {
             InitializeComponent();
-			registration = new Registration();
 			registrationData = new RegistrationDataProvider();
         }
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
-			registration.CreateAccount(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text, 
-										firstNameTextBox.Text, lastNameTextBox.Text, registrationData);
+			registration = new Registration(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text,
+											firstNameTextBox.Text, lastNameTextBox.Text, registrationData);
+
+			//	registration.CreateAccount(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text, 
+			//								firstNameTextBox.Text, lastNameTextBox.Text, registrationData);
 
 			if (registrationData.emptyFields)
 			{
