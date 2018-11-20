@@ -10,6 +10,7 @@ using System.Drawing;
 
 namespace Logic
 {
+
 	public class ScannerDataProvider
 	{
 		public bool wrongCode;

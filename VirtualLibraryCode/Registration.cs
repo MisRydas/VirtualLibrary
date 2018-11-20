@@ -28,9 +28,21 @@ namespace Logic
 		}
 	}
 
+	//Sukuriam nauja delegata eventui.
+	public delegate void EventHandler(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData);
+
 	public class Registration
 	{
-		User user = new User();
+		User user;
+		//Sukuriam eventa.
+		public event EventHandler CreateEvent;
+
+		public Registration(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData)
+		{
+			user = new User();
+			CreateEvent = new EventHandler(CreateAccount);
+			CreateEvent.Invoke(username, password, cPassword, firstname, lastname, registrationData);
+		}
 
 		public void CreateAccount(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData)
 		{
