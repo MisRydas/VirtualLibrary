@@ -6,12 +6,28 @@ using CheckExtensions;
 
 namespace VirtualLibraryApp
 {
-	public partial class AddBookForm : Form
-	{
-		User user;
-		AddBook addBook;
+    public partial class AddBookForm : Form, IAddBookView//Čia yra mūsų View
+    {
+        User user;
+        AddBook addBook;
 
-		public AddBookForm(User user)
+        public string ISBN13 => BookNameBox.Text;
+
+        public string ISBN10 => ISBN13Box.Text;
+
+        public string Author => ISBN10Box.Text;
+
+        public string Genre => GenreBox.Text;
+
+        public string Publisher => PublisherBox.Text;
+
+        public string Published => PublishedBox.Text;
+
+        public string ListPrice => ListPriceBox.Text;
+
+        public string CoverLink => BookCoverLinkBox.Text;
+
+        public AddBookForm(User user)
 		{
 			this.user = user;
 			InitializeComponent();
@@ -20,14 +36,7 @@ namespace VirtualLibraryApp
 
 		private void AddBookButton_Click(object sender, EventArgs e)
 		{
-			addBook.Add(BookNameBox.Text, ISBN13Box.Text, ISBN10Box.Text, AuthorBox.Text, GenreBox.Text, 
-						PublisherBox.Text, PublishedBox.Text, ListPriceBox.Text, 
-						BookCoverLinkBox.Text, 
-                        (string message) =>
-                            {
-                                MessageBox.Show(message);
-                            }
-                        , OnBookAdded);
+			addBook.Add(this);
 		}
 
 		private void Back_Click(object sender, EventArgs e)
@@ -39,6 +48,10 @@ namespace VirtualLibraryApp
         {
             MessageBox.Show("Book has been successfully added!");
             this.Close();
+        }
+        public void OnError(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

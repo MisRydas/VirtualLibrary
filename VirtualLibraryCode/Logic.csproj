@@ -67,6 +67,7 @@
     <Compile Include="AddBook.cs" />
     <Compile Include="BookItem.cs" />
     <Compile Include="CheckExtension.cs" />
+    <Compile Include="IAddBookView.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="LastSearches.cs" />
     <Compile Include="MissingBooks.cs" />
