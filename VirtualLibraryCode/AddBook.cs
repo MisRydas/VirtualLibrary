@@ -11,7 +11,13 @@ namespace Logic
     {
         public delegate void OnError<T1>(T1 message);
         public delegate void OnSuccess();
-        public void Add(IAddBookView view)
+        IAddBookView view;
+        public AddBook(IAddBookView view)
+        {
+            this.view = view;
+            view.ButtonPressed += () => Add();
+        }
+        public void Add()
 		{
             string error = "";
             BookItem book = new BookItem();

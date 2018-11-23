@@ -8,6 +8,8 @@ namespace Logic
 {
     public interface IAddBookView
     {
+        event Action ButtonPressed;
+
         String Name { get; }
         String ISBN13 { get; }
         String ISBN10 { get; }

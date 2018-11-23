@@ -50,6 +50,7 @@ namespace VirtualLibraryApp
 		{
 			senderMenu.Hide();
 			AddBookForm addBookMenu = new AddBookForm(user);
+            AddBook  nu = new AddBook(addBookMenu);
 			addBookMenu.ShowDialog();
 			senderMenu.Show();
 		}

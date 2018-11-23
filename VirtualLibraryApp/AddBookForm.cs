@@ -9,7 +9,7 @@ namespace VirtualLibraryApp
     public partial class AddBookForm : Form, IAddBookView//Čia yra mūsų View
     {
         User user;
-        AddBook addBook;
+        public event Action ButtonPressed;
 
         public string ISBN13 => BookNameBox.Text;
 
@@ -31,12 +31,11 @@ namespace VirtualLibraryApp
 		{
 			this.user = user;
 			InitializeComponent();
-			addBook = new AddBook();
 		}
 
 		private void AddBookButton_Click(object sender, EventArgs e)
 		{
-			addBook.Add(this);
+            ButtonPressed();
 		}
 
 		private void Back_Click(object sender, EventArgs e)
