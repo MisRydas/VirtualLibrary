@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-	public class LoginDataProvider
+    public class LoginDataProvider
 	{
 		public bool correctData;
 		public User user;
@@ -21,14 +21,22 @@ namespace Logic
 
 	public class Login
     {
+        public delegate void OnError<T1>(T1 message);
+        public delegate void OnSuccess();
+        ILoginView view;
+        public Login(ILoginView view)
+        {
+            this.view = view;
+            view.ButtonPressed += () => LoginCheck(view.Username, view.Password, view.loginData); // ka su tuo treciu parametru daryt?
+        }
+        //sukuriam delegata.
+        //	public delegate void LoginEventHandler(string username, string password, LoginEventsArgs eventArgs);
+        //Sukuriam eventa.
+        //	public event LoginEventHandler ThrowLoginEvent = delegate { };
 
-		//sukuriam delegata.
-	//	public delegate void LoginEventHandler(string username, string password, LoginEventsArgs eventArgs);
-		//Sukuriam eventa.
-	//	public event LoginEventHandler ThrowLoginEvent = delegate { };
-
-		public void LoginCheck(string username, string password, LoginDataProvider eventArgs)
+        public void LoginCheck(string username, string password, LoginDataProvider eventArgs)
 		{
+            string error = "";
 			//Gaunam informacija apie naudotojus is sql serverio
 			DataTable userData = GetAllUsersInDataTable();
 
@@ -49,6 +57,8 @@ namespace Logic
 			else
 			{
 				eventArgs.correctData = false;
+                error = "Wrong username or password";
+
 			}
 		}
     }
