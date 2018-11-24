@@ -20,7 +20,7 @@ namespace VirtualLibraryApp
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new LoginForm(login, loginData));
+			Application.Run(new LoginForm(login));
 		}
 	}
 }

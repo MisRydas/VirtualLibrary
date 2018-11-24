@@ -14,11 +14,11 @@ namespace VirtualLibraryApp
         public event Action ButtonPressed;
         public string Username => UsernameTextBox.Text;
         public string Password => PasswordTextBox.Text;
-        LoginDataProvider loginData;// Jei ji det i interfeisa tai kas cia turi but?
-        public LoginForm(Login login, LoginDataProvider loginData)
+
+        //LoginDataProvider loginData;
+        public LoginForm(Login login)
 		{
             login = this.login;
-            loginData = this.loginData;
 			InitializeComponent();
 			//login = new Login();
 			//loginData = new LoginDataProvider();
@@ -26,7 +26,7 @@ namespace VirtualLibraryApp
 
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
-            ButtonPressed();
+            ButtonPressed();//pls work
             //buves kodas
             //login.LoginCheck(UsernameTextBox.Text, PasswordTextBox.Text, loginData);
 

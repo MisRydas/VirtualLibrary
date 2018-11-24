@@ -11,7 +11,6 @@ namespace Logic
         event Action ButtonPressed;
         String Username { get; }
         String Password { get; }
-        LoginDataProvider loginData { get; } //ar sito reikia cia?
         void OnLoginSuccess();
         void OnError(string message);
 
