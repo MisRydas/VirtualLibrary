@@ -73,6 +73,7 @@
     <Compile Include="ILogin.cs" />
     <Compile Include="IRegistration.cs" />
     <Compile Include="IScanner.cs" />
+    <Compile Include="ISearchBook.cs" />
     <Compile Include="LastSearches.cs" />
     <Compile Include="MissingBooks.cs" />
     <Compile Include="Scanner.cs" />

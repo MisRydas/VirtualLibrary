@@ -30,7 +30,7 @@ namespace VirtualLibraryApp
 		{
 			senderMenu.Hide();
 			CameraForm cameraMenu = new CameraForm();
-			//Scanner 
+			Scanner scanner = new Scanner(cameraMenu);
 			cameraMenu.ShowDialog();
 			senderMenu.Show();
 		}
@@ -68,7 +68,8 @@ namespace VirtualLibraryApp
 		public static void OpenSearchBookMenu(Form senderMenu, User user)
 		{
 			senderMenu.Hide();
-			SearchBookForm searchBookMenu = new SearchBookForm(user);
+			SearchBookForm searchBookMenu = new SearchBookForm();
+			SearchBook searchBook = new SearchBook(searchBookMenu);
 			searchBookMenu.ShowDialog();
 			senderMenu.Show();
 		}

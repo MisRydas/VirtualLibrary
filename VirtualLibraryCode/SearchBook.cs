@@ -7,39 +7,38 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-	public class SearchBookDataProvider
-	{
-		public bool missingText;
-		public DataView bookData;
-
-		public SearchBookDataProvider()
-		{
-			missingText = false;
-		}
-
-		public void ResetData()
-		{
-			missingText = false;
-		}
-	}
-
 
 	public class SearchBook
 	{
-		public void Search(string input, SearchBookDataProvider searchBookData)
-		{
-			searchBookData.ResetData();
+		DataView bookData;
+		ISearchBook searchBookData;
 
-			if (string.IsNullOrEmpty(input))
+		public SearchBook(ISearchBook searchBookData)
+		{
+			this.searchBookData = searchBookData;
+			searchBookData.SearchButtonPressed += () => Search();
+			searchBookData.SelectButtonPressed += () => SelectBook();
+		}
+
+		public void Search()
+		{
+			if (string.IsNullOrEmpty(searchBookData.Input))
 			{
-				searchBookData.missingText = true;
+				string error = "Write keyword to find book.";
+				searchBookData.OnError(error);
+			}
+			else
+			{
+				Books searchedBooks = new Books(searchBookData.Input);
+				searchBookData.OnBooksFound(searchedBooks);
 			}
 		}
 
- 		public void SelectBook(string isbn, User user, SearchBookDataProvider searchBookData)
+ 		public void SelectBook()
 		{
-			SQLConnection.AddISBNToHistory(user.Id, isbn);
-			searchBookData.bookData = SQLConnection.GetBookByISBNInDataView(isbn);
+			SQLConnection.AddISBNToHistory(Login.user.Id, searchBookData.ISBN);
+			bookData = SQLConnection.GetBookByISBNInDataView(searchBookData.ISBN);
+			searchBookData.OnBookSelected(bookData);
 		}
 	}
 
