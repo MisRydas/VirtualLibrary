@@ -2675,6 +2675,12 @@ namespace VirtualLibraryAppX
 			// aapt resource value: 0x7f0800c3
 			public const int loginButton = 2131230915;
 			
+			// aapt resource value: 0x7f0800c2
+			public const int loginPasswordTextBox = 2131230914;
+			
+			// aapt resource value: 0x7f0800c1
+			public const int loginUsernameTextBox = 2131230913;
+			
 			// aapt resource value: 0x7f0800f1
 			public const int masked = 2131230961;
 			
@@ -2731,9 +2737,6 @@ namespace VirtualLibraryAppX
 			
 			// aapt resource value: 0x7f0800e7
 			public const int passwordTextBox = 2131230951;
-			
-			// aapt resource value: 0x7f0800c2
-			public const int paswwordTextBox = 2131230914;
 			
 			// aapt resource value: 0x7f0800ba
 			public const int pictureBox1 = 2131230906;
@@ -3031,9 +3034,6 @@ namespace VirtualLibraryAppX
 			
 			// aapt resource value: 0x7f080026
 			public const int useLogo = 2131230758;
-			
-			// aapt resource value: 0x7f0800c1
-			public const int usernameTextBox = 2131230913;
 			
 			// aapt resource value: 0x7f0800e6
 			public const int usernameeTextBox = 2131230950;

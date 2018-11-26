@@ -35,6 +35,15 @@ namespace Logic
 			return user;
 		}
 
+		public static User GetUserByPassword(string username, string password)
+		{
+			User user = new User();
+			string query = String.Format("SELECT * FROM Users WHERE Username = '{0}' AND Password = '{1}';", username, password);
+			DataTable dt = Conn.SelectQuery(query);
+			user = GetUserById((int)dt.Rows[0]["Id"]);
+			return user;
+		}
+
 		public static void AddISBNToHistory(int UserId, String ISBN)
 		{
 			string query = String.Format("Insert into ISBNSearches (UserId, ISBN) VALUES ('{0}', '{1}');;", UserId, ISBN);
@@ -80,7 +89,7 @@ namespace Logic
 		public static DataView GetBookByISBNInDataView(string isbn)
 		{
 			String query = String.Format("SELECT * FROM Books WHERE ISBN13 = {0};", isbn);
-			return Conn.SelectQuery(query).AsDataView();
+			return null;//Conn.SelectQuery(query).AsDataView(); Neveikia ant androido.
 		}
 	}
 }

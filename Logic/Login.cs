@@ -8,47 +8,32 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-	public class LoginDataProvider
-	{
-		public bool correctData;
-		public User user;
-
-		public LoginDataProvider()
-		{
-			correctData = false;
-		}
-	}
 
 	public class Login
     {
-
-		//sukuriam delegata.
-	//	public delegate void LoginEventHandler(string username, string password, LoginEventsArgs eventArgs);
-		//Sukuriam eventa.
-	//	public event LoginEventHandler ThrowLoginEvent = delegate { };
-
-		public void LoginCheck(string username, string password, LoginDataProvider eventArgs)
+		User user;
+		ILogin loginData;
+		public Login(ILogin loginData)
 		{
-			//Gaunam informacija apie naudotojus is sql serverio
-			DataTable userData = GetAllUsersInDataTable();
+			this.loginData = loginData;
+			loginData.ButtonPressed += () => LoginCheck();
+		}
 
-			//Tikriname ar yra toks vartotojas duomenu bazeje
-			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == username && user.Field<string>("password") == password select user;
-
-			//Gauname informacija apie vartotoja, jei toks buvo rastas
-			DataView result = userLogin.AsDataView();
-
-
+		public void LoginCheck()
+		{
+			//Gaunam naudotoja is duomenu bazes su ivestais duomenimis.
+			User user = SQLConnection.GetUserByPassword(loginData.Username, loginData.Password);
 			//Jei vartotojo ivestas vardas ir slaptazodis atitiko, atidaromas meniu langas, kitu atveju 
 			//lentele, kad duomenys blogi.
-			if (result.Count == 1)
+			if (user != null)
 			{
-				eventArgs.correctData = true;
-				eventArgs.user = SQLConnection.GetUserById((int)result[0]["Id"]);
+				this.user = user;
+				loginData.OnLoginSuccessful();
 			}
 			else
 			{
-				eventArgs.correctData = false;
+				string error = "Incorrect Username or Password. Please, try again.";
+				loginData.OnError(error);
 			}
 		}
     }
