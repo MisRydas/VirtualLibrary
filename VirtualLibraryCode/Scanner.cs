@@ -10,85 +10,76 @@ using System.Drawing;
 
 namespace Logic
 {
-
-	public class ScannerDataProvider
-	{
-		public bool wrongCode;
-		public bool bookNotFound;
-		public bool barcodeNotFound;
-		public string isbn;
-		public DataView bookData;
-
-		public ScannerDataProvider()
-		{
-			wrongCode = false;
-			bookNotFound = false;
-			barcodeNotFound = false;
-		}
-
-		public void ResetData()
-		{
-			wrongCode = false;
-			bookNotFound = false;
-			barcodeNotFound = false;
-		}
-	}
-
 	public class Scanner
 	{
+		DataView bookData;
+		IScanner scannerData;
 
-		public void ScanBook(Image bookImage, ScannerDataProvider scannerData, User user)
+		public Scanner(IScanner scannerData)
 		{
-			scannerData.ResetData();
+			this.scannerData = scannerData;
+			scannerData.ButtonPressed += () => ScanBook();
+		}
+
+		public void ScanBook()
+		{
+			string error = "";
 
 			try
 			{
 				BarcodeDecoder Scanner = new BarcodeDecoder();
-				Result scannerResult = Scanner.Decode(new Bitmap(bookImage));
-
-				scannerData.isbn = scannerResult.Text;
+				Result scannerResult = Scanner.Decode(new Bitmap(scannerData.BookImage));
 
 				if (scannerResult.Text.Length == 13)
 				{
-					CheckISBN(scannerResult.Text, 13, scannerData, user);
+					CheckISBN(scannerResult.Text, 13);
 				}
 				else if (scannerResult.Text.Length == 10)
 				{
-					CheckISBN(scannerResult.Text, 10, scannerData, user);
+					CheckISBN(scannerResult.Text, 10);
 				}
 				else
 				{
-					scannerData.wrongCode = true;
+					error += "Wrong ISBN, please try again.";
 				}
 			}
 			catch (MessagingToolkit.Barcode.NotFoundException)
 			{
-				scannerData.barcodeNotFound = true;
+				error += "Barcode wasn't found.";
+			}
+			if(error.Length != 0)
+			{
+				scannerData.OnError(error);
 			}
 		}
 		
-		public async void CheckISBN(string isbn, int isbnLength, ScannerDataProvider scannerData, User user)
+		public async void CheckISBN(string isbn, int isbnLength)
 		{
-			await GetBookInDataView(isbn, isbnLength, scannerData, user);
+			await GetBookInDataView(isbn, isbnLength);
 
 			//jei knyga rasta, tai atidarom langa su informacija apie ja, jei knyga nerasta praso ieskoti vel.
-			if (scannerData.bookData.Count == 1)
+			if (bookData.Count == 0)
 			{
-				scannerData.bookNotFound = true;
+				string error = "We don't have this book at the moment, please try another one.";
+				scannerData.OnError(error);
+			}
+			else
+			{
+				scannerData.OnBookFound(bookData);
 			}
 		}
 
-		public Task GetBookInDataView(string isbn, int isbnLength, ScannerDataProvider scannerData, User user)
+		public Task GetBookInDataView(string isbn, int isbnLength)
 		{
 			return Task.Factory.StartNew(() =>
 			{
-				SQLConnection.AddISBNToHistory(user.Id, isbn);
+				SQLConnection.AddISBNToHistory(Login.user.Id, isbn);
 
-				DataTable bookData = SQLConnection.GetAllBooksInDataTable();
+				DataTable bd = SQLConnection.GetAllBooksInDataTable();
 
-				var bookInformation = from book in bookData.AsEnumerable() where book.Field<string>("ISBN" + isbnLength) == isbn select book;
+				var bookInformation = from book in bd.AsEnumerable() where book.Field<string>("ISBN" + isbnLength) == isbn select book;
 
-				scannerData.bookData = bookInformation.AsDataView();
+				bookData = bookInformation.AsDataView();
 			});
 		}
 	}

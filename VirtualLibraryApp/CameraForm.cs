@@ -10,16 +10,18 @@ using System.Threading.Tasks;
 namespace VirtualLibraryApp
 {
 
-    public partial class CameraForm : Form
+    public partial class CameraForm : Form, IScanner
 	{
-		private Scanner scanner = new Scanner();
-		private ScannerDataProvider scannerData = new ScannerDataProvider();
-		public User user;
+		public event Action ButtonPressed;
+
+		public Image BookImage => BarcodeImageBox.Image;
+
 		Camera myCamera = new Camera();
 
-        public CameraForm(User user)
+
+
+        public CameraForm()
 		{
-			this.user = user;
 			InitializeComponent();
 
 			GetInfo();			
@@ -28,32 +30,18 @@ namespace VirtualLibraryApp
 
 		private void ScanButton_Click(object sender, EventArgs e)
 		{
-			scanner.ScanBook(BarcodeImageBox.Image, scannerData, user);
-			System.Threading.Thread.Sleep(500);
+			ButtonPressed();
+		//	System.Threading.Thread.Sleep(500);
+		}
 
-			if (scannerData.wrongCode)
-			{
-				MessageBox.Show("Wrong ISBN, please try again.");
-			}
-			else if(scannerData.bookNotFound)
-			{
-				MessageBox.Show("We don't have this book at the moment, please try another one.");
-			}
-			else if(scannerData.barcodeNotFound)
-			{
-				MessageBox.Show("Barcode wasn't found.");
-			}
-			else
-			{
-				if (scannerData.bookData != null)
-				{
-					Navigation.OpenBookMenu(this, scannerData.bookData, 0);
-				}
-				else
-				{
-					MessageBox.Show("Error");
-				}
-			}
+		public void OnBookFound(DataView bookData)
+		{
+			Navigation.OpenBookMenu(this, bookData, 0);
+		}
+
+		public void OnError(string message)
+		{
+			MessageBox.Show(message);
 		}
 
 		private void Back1_Click(object sender, EventArgs e)

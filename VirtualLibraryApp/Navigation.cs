@@ -26,10 +26,11 @@ namespace VirtualLibraryApp
 			registrationMenu.ShowDialog();
 			senderMenu.Show();
 		}
-		public static void OpenCameraMenu(Form senderMenu, User user)
+		public static void OpenCameraMenu(Form senderMenu)
 		{
 			senderMenu.Hide();
-			CameraForm cameraMenu = new CameraForm(user);
+			CameraForm cameraMenu = new CameraForm();
+			//Scanner 
 			cameraMenu.ShowDialog();
 			senderMenu.Show();
 		}
