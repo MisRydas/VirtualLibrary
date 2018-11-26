@@ -9,13 +9,20 @@ namespace Logic
 {
 	public class MissingBooks
 	{
+		IMissingBooks missingBooksData;
 
-		public DataView GetMissingBooks()
+		public MissingBooks(IMissingBooks missingBooksData)
+		{
+			this.missingBooksData = missingBooksData;
+			missingBooksData.LoadMissingBooks += () => GetMissingBooks();
+
+		}
+
+		public void GetMissingBooks()
 		{
 			DataTable missingBooks = SQLConnection.GetAllMissingBooksISBN();
 
-			return  missingBooks.AsDataView();
+			missingBooksData.OnMissingBooksFound(missingBooks.AsDataView());
 		}
-
 	}
 }

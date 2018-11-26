@@ -61,7 +61,9 @@ namespace VirtualLibraryApp
 		public static void OpenMissingBooksMenu(Form senderMenu, User user)
 		{
 			senderMenu.Hide();
-			MissingBooksForm missingBooksMenu = new MissingBooksForm(user);
+			MissingBooksForm missingBooksMenu = new MissingBooksForm();
+			MissingBooks missingBooks = new MissingBooks(missingBooksMenu);
+			missingBooksMenu.LoadBooks();
 			missingBooksMenu.ShowDialog();
 			senderMenu.Show();
 		}

@@ -71,6 +71,7 @@
     <Compile Include="IItem.cs" />
     <Compile Include="ILastSearches.cs" />
     <Compile Include="ILogin.cs" />
+    <Compile Include="IMissingBooks.cs" />
     <Compile Include="IRegistration.cs" />
     <Compile Include="IScanner.cs" />
     <Compile Include="ISearchBook.cs" />
