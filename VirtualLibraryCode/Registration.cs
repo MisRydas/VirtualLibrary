@@ -6,76 +6,53 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic
-{
-	public class RegistrationDataProvider
-	{
-		public bool emptyFields;
-		public bool passwordsDontMatch;
-		public bool passwordIsNotCorrect;
-
-		public RegistrationDataProvider()
-		{
-			emptyFields = false;
-			passwordsDontMatch = false;
-			passwordIsNotCorrect = false;
-		}
-		
-		public void ResetData()
-		{
-			emptyFields = false;
-			passwordsDontMatch = false;
-			passwordIsNotCorrect = false;
-		}
-	}
-
-	//Sukuriam nauja delegata eventui.
-	public delegate void EventHandler(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData);
-
+{	
 	public class Registration
 	{
+		IRegistration registrationData;
 		User user;
-		//Sukuriam eventa.
-		public event EventHandler CreateEvent;
 
-		public Registration(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData)
+		public Registration(IRegistration registrationData)
 		{
 			user = new User();
-			CreateEvent = new EventHandler(CreateAccount);
-			CreateEvent.Invoke(username, password, cPassword, firstname, lastname, registrationData);
+			this.registrationData = registrationData;
+			registrationData.ButtonPressed += () => CreateAccount();
 		}
 
-		public void CreateAccount(string username, string password, string cPassword, string firstname, string lastname, RegistrationDataProvider registrationData)
+		public void CreateAccount()
 		{
-			registrationData.ResetData();
+			string error = "";
 			// Jei buvo paliktas bent vienas tuscias laukas, programa meta errora
-			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(cPassword) || string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname))
+			if (string.IsNullOrEmpty(registrationData.Username) || string.IsNullOrEmpty(registrationData.Password) || string.IsNullOrEmpty(registrationData.ConfirmPassword) || string.IsNullOrEmpty(registrationData.Firstname) || string.IsNullOrEmpty(registrationData.Lastname))
 			{
-				registrationData.emptyFields = true;
+				error += "Please fill mandatory fields";
 			}
 			// Jei passwordai nevienodi programa meta errora
-			else if (password != cPassword)
+			else if (registrationData.Password != registrationData.ConfirmPassword)
 			{
-				registrationData.passwordsDontMatch = true;
+				error += "Passwords do not match";
+			}
+			else if (!CheckPassword(registrationData.Password.Trim()))
+			{
+				error += "Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.";
+			}
+
+			if (error.Length != 0)
+			{
+				registrationData.OnError(error);
 			}
 			// Jei visi laukai irasyti ir slaptazodziai sutampa, tuomet programa i DB iraso naujo vartuotojo duomenis
 			else
 			{
 				//Nusiskaitomos reikšmės iš textboxų
-				user.UserName = username.Trim();
-				user.Password = password.Trim();
+				user.UserName = registrationData.Username.Trim();
+				user.Password = registrationData.Password.Trim();
+				user.FirstName = registrationData.Firstname.Trim();
+				user.LastName = registrationData.Lastname.Trim();
+				//Pridedamas useris į DB
+				SQLConnection.AddNewItem(user);
 
-				if (!CheckPassword(password.Trim()))
-				{
-					registrationData.passwordIsNotCorrect = true;
-					return;
-				}
-				else
-				{
-					user.FirstName = firstname.Trim();
-					user.LastName = lastname.Trim();
-					//Pridedamas useris į DB
-					SQLConnection.AddNewItem(user);
-				}
+				registrationData.OnRegistrationSuccess();
 			}
 		}
 

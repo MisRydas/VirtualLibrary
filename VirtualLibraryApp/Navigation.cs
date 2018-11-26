@@ -22,6 +22,7 @@ namespace VirtualLibraryApp
 		{
 			senderMenu.Hide();
 			RegistrationForm registrationMenu = new RegistrationForm();
+			Registration registration = new Registration(registrationMenu);
 			registrationMenu.ShowDialog();
 			senderMenu.Show();
 		}

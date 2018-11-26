@@ -4,55 +4,43 @@ using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
-	public partial class RegistrationForm : Form
+	public partial class RegistrationForm : Form, IRegistration
     {
-		Registration registration;
-		RegistrationDataProvider registrationData;
+		public event Action ButtonPressed;
+
+		public string Username => usernameTextBox.Text;
+		public string Password => passwordTextBox.Text;
+		public string ConfirmPassword => confirmPasswordTextBox.Text;
+		public string Firstname => firstNameTextBox.Text;
+		public string Lastname => lastNameTextBox.Text;
 
 		public RegistrationForm()
         {
             InitializeComponent();
-			registrationData = new RegistrationDataProvider();
         }
 
-        private void createAccountButton_Click(object sender, EventArgs e)
-        {
-			registration = new Registration(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text,
-											firstNameTextBox.Text, lastNameTextBox.Text, registrationData);
-
-			//	registration.CreateAccount(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text, 
-			//								firstNameTextBox.Text, lastNameTextBox.Text, registrationData);
-
-			if (registrationData.emptyFields)
-			{
-				MessageBox.Show("Please fill mandatory fields");
-			}
-			else if(registrationData.passwordsDontMatch)
-			{
-				MessageBox.Show("Passwords do not match");
-			}
-			else if(registrationData.passwordIsNotCorrect)
-			{
-				MessageBox.Show("Password must have at least 8 Symbols, 1 lowercase, 1 uppercase and 1 number. Please, correct your password.");
-			}
-			else
-			{
-				MessageBox.Show("Registration is successful");
-
-				//Grizta i login screen
-				this.Close();
-
-				//Laukai isvalomi
-				Clear();
-			}
-
-			//Pridedam registracijos eventa.
-			//	CreateEvent = new EventHandler(CreateAcc);
-			//Paleidziam eventa.
-			//	CreateEvent.Invoke(usernameTextBox.Text, passwordTextBox.Text, confirmPasswordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
+		private void createAccountButton_Click(object sender, EventArgs e)
+		{
+			ButtonPressed();
 		}
 
-		void Clear()
+		public void OnRegistrationSuccess()
+		{
+			MessageBox.Show("Registration is successful");
+
+			//Grizta i login screen
+			this.Close();
+
+			//Laukai isvalomi
+			Clear();
+		}
+
+		public void OnError(string message)
+		{
+			MessageBox.Show(message);
+		}
+
+		private void Clear()
         {
             usernameTextBox.Text = passwordTextBox.Text = firstNameTextBox.Text = lastNameTextBox.Text = confirmPasswordTextBox.Text = "";
         }
@@ -61,5 +49,5 @@ namespace VirtualLibraryApp
 		{
 			this.Close();
 		}
-    }
+	}
 }
