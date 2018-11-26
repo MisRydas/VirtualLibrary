@@ -6,7 +6,7 @@ using CheckExtensions;
 
 namespace VirtualLibraryApp
 {
-    public partial class AddBookForm : Form, IAddBookView//Čia yra mūsų View
+    public partial class AddBookForm : Form, IAddBook//Čia yra mūsų View
     {
         User user;
         public event Action ButtonPressed;

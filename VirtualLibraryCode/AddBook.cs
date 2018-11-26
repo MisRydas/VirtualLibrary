@@ -11,8 +11,8 @@ namespace Logic
     {
         public delegate void OnError<T1>(T1 message);
         public delegate void OnSuccess();
-        IAddBookView view;
-        public AddBook(IAddBookView view)
+        IAddBook view;
+        public AddBook(IAddBook view)
         {
             this.view = view;
             view.ButtonPressed += () => Add();

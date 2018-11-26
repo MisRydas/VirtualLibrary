@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public interface IAddBookView
+    public interface IAddBook
     {
         event Action ButtonPressed;
 
