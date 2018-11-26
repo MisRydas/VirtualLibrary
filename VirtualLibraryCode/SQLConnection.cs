@@ -62,7 +62,7 @@ namespace Logic
 
 		public static DataTable GetLastSearches(int userId)
 		{
-			String query = String.Format("SELECT b.ISBN13, b.CoverLink FROM ISBNSearches s JOIN Books b ON s.ISBN = b.ISBN13 WHERE s.UserId = {0} ORDER BY s.Time DESC;", userId.ToString());
+			String query = String.Format("SELECT b.BookName, b.ISBN13, b.ISBN10, b.Author, b.Publisher, b.Published, b.ListPrice, b.CoverLink FROM ISBNSearches s JOIN Books b ON s.ISBN = b.ISBN13 WHERE s.UserId = {0} ORDER BY s.Time DESC;", userId.ToString());
 			return Conn.SelectQuery(query);
 		}
 

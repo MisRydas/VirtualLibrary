@@ -47,7 +47,7 @@ namespace VirtualLibraryApp
 			{
 				if (scannerData.bookData != null)
 				{
-					Navigation.OpenBookMenu(this, user, scannerData.bookData);
+					Navigation.OpenBookMenu(this, scannerData.bookData, 0);
 				}
 				else
 				{

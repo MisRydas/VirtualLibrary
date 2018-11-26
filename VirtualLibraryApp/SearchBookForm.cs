@@ -40,13 +40,13 @@ namespace VirtualLibraryApp
 		private void bookNameLabel_Click(object sender, EventArgs e)
 		{
 			searchbook.SelectBook(((Label)sender).Name, user, searchBookData);
-			Navigation.OpenBookMenu(this, user, searchBookData.bookData);
+			Navigation.OpenBookMenu(this, searchBookData.bookData, 0);
 		}
 
 		private void bookCoverBox_Click(object sender, EventArgs e)
 		{
 			searchbook.SelectBook(((PictureBox)sender).Name, user, searchBookData);
-			Navigation.OpenBookMenu(this, user, searchBookData.bookData);
+			Navigation.OpenBookMenu(this, searchBookData.bookData, 0);
 		}
 
 		private void Back_Click(object sender, EventArgs e)

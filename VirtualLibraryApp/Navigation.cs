@@ -33,17 +33,19 @@ namespace VirtualLibraryApp
 			cameraMenu.ShowDialog();
 			senderMenu.Show();
 		}
-		public static void OpenBookMenu(Form senderMenu, User user, DataView bookData)
+		public static void OpenBookMenu(Form senderMenu, DataView bookData, int book)
 		{
 			senderMenu.Hide();
-			BookForm bookMenu = new BookForm(user, bookData);
+			BookForm bookMenu = new BookForm(bookData, book);
 			bookMenu.ShowDialog();
 			senderMenu.Show();
 		}
-		public static void OpenLastSearchesMenu(Form senderMenu, User user)
+		public static void OpenLastSearchesMenu(Form senderMenu)
 		{
 			senderMenu.Hide();
-			LastSearchesForm lastSearchesMenu = new LastSearchesForm(user);
+			LastSearchesForm lastSearchesMenu = new LastSearchesForm();
+			LastSearches lastSearches = new LastSearches(lastSearchesMenu);
+			lastSearchesMenu.LoadSearch();
 			lastSearchesMenu.ShowDialog();
 			senderMenu.Show();
 		}

@@ -10,6 +10,7 @@ namespace Logic
 {
 	public class Login
     {
+		public static User user;
         ILogin loginData;
         public Login(ILogin loginData)
         {
@@ -33,7 +34,7 @@ namespace Logic
 			//lentele, kad duomenys blogi.
 			if (result.Count == 1)
 			{
-				User user = SQLConnection.GetUserById((int)result[0]["Id"]);
+				user = SQLConnection.GetUserById((int)result[0]["Id"]);
 				loginData.OnLoginSuccess(user);
 			}
 			else

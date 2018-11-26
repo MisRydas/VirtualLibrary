@@ -13,22 +13,20 @@ namespace VirtualLibraryApp
 {
 	public partial class BookForm : Form
 	{
-		User User;
 
-		public BookForm(User User, DataView bookdata)
+		public BookForm(DataView bookdata, int i)
 		{
-			this.User = User;
 			InitializeComponent();
 
 			//Informacija apie knyga
-			BookName.Text = bookdata[0]["BookName"].ToString();
-			ISBN13.Text = bookdata[0]["ISBN13"].ToString();
-			ISBN10.Text = bookdata[0]["ISBN10"].ToString();
-			Author.Text = bookdata[0]["Author"].ToString();
-			Publisher.Text = bookdata[0]["Publisher"].ToString();
-			Published.Text = bookdata[0]["Published"].ToString();
-			ListPrice.Text = bookdata[0]["ListPrice"].ToString();
-			BookCoverBox.Load(bookdata[0]["CoverLink"].ToString());
+			BookName.Text = bookdata[i]["BookName"].ToString();
+			ISBN13.Text = bookdata[i]["ISBN13"].ToString();
+			ISBN10.Text = bookdata[i]["ISBN10"].ToString();
+			Author.Text = bookdata[i]["Author"].ToString();
+			Publisher.Text = bookdata[i]["Publisher"].ToString();
+			Published.Text = bookdata[i]["Published"].ToString();
+			ListPrice.Text = bookdata[i]["ListPrice"].ToString();
+			BookCoverBox.Load(bookdata[i]["CoverLink"].ToString());
 		}
 
 		private void Back_Click(object sender, EventArgs e)

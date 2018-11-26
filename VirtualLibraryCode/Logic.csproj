@@ -69,6 +69,7 @@
     <Compile Include="CheckExtension.cs" />
     <Compile Include="IAddBook.cs" />
     <Compile Include="IItem.cs" />
+    <Compile Include="ILastSearches.cs" />
     <Compile Include="ILogin.cs" />
     <Compile Include="IRegistration.cs" />
     <Compile Include="LastSearches.cs" />
