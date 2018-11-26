@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public interface ILoginView
+    public interface ILogin
     {
         event Action ButtonPressed;
         String Username { get; }
         String Password { get; }
-        void OnLoginSuccess();
+        void OnLoginSuccess(User user);
         void OnError(string message);
 
     }

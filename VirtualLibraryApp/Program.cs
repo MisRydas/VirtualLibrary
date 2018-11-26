@@ -9,9 +9,6 @@ namespace VirtualLibraryApp
 {
 	static class Program
 	{
-        private static readonly Login login;
-        private static readonly LoginDataProvider loginData;
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,7 +17,9 @@ namespace VirtualLibraryApp
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new LoginForm(login));
+			LoginForm loginMenu = new LoginForm();
+			Login login = new Login(loginMenu);
+			Application.Run(loginMenu);
 		}
 	}
 }

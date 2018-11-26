@@ -8,32 +8,14 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public class LoginDataProvider
-	{
-		public bool correctData;
-		public User user;
-
-		public LoginDataProvider()
-		{
-			correctData = false;
-		}
-	}
-
 	public class Login
     {
-        public User user;
-        public delegate void OnError<T1>(T1 message);
-        public delegate void OnSuccess();
-        ILoginView view;
-        public Login(ILoginView view)
+        ILogin loginData;
+        public Login(ILogin loginData)
         {
-            this.view = view;
-            view.ButtonPressed += () => LoginCheck();
+            this.loginData = loginData;
+			loginData.ButtonPressed += () => LoginCheck();
         }
-        //sukuriam delegata.
-        //	public delegate void LoginEventHandler(string username, string password, LoginEventsArgs eventArgs);
-        //Sukuriam eventa.
-        //	public event LoginEventHandler ThrowLoginEvent = delegate { };
 
         public void LoginCheck()
 		{
@@ -42,7 +24,7 @@ namespace Logic
 			DataTable userData = GetAllUsersInDataTable();
 
 			//Tikriname ar yra toks vartotojas duomenu bazeje
-			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == view.Username && user.Field<string>("password") == view.Password select user;
+			var userLogin = from user in userData.AsEnumerable() where user.Field<string>("username") == loginData.Username && user.Field<string>("password") == loginData.Password select user;
 
 			//Gauname informacija apie vartotoja, jei toks buvo rastas
 			DataView result = userLogin.AsDataView();
@@ -51,12 +33,13 @@ namespace Logic
 			//lentele, kad duomenys blogi.
 			if (result.Count == 1)
 			{
-				user = SQLConnection.GetUserById((int)result[0]["Id"]);
+				User user = SQLConnection.GetUserById((int)result[0]["Id"]);
+				loginData.OnLoginSuccess(user);
 			}
 			else
 			{
                 error = "Wrong username or password";
-
+				loginData.OnError(error);
 			}
 		}
     }

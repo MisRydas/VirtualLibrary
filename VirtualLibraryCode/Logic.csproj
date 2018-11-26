@@ -69,7 +69,7 @@
     <Compile Include="CheckExtension.cs" />
     <Compile Include="IAddBookView.cs" />
     <Compile Include="IItem.cs" />
-    <Compile Include="ILoginView.cs" />
+    <Compile Include="ILogin.cs" />
     <Compile Include="LastSearches.cs" />
     <Compile Include="MissingBooks.cs" />
     <Compile Include="Scanner.cs" />
