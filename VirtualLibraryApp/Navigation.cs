@@ -22,27 +22,31 @@ namespace VirtualLibraryApp
 		{
 			senderMenu.Hide();
 			RegistrationForm registrationMenu = new RegistrationForm();
+			Registration registration = new Registration(registrationMenu);
 			registrationMenu.ShowDialog();
 			senderMenu.Show();
 		}
-		public static void OpenCameraMenu(Form senderMenu, User user)
+		public static void OpenCameraMenu(Form senderMenu)
 		{
 			senderMenu.Hide();
-			CameraForm cameraMenu = new CameraForm(user);
+			CameraForm cameraMenu = new CameraForm();
+			Scanner scanner = new Scanner(cameraMenu);
 			cameraMenu.ShowDialog();
 			senderMenu.Show();
 		}
-		public static void OpenBookMenu(Form senderMenu, User user, DataView bookData)
+		public static void OpenBookMenu(Form senderMenu, DataView bookData, int book)
 		{
 			senderMenu.Hide();
-			BookForm bookMenu = new BookForm(user, bookData);
+			BookForm bookMenu = new BookForm(bookData, book);
 			bookMenu.ShowDialog();
 			senderMenu.Show();
 		}
-		public static void OpenLastSearchesMenu(Form senderMenu, User user)
+		public static void OpenLastSearchesMenu(Form senderMenu)
 		{
 			senderMenu.Hide();
-			LastSearchesForm lastSearchesMenu = new LastSearchesForm(user);
+			LastSearchesForm lastSearchesMenu = new LastSearchesForm();
+			LastSearches lastSearches = new LastSearches(lastSearchesMenu);
+			lastSearchesMenu.LoadSearch();
 			lastSearchesMenu.ShowDialog();
 			senderMenu.Show();
 		}
@@ -50,20 +54,24 @@ namespace VirtualLibraryApp
 		{
 			senderMenu.Hide();
 			AddBookForm addBookMenu = new AddBookForm(user);
+            AddBook  nu = new AddBook(addBookMenu);
 			addBookMenu.ShowDialog();
 			senderMenu.Show();
 		}
 		public static void OpenMissingBooksMenu(Form senderMenu, User user)
 		{
 			senderMenu.Hide();
-			MissingBooksForm missingBooksMenu = new MissingBooksForm(user);
+			MissingBooksForm missingBooksMenu = new MissingBooksForm();
+			MissingBooks missingBooks = new MissingBooks(missingBooksMenu);
+			missingBooksMenu.LoadBooks();
 			missingBooksMenu.ShowDialog();
 			senderMenu.Show();
 		}
 		public static void OpenSearchBookMenu(Form senderMenu, User user)
 		{
 			senderMenu.Hide();
-			SearchBookForm searchBookMenu = new SearchBookForm(user);
+			SearchBookForm searchBookMenu = new SearchBookForm();
+			SearchBook searchBook = new SearchBook(searchBookMenu);
 			searchBookMenu.ShowDialog();
 			senderMenu.Show();
 		}

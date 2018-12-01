@@ -7,80 +7,38 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-	public class SearchBookDataProvider
-	{
-		public bool missingText;
-		public DataView bookData;
-
-		public SearchBookDataProvider()
-		{
-			missingText = false;
-		}
-
-		public void ResetData()
-		{
-			missingText = false;
-		}
-	}
-
 
 	public class SearchBook
 	{
-		public void Search(string input, SearchBookDataProvider searchBookData)
-		{
-			searchBookData.ResetData();
+		DataView bookData;
+		ISearchBook searchBookData;
 
-			if (string.IsNullOrEmpty(input))
+		public SearchBook(ISearchBook searchBookData)
+		{
+			this.searchBookData = searchBookData;
+			searchBookData.SearchButtonPressed += () => Search();
+			searchBookData.SelectButtonPressed += () => SelectBook();
+		}
+
+		public void Search()
+		{
+			if (string.IsNullOrEmpty(searchBookData.Input))
 			{
-				searchBookData.missingText = true;
+				string error = "Write keyword to find book.";
+				searchBookData.OnError(error);
+			}
+			else
+			{
+				Books searchedBooks = new Books(searchBookData.Input);
+				searchBookData.OnBooksFound(searchedBooks);
 			}
 		}
 
- 		public void SelectBook(string isbn, User user, SearchBookDataProvider searchBookData)
+ 		public void SelectBook()
 		{
-			SQLConnection.AddISBNToHistory(user.Id, isbn);
-			searchBookData.bookData = SQLConnection.GetBookByISBNInDataView(isbn);
-		}
-	}
-
-	public class BookInfo
-	{
-		public BookInfo(string name, string coverLink, string ISBN13)
-		{
-			this.name = name;
-			this.coverLink = coverLink;
-			this.ISBN13 = ISBN13;
-		}
-
-		public string name;
-		public string coverLink;
-		public string ISBN13;
-
-	}
-
-	public class Books : IEnumerable
-	{
-		private BookInfo[] books;
-
-		public Books(String genre)
-		{
-			DataTable bookData = SQLConnection.GetAllBooksInDataTable();
-
-			var bookInformation = from book in bookData.AsEnumerable() where (book.Field<string>("Genre").IndexOf(genre, StringComparison.OrdinalIgnoreCase) != -1) select book;
-
-			DataView result = bookInformation.AsDataView();
-
-			books = new BookInfo[result.Count];
-
-			for (int i = 0; i < result.Count; i++)
-			{
-				books[i] = new BookInfo(result[i]["BookName"].ToString(), result[i]["CoverLink"].ToString(), result[i]["ISBN13"].ToString());
-			}
-		}
-
-		public IEnumerator GetEnumerator()
-		{
-			return books.GetEnumerator();
+			SQLConnection.AddISBNToHistory(Login.user.Id, searchBookData.ISBN);
+			bookData = SQLConnection.GetBookByISBNInDataView(searchBookData.ISBN);
+			searchBookData.OnBookSelected(bookData);
 		}
 	}
 }

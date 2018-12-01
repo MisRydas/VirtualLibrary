@@ -65,9 +65,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddBook.cs" />
+    <Compile Include="BookInfo.cs" />
     <Compile Include="BookItem.cs" />
     <Compile Include="CheckExtension.cs" />
+    <Compile Include="IAddBook.cs" />
     <Compile Include="IItem.cs" />
+    <Compile Include="ILastSearches.cs" />
+    <Compile Include="ILogin.cs" />
+    <Compile Include="IMissingBooks.cs" />
+    <Compile Include="IRegistration.cs" />
+    <Compile Include="IScanner.cs" />
+    <Compile Include="ISearchBook.cs" />
     <Compile Include="LastSearches.cs" />
     <Compile Include="MissingBooks.cs" />
     <Compile Include="Scanner.cs" />

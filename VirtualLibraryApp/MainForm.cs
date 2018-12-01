@@ -32,7 +32,7 @@ namespace VirtualLibraryApp
 
 		private void CameraScanButton_Click(object sender, EventArgs e)
 		{
-			Navigation.OpenCameraMenu(this, user);
+			Navigation.OpenCameraMenu(this);
 		}
 
 		private void SearchBook_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace VirtualLibraryApp
 
 		private void lastSearchesButton_Click(object sender, EventArgs e)
         {
-			Navigation.OpenLastSearchesMenu(this, user);
+			Navigation.OpenLastSearchesMenu(this);
         }
 
 		private void MissingBooks_Click(object sender, EventArgs e)

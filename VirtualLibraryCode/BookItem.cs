@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Logic
 {
-    class BookItem : IItem
+    class BookItem : IItem //Čia yra mūsų modelis
     {
         public String Name { get; set; }
         public String ISBN13 { get; set; }

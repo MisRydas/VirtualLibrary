@@ -6,58 +6,63 @@ using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
-	public partial class SearchBookForm : Form
+	public partial class SearchBookForm : Form, ISearchBook
 	{
-		public User user;
-		SearchBook searchbook;
-		SearchBookDataProvider searchBookData;
+		public event Action SearchButtonPressed;
+		public event Action SelectButtonPressed;
 
-		public SearchBookForm(User user)
+		public string Input => SearchTextBox.Text;
+		public string ISBN => isbn;
+		
+		string isbn;
+
+		public SearchBookForm()
 		{
 			InitializeComponent();
-
-			this.user = user;
-			searchbook = new SearchBook();
-			searchBookData = new SearchBookDataProvider();
+			
 		}
 
 		private void SearchButton_Click(object sender, EventArgs e)
 		{
-			//	SearchB();
-			searchbook.Search(SearchTextBox.Text, searchBookData);
-
-			if (searchBookData.missingText)
-			{
-				MessageBox.Show("Write keyword to find book.");
-			}
-			else
-			{
-				DisplayBooks();
-			}
+			SearchButtonPressed();
 		}
 
+		public void OnBooksFound(Books books)
+		{
+			DisplayBooks(books);
+		}
 
 		private void bookNameLabel_Click(object sender, EventArgs e)
 		{
-			searchbook.SelectBook(((Label)sender).Name, user, searchBookData);
-			Navigation.OpenBookMenu(this, user, searchBookData.bookData);
+			isbn = ((Label)sender).Name;
+			SelectButtonPressed();
 		}
 
 		private void bookCoverBox_Click(object sender, EventArgs e)
 		{
-			searchbook.SelectBook(((PictureBox)sender).Name, user, searchBookData);
-			Navigation.OpenBookMenu(this, user, searchBookData.bookData);
+			isbn = ((PictureBox)sender).Name;
+			SelectButtonPressed();
 		}
+
+		public void OnBookSelected(DataView bookData)
+		{
+			Navigation.OpenBookMenu(this, bookData, 0);
+		}
+
+		public void OnError(string error)
+		{
+			MessageBox.Show(error);
+		}
+
 
 		private void Back_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
-		private void DisplayBooks()
+		private void DisplayBooks(Books searchedBooks)
 		{
 			panel1.Controls.Clear();
-			Books searchedBooks = new Books(SearchTextBox.Text);
 
 			int i = 0;
 

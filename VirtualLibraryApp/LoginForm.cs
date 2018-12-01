@@ -6,37 +6,36 @@ using Logic;
 
 namespace VirtualLibraryApp
 {
-	public partial class LoginForm : Form	{
+	public partial class LoginForm : Form, ILogin
+    {
+        public event Action ButtonPressed;
 
-		private Login login;
-		private LoginDataProvider loginData;
+		public string Username => UsernameTextBox.Text;
+        public string Password => PasswordTextBox.Text;
 
-		public LoginForm()
+        public LoginForm()
 		{
 			InitializeComponent();
-			login = new Login();
-			loginData = new LoginDataProvider();
 		}
 
 		private void SignInButton_Click_1(object sender, EventArgs e)
 		{
-			login.LoginCheck(UsernameTextBox.Text, PasswordTextBox.Text, loginData);
-
-			if(loginData.correctData)
-			{
-				UsernameTextBox.Text = "";
-				PasswordTextBox.Text = "";
-				Navigation.OpenMainMenu(this, loginData.user);
-			}
-			else
-			{
-				MessageBox.Show("Incorrect Username or Password. Please, try again.");
-			}
-		}
+            ButtonPressed();
+        }
 
 		private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 			Navigation.OpenRegistrationMenu(this);
         }
-	}
+
+        public void OnLoginSuccess(User user)
+        {
+			Navigation.OpenMainMenu(this, user);
+        }
+
+        public void OnError(string message)
+        {
+            MessageBox.Show(message);
+        }
+    }
 }

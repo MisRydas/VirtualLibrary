@@ -1,23 +1,30 @@
-﻿using Logic;
+﻿using System;
+using Logic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace VirtualLibraryApp
 {
-	public partial class MissingBooksForm : Form
+	public partial class MissingBooksForm : Form, IMissingBooks
 	{
-		User user;
-		MissingBooks missingBooks;
+		public event Action LoadMissingBooks;
 
-		public MissingBooksForm(User user)
+
+		public MissingBooksForm()
 		{
 			InitializeComponent();
-
-			this.user = user;
-			missingBooks = new MissingBooks();
-
-			dataGridView1.DataSource = missingBooks.GetMissingBooks();
 		}
+
+		public void LoadBooks()
+		{
+			LoadMissingBooks();
+		}
+
+		public void OnMissingBooksFound(DataView missingBooks)
+		{
+			dataGridView1.DataSource = missingBooks;
+		}
+
 
 		private void Back_Click(object sender, System.EventArgs e)
 		{
