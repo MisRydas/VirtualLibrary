@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddBook.cs" />
+    <Compile Include="BookInfo.cs" />
     <Compile Include="BookItem.cs" />
     <Compile Include="CheckExtension.cs" />
     <Compile Include="IAddBook.cs" />
