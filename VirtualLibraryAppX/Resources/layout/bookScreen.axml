@@ -24,7 +24,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity= "center"
-		android:id="@+id/txtBookName" />
+		android:id="@+id/booktxtBookName" />
 	<TextView
 		android:text="ISBN-13:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -39,7 +39,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="120.0dp"
 		android:layout_marginTop="-20.0dp"
-		android:id="@+id/ISBN13" />
+		android:id="@+id/bookISBN13" />
 		<TextView
 		android:text="ISBN-10:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -54,7 +54,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="120.0dp"
 		android:layout_marginTop="-20.0dp"
-		android:id="@+id/ISBN10" />
+		android:id="@+id/bookISBN10" />
 		<TextView
 		android:text="Author:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -69,7 +69,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="120.0dp"
 		android:layout_marginTop="-20.0dp"
-		android:id="@+id/author" />
+		android:id="@+id/bookauthor" />
 		<TextView
 		android:text="Publisher:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -84,7 +84,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="120.0dp"
 		android:layout_marginTop="-20.0dp"
-		android:id="@+id/publisher" />
+		android:id="@+id/bookpublisher" />
 		<TextView
 		android:text="Published:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -99,7 +99,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="120.0dp"
 		android:layout_marginTop="-20.0dp"
-		android:id="@+id/published" />
+		android:id="@+id/bookpublished" />
 		<TextView
 		android:text="List Price:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -114,6 +114,6 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="120.0dp"
 		android:layout_marginTop="-20.0dp"
-		android:id="@+id/listPrice" />
+		android:id="@+id/booklistPrice" />
 
 </LinearLayout>

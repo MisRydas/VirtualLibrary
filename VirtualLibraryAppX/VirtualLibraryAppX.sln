@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibraryAppX", "VirtualLibraryAppX.csproj", "{556C9CE8-0F7B-4515-9F5D-642B257311B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicWebService", "..\LogicWebService\LogicWebService.csproj", "{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{556C9CE8-0F7B-4515-9F5D-642B257311B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{556C9CE8-0F7B-4515-9F5D-642B257311B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{556C9CE8-0F7B-4515-9F5D-642B257311B8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

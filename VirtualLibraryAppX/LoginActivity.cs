@@ -17,7 +17,7 @@ namespace VirtualLibraryAppX
             SetContentView(Resource.Layout.loginScreen);
 
 
-			Button createAccButton = FindViewById<Button>(Resource.Id.createAccButton);
+			Button createAccButton = FindViewById<Button>(Resource.Id.loginCreateAccButton);
 			Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
 
 
@@ -27,8 +27,19 @@ namespace VirtualLibraryAppX
 			};
 
 			loginButton.Click += delegate {
-				Intent main = new Intent(this, typeof(MainActivity));
-				StartActivity(main);
+				EditText username = FindViewById<EditText>(Resource.Id.loginUsernameTextBox);
+				EditText password = FindViewById<EditText>(Resource.Id.loginPasswordTextBox);
+				string error = "";
+				LoginService.Login client = new LoginService.Login();
+				if (client.LoginCheck(username.Text, password.Text, error))
+				{
+					Intent main = new Intent(this, typeof(MainActivity));
+					StartActivity(main);
+				}
+				else
+				{
+					Toast.MakeText(this, error, ToastLength.Short).Show();
+				}
 			};
 		}
     }
