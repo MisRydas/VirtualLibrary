@@ -31,7 +31,7 @@ namespace VirtualLibraryAppX
 				EditText password = FindViewById<EditText>(Resource.Id.loginPasswordTextBox);
 				string error = "";
 				LoginService.Login client = new LoginService.Login();
-				if (client.LoginCheck(username.Text, password.Text, error))
+				if (client.LoginCheck(username.Text, password.Text, out error))
 				{
 					Intent main = new Intent(this, typeof(MainActivity));
 					StartActivity(main);

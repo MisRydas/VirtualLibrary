@@ -81,5 +81,12 @@ namespace LogicWebService
 			String query = String.Format("SELECT * FROM Books WHERE ISBN13 = {0};", isbn);
 			return Conn.SelectQuery(query);
 		}
+
+		public static string GetBookName(string isbn)
+		{
+			String query = String.Format("SELECT BookName FROM Books WHERE ISBN13 = {0};", isbn);
+			DataView dv = Conn.SelectQuery(query).AsDataView();
+			return dv[0]["BookName"].ToString();
+		}
 	}
 }

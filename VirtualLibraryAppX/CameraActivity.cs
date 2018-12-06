@@ -9,8 +9,8 @@ using Android.Provider;
 using Android.Graphics;
 using Java.IO;
 using System;
-using System.Threading.Tasks;
-//using ZXing.Net.Mobile;
+using System.Threading;
+using ZXing.Mobile;
 
 namespace VirtualLibraryAppX
 {
@@ -39,16 +39,45 @@ namespace VirtualLibraryAppX
 			scanButton.Click += ScanButton_Click;
 		}
 
-		private void ScanButton_Click(object sender, System.EventArgs e)
+		private async void ScanButton_Click(object sender, System.EventArgs e)
 		{
-		/*	var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+			MobileBarcodeScanner.Initialize(Application);
 
-			var result = scanner.Scan();
+			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+
+			var result = await scanner.Scan();
 
 			if(result != null)
 			{
-				Toast.MakeText(this, result.ToString(), ToastLength.Short).Show();
-			}*/
+				string error = "";
+				ScannerService.Scanner client = new ScannerService.Scanner();
+				client.SearchBook(result.ToString(), error);
+
+				if(error.Length != 0)
+				{
+					Toast.MakeText(this, error, ToastLength.Short).Show();
+				}
+				else
+				{
+					Intent book = new Intent(this, typeof(BookActivity));
+					book.PutExtra("ISBN", result.ToString());
+					StartActivity(book);
+				}
+
+				//	Toast.MakeText(this, result.ToString(), ToastLength.Short).Show();
+				/*	string error = "";
+					ScannerService.Scanner client = new ScannerService.Scanner();
+					client.SearchBook(result.ToString(), error);
+					if (error.Length == 0)
+					{
+						Intent book = new Intent(this, typeof(BookActivity));
+						StartActivity(book);
+					}
+					else
+					{
+						Toast.MakeText(this, error, ToastLength.Short).Show();
+					}*/
+			}
 		}
 		//	Intent intent = new Intent(MediaStore.ActionImageCapture);
 		//	StartActivityForResult(intent, 0);

@@ -21,8 +21,9 @@ namespace LogicWebService
 		public static User user;
 
 		[WebMethod]
-		public bool LoginCheck(string username, string password, string error)
+		public bool LoginCheck(string username, string password, out string error)
 		{
+			error = "";
 			//Gaunam informacija apie naudotojus is sql serverio
 			DataTable userData = GetAllUsersInDataTable();
 

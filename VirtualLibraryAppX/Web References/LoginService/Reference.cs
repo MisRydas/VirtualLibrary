@@ -74,28 +74,27 @@ namespace VirtualLibraryAppX.LoginService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginCheck", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool LoginCheck(string username, string password, string error) {
+        public bool LoginCheck(string username, string password, out string error) {
             object[] results = this.Invoke("LoginCheck", new object[] {
                         username,
-                        password,
-                        error});
+                        password});
+            error = ((string)(results[1]));
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void LoginCheckAsync(string username, string password, string error) {
-            this.LoginCheckAsync(username, password, error, null);
+        public void LoginCheckAsync(string username, string password) {
+            this.LoginCheckAsync(username, password, null);
         }
         
         /// <remarks/>
-        public void LoginCheckAsync(string username, string password, string error, object userState) {
+        public void LoginCheckAsync(string username, string password, object userState) {
             if ((this.LoginCheckOperationCompleted == null)) {
                 this.LoginCheckOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoginCheckOperationCompleted);
             }
             this.InvokeAsync("LoginCheck", new object[] {
                         username,
-                        password,
-                        error}, this.LoginCheckOperationCompleted, userState);
+                        password}, this.LoginCheckOperationCompleted, userState);
         }
         
         private void OnLoginCheckOperationCompleted(object arg) {
@@ -146,6 +145,14 @@ namespace VirtualLibraryAppX.LoginService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string error {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
             }
         }
     }

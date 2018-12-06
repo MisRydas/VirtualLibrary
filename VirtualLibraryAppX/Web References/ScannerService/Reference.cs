@@ -30,9 +30,11 @@ namespace VirtualLibraryAppX.ScannerService {
     [System.Web.Services.WebServiceBindingAttribute(Name="ScannerSoap", Namespace="http://tempuri.org/")]
     public partial class Scanner : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback ScanBookOperationCompleted;
+        private System.Threading.SendOrPostCallback SearchBookOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetBookOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetBookNameOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -73,66 +75,99 @@ namespace VirtualLibraryAppX.ScannerService {
         }
         
         /// <remarks/>
-        public event ScanBookCompletedEventHandler ScanBookCompleted;
+        public event SearchBookCompletedEventHandler SearchBookCompleted;
         
         /// <remarks/>
         public event GetBookCompletedEventHandler GetBookCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ScanBook", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool ScanBook([System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] bookBytes, string error) {
-            object[] results = this.Invoke("ScanBook", new object[] {
-                        bookBytes,
+        public event GetBookNameCompletedEventHandler GetBookNameCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchBook", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SearchBook(string isbn, string error) {
+            this.Invoke("SearchBook", new object[] {
+                        isbn,
                         error});
-            return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void ScanBookAsync(byte[] bookBytes, string error) {
-            this.ScanBookAsync(bookBytes, error, null);
+        public void SearchBookAsync(string isbn, string error) {
+            this.SearchBookAsync(isbn, error, null);
         }
         
         /// <remarks/>
-        public void ScanBookAsync(byte[] bookBytes, string error, object userState) {
-            if ((this.ScanBookOperationCompleted == null)) {
-                this.ScanBookOperationCompleted = new System.Threading.SendOrPostCallback(this.OnScanBookOperationCompleted);
+        public void SearchBookAsync(string isbn, string error, object userState) {
+            if ((this.SearchBookOperationCompleted == null)) {
+                this.SearchBookOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchBookOperationCompleted);
             }
-            this.InvokeAsync("ScanBook", new object[] {
-                        bookBytes,
-                        error}, this.ScanBookOperationCompleted, userState);
+            this.InvokeAsync("SearchBook", new object[] {
+                        isbn,
+                        error}, this.SearchBookOperationCompleted, userState);
         }
         
-        private void OnScanBookOperationCompleted(object arg) {
-            if ((this.ScanBookCompleted != null)) {
+        private void OnSearchBookOperationCompleted(object arg) {
+            if ((this.SearchBookCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ScanBookCompleted(this, new ScanBookCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.SearchBookCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetBook", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataTable GetBook() {
-            object[] results = this.Invoke("GetBook", new object[0]);
+        public System.Data.DataTable GetBook(string isbn) {
+            object[] results = this.Invoke("GetBook", new object[] {
+                        isbn});
             return ((System.Data.DataTable)(results[0]));
         }
         
         /// <remarks/>
-        public void GetBookAsync() {
-            this.GetBookAsync(null);
+        public void GetBookAsync(string isbn) {
+            this.GetBookAsync(isbn, null);
         }
         
         /// <remarks/>
-        public void GetBookAsync(object userState) {
+        public void GetBookAsync(string isbn, object userState) {
             if ((this.GetBookOperationCompleted == null)) {
                 this.GetBookOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetBookOperationCompleted);
             }
-            this.InvokeAsync("GetBook", new object[0], this.GetBookOperationCompleted, userState);
+            this.InvokeAsync("GetBook", new object[] {
+                        isbn}, this.GetBookOperationCompleted, userState);
         }
         
         private void OnGetBookOperationCompleted(object arg) {
             if ((this.GetBookCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetBookCompleted(this, new GetBookCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetBookName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetBookName(string isbn) {
+            object[] results = this.Invoke("GetBookName", new object[] {
+                        isbn});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetBookNameAsync(string isbn) {
+            this.GetBookNameAsync(isbn, null);
+        }
+        
+        /// <remarks/>
+        public void GetBookNameAsync(string isbn, object userState) {
+            if ((this.GetBookNameOperationCompleted == null)) {
+                this.GetBookNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetBookNameOperationCompleted);
+            }
+            this.InvokeAsync("GetBookName", new object[] {
+                        isbn}, this.GetBookNameOperationCompleted, userState);
+        }
+        
+        private void OnGetBookNameOperationCompleted(object arg) {
+            if ((this.GetBookNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetBookNameCompleted(this, new GetBookNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -157,29 +192,7 @@ namespace VirtualLibraryAppX.ScannerService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void ScanBookCompletedEventHandler(object sender, ScanBookCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ScanBookCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal ScanBookCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
+    public delegate void SearchBookCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
@@ -203,6 +216,32 @@ namespace VirtualLibraryAppX.ScannerService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetBookNameCompletedEventHandler(object sender, GetBookNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetBookNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetBookNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

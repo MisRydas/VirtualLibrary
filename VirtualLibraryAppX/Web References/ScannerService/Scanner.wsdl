@@ -2,23 +2,23 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="ScanBook">
+      <s:element name="SearchBook">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="bookBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="isbn" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="error" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ScanBookResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ScanBookResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
+      <s:element name="SearchBookResponse">
+        <s:complexType />
       </s:element>
       <s:element name="GetBook">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="isbn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetBookResponse">
         <s:complexType>
@@ -34,13 +34,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetBookName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="isbn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="ScanBookSoapIn">
-    <wsdl:part name="parameters" element="tns:ScanBook" />
+  <wsdl:message name="SearchBookSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchBook" />
   </wsdl:message>
-  <wsdl:message name="ScanBookSoapOut">
-    <wsdl:part name="parameters" element="tns:ScanBookResponse" />
+  <wsdl:message name="SearchBookSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchBookResponse" />
   </wsdl:message>
   <wsdl:message name="GetBookSoapIn">
     <wsdl:part name="parameters" element="tns:GetBook" />
@@ -48,20 +62,30 @@
   <wsdl:message name="GetBookSoapOut">
     <wsdl:part name="parameters" element="tns:GetBookResponse" />
   </wsdl:message>
+  <wsdl:message name="GetBookNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBookName" />
+  </wsdl:message>
+  <wsdl:message name="GetBookNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBookNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="ScannerSoap">
-    <wsdl:operation name="ScanBook">
-      <wsdl:input message="tns:ScanBookSoapIn" />
-      <wsdl:output message="tns:ScanBookSoapOut" />
+    <wsdl:operation name="SearchBook">
+      <wsdl:input message="tns:SearchBookSoapIn" />
+      <wsdl:output message="tns:SearchBookSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetBook">
       <wsdl:input message="tns:GetBookSoapIn" />
       <wsdl:output message="tns:GetBookSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetBookName">
+      <wsdl:input message="tns:GetBookNameSoapIn" />
+      <wsdl:output message="tns:GetBookNameSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ScannerSoap" type="tns:ScannerSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="ScanBook">
-      <soap:operation soapAction="http://tempuri.org/ScanBook" style="document" />
+    <wsdl:operation name="SearchBook">
+      <soap:operation soapAction="http://tempuri.org/SearchBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -78,11 +102,20 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBookName">
+      <soap:operation soapAction="http://tempuri.org/GetBookName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ScannerSoap12" type="tns:ScannerSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="ScanBook">
-      <soap12:operation soapAction="http://tempuri.org/ScanBook" style="document" />
+    <wsdl:operation name="SearchBook">
+      <soap12:operation soapAction="http://tempuri.org/SearchBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -92,6 +125,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBook">
       <soap12:operation soapAction="http://tempuri.org/GetBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookName">
+      <soap12:operation soapAction="http://tempuri.org/GetBookName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
