@@ -2294,6 +2294,9 @@ namespace VirtualLibraryAppX
 			// aapt resource value: 0x7f08008b
 			public const int bookISBN13 = 2131230859;
 			
+			// aapt resource value: 0x7f08008a
+			public const int bookName = 2131230858;
+			
 			// aapt resource value: 0x7f080076
 			public const int bookNameTextBox = 2131230838;
 			
@@ -2308,9 +2311,6 @@ namespace VirtualLibraryAppX
 			
 			// aapt resource value: 0x7f08008e
 			public const int bookpublisher = 2131230862;
-			
-			// aapt resource value: 0x7f08008a
-			public const int booktxtBookName = 2131230858;
 			
 			// aapt resource value: 0x7f080028
 			public const int bottom = 2131230760;

@@ -24,7 +24,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity= "center"
-		android:id="@+id/booktxtBookName" />
+		android:id="@+id/bookName" />
 	<TextView
 		android:text="ISBN-13:"
 		android:textAppearance="?android:attr/textAppearanceSmall"

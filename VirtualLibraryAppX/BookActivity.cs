@@ -30,7 +30,7 @@ namespace VirtualLibraryAppX
 			//bookNameTxt = client.GetBookName(isbn);
 
 			ImageView bookCover = FindViewById<ImageView>(Resource.Id.bookCoverBox);
-			TextView bookName = FindViewById<TextView>(Resource.Id.bookNameTextBox);
+			TextView bookName = FindViewById<TextView>(Resource.Id.bookName);
 			TextView isbn13 = FindViewById<TextView>(Resource.Id.bookISBN13);
 			TextView isbn10 = FindViewById<TextView>(Resource.Id.bookISBN10);
 			TextView author = FindViewById<TextView>(Resource.Id.bookauthor);
@@ -38,7 +38,9 @@ namespace VirtualLibraryAppX
 			TextView published = FindViewById<TextView>(Resource.Id.bookpublished);
 			TextView listPrice = FindViewById<TextView>(Resource.Id.booklistPrice);
 
-		//	bookName.Text = book.Rows[0]["BookName"].ToString();
+			//Toast.MakeText(this, book.Rows[0]["BookName"].ToString(), ToastLength.Short).Show();
+
+			bookName.Text = book.Rows[0]["BookName"].ToString();
 			isbn13.Text = book.Rows[0]["ISBN13"].ToString();
 			isbn10.Text = book.Rows[0]["ISBN10"].ToString();
 			author.Text = book.Rows[0]["Author"].ToString();
