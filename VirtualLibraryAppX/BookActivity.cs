@@ -16,7 +16,6 @@ namespace VirtualLibraryAppX
     public class BookActivity : AppCompatActivity
     {
 		DataTable book;
-		string bookNameTxt = "";
 		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

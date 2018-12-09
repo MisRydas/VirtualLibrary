@@ -81,12 +81,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddBook.asmx" />
     <Content Include="LastSearches.asmx" />
     <Content Include="Login.asmx" />
     <Content Include="Scanner.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBook.asmx.cs">
+      <DependentUpon>AddBook.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BookItem.cs" />
+    <Compile Include="CheckExtentions.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="LastSearches.asmx.cs">

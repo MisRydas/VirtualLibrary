@@ -19,6 +19,15 @@ namespace VirtualLibraryAppX
 
 			Button addBookBackButton = FindViewById<Button>(Resource.Id.addBookBackButton);
 			Button addBookButton = FindViewById<Button>(Resource.Id.addBookButton);
+			EditText name = FindViewById<EditText>(Resource.Id.bookNameTextBox);
+			EditText isbn13 = FindViewById<EditText>(Resource.Id.ISBN13TextBox);
+			EditText isbn10 = FindViewById<EditText>(Resource.Id.ISBN10TextBox);
+			EditText genre = FindViewById<EditText>(Resource.Id.genreTextBox);
+			EditText author = FindViewById<EditText>(Resource.Id.authorTextBox);
+			EditText publisher = FindViewById<EditText>(Resource.Id.publisherTextBox);
+			EditText published = FindViewById<EditText>(Resource.Id.publishedTextBox);
+			EditText listPrice = FindViewById<EditText>(Resource.Id.listPriceTextBox);
+			EditText coverLink = FindViewById<EditText>(Resource.Id.bookCoverLinkTextBox1);
 
 
 			addBookBackButton.Click += delegate {
@@ -26,7 +35,20 @@ namespace VirtualLibraryAppX
 			};
 
 			addBookButton.Click += delegate {
-				this.Finish();
+				string error = "";
+
+				AddBookService.AddBook client = new AddBookService.AddBook();
+
+				client.Add(ref error, name.Text, isbn13.Text, isbn10.Text, author.Text, publisher.Text, genre.Text, published.Text, listPrice.Text, coverLink.Text);
+
+				if (error.Length == 0)
+				{
+					this.Finish();
+				}
+				else
+				{
+					Toast.MakeText(this, error, ToastLength.Short).Show();
+				}
 			};
 		}
     }
