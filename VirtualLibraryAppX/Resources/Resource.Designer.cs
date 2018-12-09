@@ -2441,9 +2441,6 @@ namespace VirtualLibraryAppX
 			// aapt resource value: 0x7f08007e
 			public const int genreTextBox = 2131230846;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int gridView1 = 2131230900;
-			
 			// aapt resource value: 0x7f080005
 			public const int home = 2131230725;
 			
@@ -2503,6 +2500,9 @@ namespace VirtualLibraryAppX
 			
 			// aapt resource value: 0x7f080084
 			public const int listPriceTextBox = 2131230852;
+			
+			// aapt resource value: 0x7f0800b4
+			public const int listView1 = 2131230900;
 			
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;

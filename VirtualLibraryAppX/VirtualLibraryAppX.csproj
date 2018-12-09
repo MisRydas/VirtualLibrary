@@ -92,6 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\MissingBooksService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\RegistrationService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,6 +124,11 @@
     </None>
     <None Include="Web References\LoginService\Login.wsdl" />
     <None Include="Web References\LoginService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\MissingBooksService\missingbooks.wsdl" />
+    <None Include="Web References\MissingBooksService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -229,6 +239,19 @@
       <CachedSettingsPropName>
       </CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://virtuallibrary.somee.com/missingbooks.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MissingBooksService\</RelPath>
+      <UpdateFromURL>http://virtuallibrary.somee.com/missingbooks.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://virtuallibrary.somee.com/registration.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\RegistrationService\</RelPath>
@@ -291,6 +314,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\RegistrationService\registration.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\MissingBooksService\missingbooks.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

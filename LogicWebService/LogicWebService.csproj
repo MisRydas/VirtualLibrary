@@ -84,6 +84,7 @@
     <Content Include="AddBook.asmx" />
     <Content Include="LastSearches.asmx" />
     <Content Include="Login.asmx" />
+    <Content Include="MissingBooks.asmx" />
     <Content Include="Registration.asmx" />
     <Content Include="Scanner.asmx" />
     <Content Include="Web.config" />
@@ -103,6 +104,10 @@
     </Compile>
     <Compile Include="Login.asmx.cs">
       <DependentUpon>Login.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MissingBooks.asmx.cs">
+      <DependentUpon>MissingBooks.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MySQLConnection.cs" />
