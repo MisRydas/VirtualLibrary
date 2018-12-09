@@ -21,7 +21,7 @@ namespace LogicWebService
 		public static User user;
 
 		[WebMethod]
-		public bool LoginCheck(string username, string password, out string error)
+		public bool LoginCheck(string username, string password, ref string error, ref bool isAdmin)
 		{
 			error = "";
 			//Gaunam informacija apie naudotojus is sql serverio
@@ -38,6 +38,10 @@ namespace LogicWebService
 			if (result.Count == 1)
 			{
 				user = SQLConnection.GetUserById((int)result[0]["Id"]);
+				if(user.IsAdmin)
+				{
+					isAdmin = true;
+				}
 				return true;
 			}
 			else

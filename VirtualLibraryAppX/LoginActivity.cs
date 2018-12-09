@@ -10,6 +10,8 @@ namespace VirtualLibraryAppX
     [Activity(Label = "Virtual Library", Theme = "@style/AppTheme", MainLauncher = true)]
     public class LoginActivity : AppCompatActivity
     {
+		bool isAdmin;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,9 +33,10 @@ namespace VirtualLibraryAppX
 				EditText password = FindViewById<EditText>(Resource.Id.loginPasswordTextBox);
 				string error = "";
 				LoginService.Login client = new LoginService.Login();
-				if (client.LoginCheck(username.Text, password.Text, out error))
+				if (client.LoginCheck(username.Text, password.Text, ref error, ref isAdmin))
 				{
 					Intent main = new Intent(this, typeof(MainActivity));
+					main.PutExtra("isAdmin", isAdmin);
 					StartActivity(main);
 				}
 				else

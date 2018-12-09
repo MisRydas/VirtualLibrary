@@ -69,6 +69,7 @@
 				android:layout_width="250.5dp"
 				android:layout_height="37.5dp"
 				android:layout_marginLeft="30.0dp"
+				android:inputType="textPassword"
 				android:id="@+id/passwordTextBox" />
 			<TextView
 				android:text="Confirm Password *"
@@ -81,6 +82,7 @@
 				android:layout_width="250.5dp"
 				android:layout_height="37.5dp"
 				android:layout_marginLeft="30.0dp"
+				android:inputType="textPassword"
 				android:id="@+id/confirmPasswordTextBox" />
 			<Button
 				android:text="Register"

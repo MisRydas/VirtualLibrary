@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using Android.Views;
 
 namespace VirtualLibraryAppX
 {
@@ -22,6 +23,14 @@ namespace VirtualLibraryAppX
 			Button searchBookButton = FindViewById<Button>(Resource.Id.searchBookButton);
 			Button addBookButton = FindViewById<Button>(Resource.Id.addBookButton);
 			Button missingBooksButton = FindViewById<Button>(Resource.Id.missingBooksButton);
+
+			bool isAdmin = Intent.GetBooleanExtra("isAdmin", false);
+
+			if(!isAdmin)
+			{
+				addBookButton.Visibility = ViewStates.Invisible;
+				missingBooksButton.Visibility = ViewStates.Invisible;
+			}
 
 
 			logOutButton.Click += delegate {
