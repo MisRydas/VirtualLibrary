@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetLastUserSearches">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLastUserSearchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastUserSearchesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLastUserSearchesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastUserSearches" />
+  </wsdl:message>
+  <wsdl:message name="GetLastUserSearchesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastUserSearchesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LastSearchesSoap">
+    <wsdl:operation name="GetLastUserSearches">
+      <wsdl:input message="tns:GetLastUserSearchesSoapIn" />
+      <wsdl:output message="tns:GetLastUserSearchesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LastSearchesSoap" type="tns:LastSearchesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastUserSearches">
+      <soap:operation soapAction="http://tempuri.org/GetLastUserSearches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LastSearchesSoap12" type="tns:LastSearchesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastUserSearches">
+      <soap12:operation soapAction="http://tempuri.org/GetLastUserSearches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LastSearches">
+    <wsdl:port name="LastSearchesSoap" binding="tns:LastSearchesSoap">
+      <soap:address location="http://virtuallibrary.somee.com/lastsearches.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LastSearchesSoap12" binding="tns:LastSearchesSoap12">
+      <soap12:address location="http://virtuallibrary.somee.com/lastsearches.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

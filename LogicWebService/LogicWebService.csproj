@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LastSearches.asmx" />
     <Content Include="Login.asmx" />
     <Content Include="Scanner.asmx" />
     <Content Include="Web.config" />
@@ -88,6 +89,10 @@
   <ItemGroup>
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IItem.cs" />
+    <Compile Include="LastSearches.asmx.cs">
+      <DependentUpon>LastSearches.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Login.asmx.cs">
       <DependentUpon>Login.asmx</DependentUpon>
       <SubType>Component</SubType>
