@@ -44,6 +44,7 @@ namespace VirtualLibraryAppX
 				if (error.Length == 0)
 				{
 					this.Finish();
+					Toast.MakeText(this, "Book added successfully!", ToastLength.Short).Show();
 				}
 				else
 				{

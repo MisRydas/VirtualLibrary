@@ -84,6 +84,7 @@
     <Content Include="AddBook.asmx" />
     <Content Include="LastSearches.asmx" />
     <Content Include="Login.asmx" />
+    <Content Include="Registration.asmx" />
     <Content Include="Scanner.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -106,6 +107,10 @@
     </Compile>
     <Compile Include="MySQLConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.asmx.cs">
+      <DependentUpon>Registration.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Scanner.asmx.cs">
       <DependentUpon>Scanner.asmx</DependentUpon>
       <SubType>Component</SubType>

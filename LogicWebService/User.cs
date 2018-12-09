@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LogicWebService
 {
-	public class User
+	public class User : IItem
 	{
 		public int Id { get; set; }
 		public String UserName { get; set; }

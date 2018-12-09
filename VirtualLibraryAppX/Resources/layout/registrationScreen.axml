@@ -57,7 +57,7 @@
 				android:layout_width="250.5dp"
 				android:layout_height="37.5dp"
 				android:layout_marginLeft="30.0dp"
-				android:id="@+id/usernameeTextBox" />
+				android:id="@+id/usernameTextBox" />
 			<TextView
 				android:text="Password *"
 				android:textAppearance="?android:attr/textAppearanceSmall"

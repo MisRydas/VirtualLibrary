@@ -2838,7 +2838,7 @@ namespace VirtualLibraryAppX
 			public const int useLogo = 2131230744;
 			
 			// aapt resource value: 0x7f0800d2
-			public const int usernameeTextBox = 2131230930;
+			public const int usernameTextBox = 2131230930;
 			
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
