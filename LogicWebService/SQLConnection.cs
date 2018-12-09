@@ -65,6 +65,12 @@ namespace LogicWebService
 			return Conn.SelectQuery(query);
 		}
 
+		public static DataTable GetSearchedBooks(string genre)
+		{
+			String query = String.Format("SELECT BookName, CoverLink, ISBN13 WHERE Genre LIKE '%{0}%' FROM Books;", genre);
+			return Conn.SelectQuery(query);
+		}
+
 		public static DataTable GetAllMissingBooksISBN()
 		{
 			String query = String.Format("SELECT S.ISBN, COUNT(S.ISBN) AS 'Kiek kartų ieškota', S.Time AS 'Pirmą kartą ieškota' " +

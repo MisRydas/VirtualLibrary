@@ -94,6 +94,7 @@
       <DependentUpon>AddBook.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BookInfo.cs" />
     <Compile Include="BookItem.cs" />
     <Compile Include="CheckExtentions.cs" />
     <Compile Include="IDBConnection.cs" />

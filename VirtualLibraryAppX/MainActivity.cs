@@ -20,7 +20,6 @@ namespace VirtualLibraryAppX
 			Button logOutButton = FindViewById<Button>(Resource.Id.logOutButton);
 			Button scanISBNButton = FindViewById<Button>(Resource.Id.scanISBNButton);
 			Button lastSearchesButton = FindViewById<Button>(Resource.Id.lastSearchesButton);
-			Button searchBookButton = FindViewById<Button>(Resource.Id.searchBookButton);
 			Button addBookButton = FindViewById<Button>(Resource.Id.addBookButton);
 			Button missingBooksButton = FindViewById<Button>(Resource.Id.missingBooksButton);
 
@@ -45,11 +44,6 @@ namespace VirtualLibraryAppX
 			lastSearchesButton.Click += delegate {
 				Intent camera = new Intent(this, typeof(LastSearchesActivity));
 				StartActivity(camera);
-			};
-
-			searchBookButton.Click += delegate {
-				Intent searchBook = new Intent(this, typeof(SearchBookActivity));
-				StartActivity(searchBook);
 			};
 
 			addBookButton.Click += delegate {
