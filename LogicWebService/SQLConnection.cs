@@ -38,16 +38,24 @@ namespace LogicWebService
 		{
 			string query = String.Format("Insert into ISBNSearches (UserId, ISBN) VALUES ('{0}', '{1}');;", UserId, ISBN);
 			Conn.Query(query);
-		}
+        }
 
-		public static void AddNewItem(IItem item)
-		{
-			string query = String.Format("Insert into {0} {1} VALUES {2};",
-										item.TableName(), item.TypesInString(), item.ValuesInString());
-			Conn.Query(query);
-		}
+        public static void AddNewItem(IItem item)
+        {
+            string query = String.Format("Insert into {0} {1} VALUES {2};",
+                                        item.TableName(), item.TypesInString(), item.ValuesInString());
+            Conn.Query(query);
+        }
 
-		public static DataTable GetAllBooksInDataTable()
+        public static void AddNewUser(User item)
+        {
+            LibraryAppDBEntities db = new LibraryAppDBEntities();
+            db.Users.Add(item);
+
+            db.SaveChanges();
+        }
+
+        public static DataTable GetAllBooksInDataTable()
 		{
 			String query = "Select * FROM Books;";
 			return Conn.SelectQuery(query);
@@ -90,9 +98,11 @@ namespace LogicWebService
 
 		public static string GetBookName(string isbn)
 		{
-			String query = String.Format("SELECT BookName FROM Books WHERE ISBN13 = {0};", isbn);
-			DataView dv = Conn.SelectQuery(query).AsDataView();
-			return dv[0]["BookName"].ToString();
+            LibraryAppDBEntities db = new LibraryAppDBEntities();
+            return db.Books.Where(w => w.ISBN13 == isbn).FirstOrDefault().BookName;
+			//String query = String.Format("SELECT BookName FROM Books WHERE ISBN13 = {0};", isbn);
+			//DataView dv = Conn.SelectQuery(query).AsDataView();
+			//return dv[0]["BookName"].ToString();
 		}
 	}
 }

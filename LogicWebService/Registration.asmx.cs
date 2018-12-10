@@ -46,7 +46,7 @@ namespace LogicWebService
 				user.FirstName = firstname.Trim();
 				user.LastName = lastname.Trim();
 				//Pridedamas useris į DB
-				SQLConnection.AddNewItem(user);
+				SQLConnection.AddNewUser(user);
 			}
 		}
 
