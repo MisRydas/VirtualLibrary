@@ -29,6 +29,7 @@ namespace EF
             //context.Tables.Add(table);
             //context.SaveChanges();
             model.comment = commentTextBox.Text.Trim();
+            model.Id = 2;
             using (CommentDBEntities db = new CommentDBEntities())
             {
                 //if (model.Id == 0) db.Tables.Add(model);
