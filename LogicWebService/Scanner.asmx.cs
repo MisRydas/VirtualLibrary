@@ -23,7 +23,7 @@ namespace LogicWebService
 		DataTable bookData;
 
 		[WebMethod]
-		public void SearchBook(string isbn, string error)
+		public void SearchBook(string isbn, ref string error)
 		{
 			bookData = SQLConnection.GetBookByISBNInDataView(isbn);
 			if(bookData == null)
