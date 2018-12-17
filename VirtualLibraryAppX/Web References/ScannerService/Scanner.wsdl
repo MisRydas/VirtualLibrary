@@ -11,7 +11,11 @@
         </s:complexType>
       </s:element>
       <s:element name="SearchBookResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="error" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetBook">
         <s:complexType>

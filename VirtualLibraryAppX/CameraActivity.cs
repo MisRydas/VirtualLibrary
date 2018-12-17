@@ -51,7 +51,7 @@ namespace VirtualLibraryAppX
 			{
 				string error = "";
 				ScannerService.Scanner client = new ScannerService.Scanner();
-				client.SearchBook(result.ToString(), error);
+				client.SearchBook(result.ToString(), ref error);
 
 				if(error.Length != 0)
 				{
