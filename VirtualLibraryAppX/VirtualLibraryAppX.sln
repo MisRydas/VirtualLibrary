@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibraryAppX", "Virtu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicWebService", "..\LogicWebService\LogicWebService.csproj", "{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibraryTests", "..\VirtualLibraryTests\VirtualLibraryTests.csproj", "{4A4C1DD7-1266-47D0-9835-3DAE6637CCFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DED325A5-E2C1-41A8-8ED6-D3ADB68BF11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4C1DD7-1266-47D0-9835-3DAE6637CCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4C1DD7-1266-47D0-9835-3DAE6637CCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4C1DD7-1266-47D0-9835-3DAE6637CCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4C1DD7-1266-47D0-9835-3DAE6637CCFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
