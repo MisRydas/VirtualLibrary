@@ -15,5 +15,6 @@ namespace EF
     public partial class Table
     {
         public string comment { get; set; }
+        public int ID { get; set; }
     }
 }

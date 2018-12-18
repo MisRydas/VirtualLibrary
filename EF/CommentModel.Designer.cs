@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Evaldas\Desktop\EF\EF\EF\CommentModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Evaldas\Desktop\EF1\VirtualLibrary\EF\CommentModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
